@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<footer th:fragment="fragment-footer" class="footer">
+  <p>
+    <br /><strong>상호명</strong> : (주)여긴 어때? | <strong>대표명</strong> : 2게 왜 돼지?
+    | <strong>사업자등록번호</strong> : 477-88-01610 | <strong>문의</strong> : Tel. 010-5360-5938<br /><strong>주소</strong
+  > : 경기도 안산시 상록구 사3동 한양대학로 55 제5공학관 SW창업실 5호<br />Copyright ⓒ Portfolio<br /><br />
+  </p>
+  <!-- Channel Plugin Scripts -->
+  <script>
+    (function() {
+      var w = window;
+      if (w.ChannelIO) {
+        return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+      }
+      var ch = function() {
+        ch.c(arguments);
+      };
+      ch.q = [];
+      ch.c = function(args) {
+        ch.q.push(args);
+      };
+      w.ChannelIO = ch;
+      function l() {
+        if (w.ChannelIOInitialized) {
+          return;
+        }
+        w.ChannelIOInitialized = true;
+        var s = document.createElement('script');
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+        s.charset = 'UTF-8';
+        var x = document.getElementsByTagName('script')[0];
+        x.parentNode.insertBefore(s, x);
+      }
+      if (document.readyState === 'complete') {
+        l();
+      } else if (window.attachEvent) {
+        window.attachEvent('onload', l);
+      } else {
+        window.addEventListener('DOMContentLoaded', l, false);
+        window.addEventListener('load', l, false);
+      }
+    })();
+    ChannelIO('boot', {
+      "pluginKey": "c97d3d4f-809a-4483-9e0b-a27a03f4f180"
+    });
+  </script>
+  <!-- End Channel Plugin -->
+</footer>
+</html>
