@@ -1,10 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>ID 찾기</title>
+    <link rel="stylesheet" type="text/css" href="/find.css" />
+    <script src="/find.js" type="text/javascript"></script>
 </head>
-<body>
 
+<body>
+    <form action="">
+        <div>전화번호로 찾기</div>
+        <input type="text" id="tel_find_id" placeholder="ex) 010-1234-4567">
+        <input type="button" id="tel_find_id_btn" value="찾기">
+        <br>
+    </form>
+
+    <form action="">
+        <div>이메일로 찾기</div>
+        <input type="text" id="email_find_id" placeholder="ex) guest123@guest.com">
+        <input type="button" id="email_find_id_btn" value="찾기">
+        <br>
+    </form>
+
+    <input type="button" id="to_find_pw" value="비밀번호 찾기">
 </body>
 </html>
