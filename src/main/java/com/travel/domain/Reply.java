@@ -17,13 +17,13 @@ public class Reply {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idx;
 
-    @Column(name = "boardIdx")
+    @Column(name = "board_idx")
     private int boardIdx;
 
-    @Column(name = "userId")
+    @Column(name = "user_id")
     private String userId;
 
-    @Column(name = "parentIdx")
+    @Column(name = "parent_idx")
     private int parentIdx;
 
     @Column(name = "time")

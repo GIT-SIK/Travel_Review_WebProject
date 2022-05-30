@@ -23,10 +23,10 @@ public class Festival {
     @Column(name = "location")
     private String location;
 
-    @Column(name = "startDate")
+    @Column(name = "start_date")
     private Date startDate;
 
-    @Column(name = "endDate")
+    @Column(name = "end_date")
     private Date endDate;
 
     @Column(name = "content")
@@ -38,10 +38,10 @@ public class Festival {
     @Column(name = "homepage")
     private String homepage;
 
-    @Column(name = "roadAddress")
+    @Column(name = "road_address")
     private String roadAddress;
 
-    @Column(name = "lotNumAddress")
+    @Column(name = "lot_num_address")
     private String lotNumAddress;
 
     @Column(name = "latitude")

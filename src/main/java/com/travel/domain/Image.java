@@ -17,19 +17,19 @@ public class Image {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idx;
 
-    @Column(name = "contentType")
+    @Column(name = "content_type")
     private String contentType;
 
-    @Column(name = "fileName")
+    @Column(name = "file_name")
     private String fileName;
 
-    @Column(name = "filePath")
+    @Column(name = "file_path")
     private String filePath;
 
-    @Column(name = "registerDate")
+    @Column(name = "register_date")
     private Date registerDate;
 
-    @Column(name = "saveFileName")
+    @Column(name = "save_file_name")
     private String saveFileName;
 
     @Column(name = "size")
