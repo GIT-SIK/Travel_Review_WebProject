@@ -1,0 +1,17 @@
+.custom-header {
+    background: #F63543;
+}
+.logo {
+    color: white;
+    font-family: 'Jalnan';
+    font-size: 30pt;
+    font-weight: bold;
+}
+a{
+    color: white;
+    font-family: 'Jalnan';
+    font-size: 14pt;
+}
+.first{
+    margin-left: 500px;
+}
