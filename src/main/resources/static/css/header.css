@@ -6,12 +6,12 @@
     font-family: 'Jalnan';
     font-size: 30pt;
     font-weight: bold;
-    display: inline-block;
 }
 a{
     color: white;
     font-family: 'Jalnan';
     font-size: 14pt;
-    float:right;
-    display: inline-block;
+}
+.first{
+    margin-left: 500px;
 }
