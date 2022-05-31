@@ -5,28 +5,19 @@
     <title>비밀번호 찾기</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/find/find-pw-result.css}"/>
 </head>
-<style type="text/css">
-    @font-face {
-        font-family: 'yg-jalnan';
-        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
-        font-weight: normal;
-        font-style: normal;
-    }
 
-    div, input, button{
-        font-family: 'yg-jalnan';
-    }
-</style>
 <body>
-<div class="container">
-    <div>
-        <h1>여긴어때?</h1>
+<div class="container box">
+    <div class="logo">
+        <a th:href="@{/}">여긴어때?</a>
     </div>
-    <div>
-        <h2 id="page-title">비밀번호 재설정</h2>
+    <div class="title">
+        <span id="page-title">비밀번호 찾기</span>
     </div>
     <form method="post" th:action="@{/find/changePw}">
+        <div>새로운 비밀번호 설정하기</div>
         <input type="hidden" th:value="${userId}" th:name="id" id="id">
         <input type="password" id="pw" th:name="password" placeholder="비밀번호를 입력해주세요"> <br>
         <input type="password" id="pw_check" th:name="passwordCheck" placeholder="비밀번호를 다시 입력해주세요">
@@ -34,7 +25,7 @@
     </form>
     <div>
         <!--    로그인 페이지로 이동    -->
-        <a class="btn" id="cancel" href="/login" type="button"><b>취소</b></a>
+        <button type="button" id="to_main" onclick="location.href='/user/login'">취소</button>
     </div>
 </div>
 <script th:src="@{/js/find/find-pw-success.js}"></script>
