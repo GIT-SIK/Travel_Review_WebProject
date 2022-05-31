@@ -23,9 +23,9 @@
 }
 #nav {
   position: fixed; /* Make it stick/fixed */
-  width: 100%; /* Full width */
   transition: top 0.3s; /* Transition effect when sliding down (and up) */
-  z-index: 10;
+  width: 100%;
+  z-index: 1;
 }
 
 /* Style the navbar links */
