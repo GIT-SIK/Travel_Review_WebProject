@@ -26,7 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors().disable();
         http.sessionManagement() // 세션관리
                 .maximumSessions(1)
-                .expiredUrl("/user/loginForm")
+                .expiredUrl("/user/login")
                 .maxSessionsPreventsLogin(false);
 
         http.authorizeRequests()
@@ -35,7 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().permitAll() // 모든 사람이 접근할 수 있다.
               .and()
                 .formLogin()
-                .loginPage("/user/loginForm") // 로그인페이지 설정
+                .loginPage("/user/login") // 로그인페이지 설정
                 .loginProcessingUrl("/login") // login주소가 호출시 시큐리티가 낚아채서 CustomUserDetails 로 이동
               .and()
                 .logout()

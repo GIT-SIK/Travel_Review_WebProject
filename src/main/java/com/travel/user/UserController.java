@@ -71,9 +71,9 @@ public class UserController {
     /* ************************************* 회원가입 끝 ************************************* */
 
     /* ************************************* 로그인 ************************************* */
-    @GetMapping("/loginForm")
+    @GetMapping("/login")
     String loginMapping(){
-        return "user/loginForm";
+        return "user/login";
     }
 
     /*
