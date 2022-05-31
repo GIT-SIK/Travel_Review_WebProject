@@ -3,10 +3,7 @@ package com.travel.find;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -14,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class FindController {
 
     private final FindService findService;
+    private final MailService mailService;
 
     @GetMapping("/findId")
     public String findId() {
@@ -37,5 +35,60 @@ public class FindController {
     @GetMapping("/findPw")
     public String findPwAuth() {
         return "view/find/find-pw";
+    }
+
+    @PostMapping("/emailGetCode")
+    @ResponseBody
+    public String emailGetCode(@RequestParam("id") String id, @RequestParam("email") String email, Model model) {
+        if (findService.checkEmail(id, email) == 1) {
+            String code = mailService.sendEmailMessage(email);
+            model.addAttribute("code", code);
+            return code;
+        } else {
+            return "회원정보가 일치하지 않습니다.";
+        }
+    }
+
+    @PostMapping("/telGetCode")
+    @ResponseBody
+    public String telGetCode(@RequestParam("id") String id, @RequestParam("tel") String tel, Model model) {
+        if (findService.checkTel(id, tel) == 1) {
+            String code = mailService.sendTelMessage(tel);
+            model.addAttribute("code", code);
+            return code;
+        } else {
+            return "회원정보가 일치하지 않습니다.";
+        }
+    }
+
+    @PostMapping("/findPwEmail")
+    public String findPwEmail(@RequestParam("code") String code, Model model) {
+        String result = mailService.getUserIdByEmailCode(code);
+        if (result.equals("fail")) {
+            model.addAttribute("message", "인증코드를 다시 한 번 확인해주세요.");
+            return ("view/find/find-pw-fail");
+        } else {
+            model.addAttribute("userId", result);
+            return ("view/find/find-pw-success");
+        }
+    }
+
+    @PostMapping("/findPwTel")
+    public String findPwTel(@RequestParam("code") String code, Model model) {
+        String result = mailService.getUserIdByTelCode(code);
+        if (result.equals("fail")) {
+            model.addAttribute("message", "인증코드를 다시 한 번 확인해주세요.");
+            return ("view/find/find-pw-fail");
+        } else {
+            model.addAttribute("userId", result);
+            return ("view/find/find-pw-success");
+        }
+    }
+
+    @PostMapping("/changePw")
+    public String changePw(@RequestParam("id") String id, @RequestParam("password") String password) {
+//        password = bCryptPasswordEncoder.encode(password);
+        findService.changePassword(id, password);
+        return "redirect:/";
     }
 }

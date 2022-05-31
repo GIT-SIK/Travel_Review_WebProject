@@ -33,7 +33,7 @@ public class MailService {
 
             MimeMessage message = emailSender.createMimeMessage();
             message.addRecipients(MimeMessage.RecipientType.TO, email); // 보낼 이메일 설정
-            message.setSubject("[여긴 어때?] 인증코드 입니다."); // 이메일 제목
+            message.setSubject("[여긴어때?] 인증코드 입니다."); // 이메일 제목
             message.setText(setContext(code), "utf-8", "html"); // 내용 설정
             emailSender.send(message); // 이메일 전송
 
@@ -51,7 +51,7 @@ public class MailService {
         Message coolsms = new Message(api_key, api_secret);
         String code = createCode(); // 인증코드 생성
         redisUtil.setDataExpire(code, tel, 60*5L); // 유효기간 5분
-        String message = "[여긴 어때?] 비밀번호 찾기 인증코드 입니다. 아래 코드를 5분 이내에 입력해주세요. [" + code +"]";
+        String message = "[여긴어때?] 비밀번호 찾기 인증코드 입니다. 아래 코드를 5분 이내에 입력해주세요. [" + code +"]";
 
         tel = tel.replace("-", ""); // coolsms형식에 맞게 전화번호 변경
 

@@ -34,4 +34,34 @@ public class FindService {
         }
         return message;
     }
+
+    // 해당 id의 정보와 email이 일치하는가
+    public int checkEmail(String id, String email) {
+        User user = userRepository.findById(id);
+        if (user.getEmail().equals(email)) {
+            return 1;
+        }
+        return 0;
+    }
+
+    // 해당 id의 정보와 전화번호가 일치하는가
+    public int checkTel(String id, String tel) {
+        User user = userRepository.findById(id);
+        if (user.getTel().equals(tel)) {
+            return 1;
+        }
+        return 0;
+    }
+
+    public void changePassword(String id, String password) {
+        User user = userRepository.findById(id);
+        user.setPassword(password);
+        updateUser(user);
+    }
+
+    //유저의 값이 존재하면 수정 없으면 저장 안함
+    public void updateUser(User user) {
+        if (userRepository.findById(user.getId()) != null)
+            userRepository.save(user);
+    }
 }
