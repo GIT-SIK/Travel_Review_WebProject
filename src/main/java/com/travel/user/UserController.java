@@ -86,6 +86,11 @@ public class UserController {
         return "user/loginForm";
     }
     */
-
+    /* ************************************* 로그인 끝************************************* */
+    /* ************************************* 관리자 ************************************* */
+    @GetMapping("/admin")
+    String adminMapping(){
+        return "user/admin";
+    }
     
 }

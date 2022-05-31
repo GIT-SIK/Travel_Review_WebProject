@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
 //                .antMatchers("/user/mypage").authenticated() // 로그인할경우에만 진입가능한 경로
-                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')") // admin으로 시작하는 주소는 ROLE_ADMIN만 접근가능
+                .antMatchers("/user/admin/**").access("hasRole('ROLE_ADMIN')") // admin으로 시작하는 주소는 ROLE_ADMIN만 접근가능
                 .anyRequest().permitAll() // 모든 사람이 접근할 수 있다.
               .and()
                 .formLogin()
