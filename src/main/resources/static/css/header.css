@@ -19,12 +19,40 @@
 }
 
 /* Style the navbar links */
+
 #nav a {
   color: white;
-  font-family: 'Jalnan';
   font-size: 14pt;
   float: right;
-  margin: 20px 80px 0px 10px;
+  margin: 20px 40px 0px 10px;
   text-decoration: none;
   display: block;
 }
+
+/*.dropdown-login{*/
+/*  position : relative;*/
+/*  display : inline-block;*/
+/*}*/
+
+/*.dropdown-content{*/
+/*  display : none;*/
+/*  position : absolute;*/
+/*  transform: translateY(80px);*/
+/*  width : 120px;*/
+/*  border : 1px solid lightgray;*/
+/*  padding : 5px;*/
+/*  text-align: center;*/
+/*  border-radius: 8%;*/
+/*  background: white;*/
+/*  z-index : 1; !*다른 요소들보다 앞에 배치*!*/
+/*}*/
+
+/*.dropdown-content li{*/
+/*  padding : 5px 0 5px 0;*/
+/*  font-size: 20px;*/
+/*  display : block;*/
+/*}*/
+
+/*.dropdown-login li:hover {*/
+/*  background: lightgrey;*/
+/*}*/
