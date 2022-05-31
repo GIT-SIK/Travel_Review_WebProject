@@ -1,4 +1,9 @@
-.custom-header {
+#nav {
+  position: fixed; /* Make it stick/fixed */
+  top: 0px;
+  transition: top 0.3s; /* Transition effect when sliding down (and up) */
+  width: 100%;
+  z-index: 10;
   background: #F63543;
   height: 70px;
 }
@@ -11,21 +16,6 @@
   position: relative;
   top: 14px;
   margin-left: 100px;
-}
-
-.menu > a {
-  color: white;
-  font-family: 'Jalnan';
-  font-size: 14pt;
-  float: right;
-  margin: 20px 80px 0px 10px;
-  text-decoration: none;
-}
-#nav {
-  position: fixed; /* Make it stick/fixed */
-  transition: top 0.3s; /* Transition effect when sliding down (and up) */
-  width: 100%;
-  z-index: 1;
 }
 
 /* Style the navbar links */

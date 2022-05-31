@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
 <div th:fragment="fragment-header" id="nav">
-<link rel="stylesheet" type="text/css" th:href="@{/css/header.css}" />
-<link href="https://webfontworld.github.io/goodchoice/Jalnan.css" rel="stylesheet">
-<meta charset="UTF-8">
-<title>Header</title>
+<head>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}"/>
+  <link href="https://webfontworld.github.io/goodchoice/Jalnan.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Header</title>
 </head>
-<nav class="custom-header">
+  <nav class="custom-header">
     <span class="logo">여긴어때?</span>
 
     <span class="menu">
@@ -15,17 +15,25 @@
         <a href="#"> 축제정보</a>
         <a th:href="@{/user/login}"> 로그인</a>
    </span>
-</nav>
-    </div>
-    <script>
-        window.onscroll = function() {scrollFunction()};
-
-        function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                document.getElementById("nav").style.top = "0";
-            } else {
-                document.getElementById("nav").style.top = "0px";
-            }
+  </nav>
+  <style>
+    body{
+      padding-top: 100px;
     }
+  </style>
+<script>
+  window.onscroll = function () {
+    scrollFunction()
+  };
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      document.getElementById("nav").style.top = "0";
+    } else {
+      document.getElementById("nav").style.top = "0";
+    }
+  }
+
 </script>
+</div>
 </html>
