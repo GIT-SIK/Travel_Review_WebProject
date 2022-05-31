@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-<div th:fragment="fragment-header">
+<div th:fragment="fragment-header" id="nav">
 <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}" />
 <link href="https://webfontworld.github.io/goodchoice/Jalnan.css" rel="stylesheet">
 <meta charset="UTF-8">
@@ -17,4 +17,13 @@
    </span>
 </nav>
     </div>
+    <script>
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("nav").style.top = "0";
+    }
+    }
+</script>
 </html>
