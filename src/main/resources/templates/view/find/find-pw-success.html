@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>비밀번호 찾기</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<style type="text/css">
+    @font-face {
+        font-family: 'yg-jalnan';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    div, input, button{
+        font-family: 'yg-jalnan';
+    }
+</style>
+<body>
+<div class="container">
+    <div>
+        <h1>여긴어때?</h1>
+    </div>
+    <div>
+        <h2 id="page-title">비밀번호 재설정</h2>
+    </div>
+    <form method="post" th:action="@{/find/changePw}">
+        <input type="hidden" th:value="${userId}" th:name="id" id="id">
+        <input type="password" id="pw" th:name="password" placeholder="비밀번호를 입력해주세요"> <br>
+        <input type="password" id="pw_check" th:name="passwordCheck" placeholder="비밀번호를 다시 입력해주세요">
+        <button type="submit" id="pw_submit"> 확인 </button><br>
+    </form>
+    <div>
+        <!--    로그인 페이지로 이동    -->
+        <a class="btn" id="cancel" href="/login" type="button"><b>취소</b></a>
+    </div>
+</div>
+<script th:src="@{/js/find-pw-success.js}"></script>
+</body>
+</html>
