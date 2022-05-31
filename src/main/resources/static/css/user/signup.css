@@ -5,18 +5,18 @@
     font-style: normal;
 }
 
-.signup_title a {
+.signupTitle a {
     font-family: 'jalnan';
     font-size: 28px;
     text-decoration: none;
     color: #F63543;
 }
 
-.signup_title {
+.signupTitle {
     margin-bottom: 20px;
 }
 
-.signup_page {
+.signupPage {
     border: 1px solid lightgray;
     max-width: 600px;
     padding: 50px;
@@ -27,18 +27,17 @@
 
 
 
-#signup_form {
+#signupForm {
     margin-top: 3%;
     height: 100%;
     min-width: 410px;
     display: inline-block;
 }
 
-#id_box,
-#pw_box,
-#pwc_box,
-#email_box,
-#tel_box {
+#password,
+#passwordCheck,
+#email,
+#tel {
     margin: 0 0 20px 0;
     padding: 7px;
     width: 400px;
@@ -48,7 +47,7 @@
 
 }
 
-#id_box {
+#id {
     margin: 0 0 20px 0;
     padding: 7px;
     width: 300px;
@@ -58,7 +57,7 @@
 }
 
 
-#bt_id_check {
+#idCheck {
     display: inline;
     width: 95px;
     height: 37px;
@@ -73,7 +72,7 @@
         inset -1px -1px 1px rgba(0, 0, 0, .2);
 }
 
-#bt_signup {
+#btSignup {
     width: 400px;
     height: 37px;
     margin: 0;
@@ -88,13 +87,13 @@
 }
 
 
-#bt_signup:active,
-#bt_id_check:active {
+#btSignup:active,
+#idCheck:active {
     box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .4),
         inset 2px 2px 3px rgba(0, 0, 0, .2);
 }
 
-#bt_signup:hover,
-#bt_id_check:hover {
+#btSignup:hover,
+#idCheck:hover {
     background-color: #f74450;
 }
