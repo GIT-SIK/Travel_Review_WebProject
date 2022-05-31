@@ -1,6 +1,6 @@
 
-function Check(){
-    let id = $("#userId").val()
+function checkId(){
+    let id = $("#id").val()
     if(id.search(/\s/) != -1) {
         Swal.fire("아이디에 공백이 포함되어 있습니다.");
     } else {
@@ -18,8 +18,8 @@ function Check(){
                         Swal.fire({
                             icon: 'error',
                             text: '아이디가 이미 존재합니다.'
-                        }).then((result) => {
-                        });
+                        })
+                        $("input[name=checked_id]").val('');
                     } else {
                         Swal.fire({
                             icon:'success',
@@ -47,6 +47,11 @@ function Check(){
 }
 
 $(function(){
+
+    $( '#id' ).change( function() {
+        $("input[name=checked_id]").val('');
+    });
+
     $("#btSignup").click(function(){
         if($("input[name='checked_id']").val()==''){
             Swal.fire({
@@ -56,7 +61,7 @@ $(function(){
             $("input[name='checked_id']").eq(0).focus();
             return false;
         }
-    var userid = document.getElementById("userId");
+    var userid = document.getElementById("id");
         if(userid.value === "") {
             Swal.fire({
                 icon:'error',

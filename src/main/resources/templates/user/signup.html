@@ -18,8 +18,8 @@
 
 
             <form id="signupForm"  method="post" th:action="@{/user/signup/data}">
-                <input type="text" id="userId" th:name="userId" placeholder="아이디"/>
-                <input type="button" id="idCheck" value="중복확인" onclick="Check();" />
+                <input type="text" id="id" th:name="id" placeholder="아이디"/>
+                <input type="button" id="idCheck" value="중복확인" onclick="javascript:checkId();" />
 
                 <input type="password" id="password" th:name="password" placeholder="비밀번호"/>
                 <input type="password" id="passwordCheck" placeholder="비밀번호 재입력"/>

@@ -27,12 +27,12 @@ public class UserController {
     }
 
     @PostMapping("/signup/data")
-    public String signupData(@RequestParam("userId") String id, @RequestParam("password") String pw, @RequestParam("email") String email, @RequestParam("tel") String tel) {
+    public String signupData(@RequestParam("id") String id, @RequestParam("password") String pw, @RequestParam("email") String email, @RequestParam("tel") String tel) {
 
          User user = new User();
 
         try{
-            user.setUserId(id);
+            user.setId(id);
             user.setEmail(email);
             user.setTel(tel);
             user.setRole("ROLE_USER");

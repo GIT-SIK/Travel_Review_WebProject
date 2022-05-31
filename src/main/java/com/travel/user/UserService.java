@@ -18,10 +18,10 @@ public class UserService {
     }
 
     public int idCheck(String id){
-        User user = userRepository.findByUserId(id);
+        User user = userRepository.findById(id);
         if(user == null) {
             return 0;
-        } else if( user.getUserId().equals(id)) {
+        } else if( user.getId().equals(id)) {
             return 1;
         }
             return 0;
