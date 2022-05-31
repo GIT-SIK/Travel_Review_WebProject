@@ -1,7 +1,7 @@
 package com.travel.find;
 
 import com.travel.domain.User;
-import com.travel.repository.UserRepository;
+import com.travel.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.nurigo.java_sdk.api.Message;
