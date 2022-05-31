@@ -1,11 +1,17 @@
-.region > ul >  a{
+.region > ul > a {
   text-decoration: none;
 }
-.region > ul > a:hover{
+
+.region > ul > a:hover {
   font-weight: bold;
 }
-.title{
+
+.title {
   font-weight: bold;
   font-family: Jalnan;
 }
 
+.board-title:hover {
+  font-weight: bold;
+  background: lightgray;
+}
