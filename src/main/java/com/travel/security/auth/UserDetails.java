@@ -9,7 +9,7 @@ import java.util.Collections;
 
 
 public class UserDetails implements org.springframework.security.core.userdetails.UserDetails {
-    private User user; //컴포지션
+    private User user;
 
     public UserDetails(User user) {
         this.user = user;
@@ -56,8 +56,8 @@ public class UserDetails implements org.springframework.security.core.userdetail
     @Override
     public boolean isEnabled() {
 
-        //1년동안 로그인 안할시 휴면계정으로 돌림
-        return true;
+     //1년동안 로그인 안할시 휴면계정으로 돌림
+    return true;
     }
 
 }
