@@ -1,5 +1,8 @@
 package com.travel.domain;
 
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,14 +20,14 @@ public class Board {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idx;
 
-    @Column(name = "userId")
+    @Column(name = "user_id")
     private String userId;
 
     @Column(name = "title")
     private String title;
 
     @Column(name = "time")
-    private Date time;
+    private String time;
 
     @Column(name = "content")
     private String content;
@@ -38,8 +41,14 @@ public class Board {
     @Column(name = "category")
     private String category;
 
+
+    public void setTimeNow() {
+        this.time = ZonedDateTime.now(ZoneId.of("Asia/Seoul")).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+    }
+
+
     @Builder
-    public Board(int idx, String userId, String title, Date time, String content, int view, int recommend, String category) {
+    public Board(int idx, String userId, String title, String time, String content, int view, int recommend, String category) {
         this.idx = idx;
         this.userId = userId;
         this.title = title;

@@ -2,27 +2,15 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <div th:replace="fragments/head.html :: fragment-head"></div>
 <head>
-  <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Board</title>
-  <style>
-    a{
-      text-decoration: none;
-    }
-
-    a:hover{
-      font-weight: bold;
-      text-decoration: red;
-    }
-    body{
-      margin: 50px;
-    }
-  </style>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/board/board.css}" />
 </head>
 <body>
+<div th:replace="fragments/header.html :: fragment-header"></div>
 
-<h2 style="text-align: center">TOP 3 후기</h2>
+<h2 class="title" style="text-align: center">TOP 3 후기</h2>
 
 <div class="row row-cols-1 row-cols-md-3 g-4">
   <div class="col">
@@ -102,7 +90,7 @@
 </ul>
 </div>
 <div class="table-responsive">
-  <table class="table" style="text-align: center">
+  <table class="table table-hover" style="text-align: center">
     <thead>
     <tr class="text-center">
       <th>No</th>
@@ -113,33 +101,30 @@
       <th>추천수</th>
     </tr>
     </thead>
-    <tbody>
-    <tr>
-      <td>Cell 1</td>
-      <td>Cell 1</td>
-      <td>Cell 1</td>
-      <td>Cell 1</td>
-      <td>Cell 1</td>
-      <td>Cell 1</td>
-    </tr>
-    <tr>
-      <td>Cell 1</td>
-      <td>Cell 1</td>
-      <td>Cell 1</td>
-      <td>Cell 1</td>
-      <td>Cell 1</td>
-      <td>Cell 1</td>
-    </tr>
-    <tr>
-      <td>Cell 1</td>
-      <td>Cell 1</td>
-      <td>Cell 1</td>
-      <td>Cell 1</td>
-      <td>Cell 1</td>
-      <td>Cell 1</td>
+    <tbody class="table-content" th:each="board : ${boardList}">
+    <tr class="text-center">
+      <td th:text="${board.idx}"></td>
+      <td class="text-start ps-5">
+        <div class="d-flex align-content-center flex-wrap"
+             style="height: 30px; font-size: 20px;" th:with="bid=${board.idx}">
+          <a class="board-title" th:text="${board.title}"
+             th:href=@{/board/details/(idx=${board.idx})} style="text-decoration: none"></a>&nbsp;
+        </div>
+      </td>
+      <td style="font-size: 17px" th:with="userId = ${board.userId}">
+        <span th:text="${board.userId}"></span>
+      </td>
+      <td style="font-size: 17px"
+          th:text="${board.time}"
+      ></td>
+      <td style="font-size: 17px;" th:text="${board.view}"></td>
+      <td style="font-size: 17px;" th:text="${board.recommend}"></td>
     </tr>
     </tbody>
+
   </table>
+</div>
+<br>
 </div>
   <button class="btn btn-primary w-35 my-2 write-btn" style="float:right" onclick="location.href='/board/write'"> 후기 작성 </button>
 <div th:replace="fragments/footer.html :: fragment-footer"></div>
