@@ -18,21 +18,9 @@
 
 <body>
 <div th:replace="fragments/header.html :: fragment-header"></div>
-<div class="container-fluid p-0 m-0">
-	<div th:replace="fragments/nav.html :: fragment-nav"></div>
-</div>
 
 <section class="container write-form-wrapper mt-5" >
 	<form method="post" th:action="@{/board/rewrite}" th:object="${board}" onsubmit="return rewriteSubmit()">
-
-		<div class="input-group mb-3">
-			<select class="academy-input form-control" name="authUserAcademy" id="authUserAcademy">
-				<option name="authUserAcademy" selected th:text="|학원명: *{bAcademyName}|"></option>
-			</select>
-			<select  class="course-input form-control" name="authUserCourse" id="authUserCourse">
-				<option  name="authUserCourse" selected th:text="|과정명: *{bCourseName}|"></option>
-			</select>
-		</div>
 		<div class="input-group mb-3">
 			<input
 					type="text"
@@ -53,16 +41,10 @@
 							requireda
 					></textarea>
 		</div>
-		<input type="hidden" th:field="*{bid}">
-		<input type="hidden" th:field="*{author}">
-		<input type="hidden" th:field="*{date}">
+		<input type="hidden" th:field="*{idx}">
+		<input type="hidden" th:field="*{userId}">
+		<input type="hidden" th:field="*{time}">
 		<input type="hidden" th:field="*{view}">
-
-		<input type="hidden" th:field="*{bAcademyCode}">
-		<input type="hidden" th:field="*{bAcademyName}">
-		<input type="hidden" th:field="*{bCourseCode}">
-		<input type="hidden" th:field="*{bCourseName}">
-		<input type="hidden" th:field="*{visible}">
 		<input type="hidden" th:field="*{recommend}">
 		<div class="row">
 			<div class="col-6"></div>
@@ -93,9 +75,6 @@
 </style>
 
 <script>
-
-
-
 	$(document).ready(function() {
 		$('#boardContent').summernote({
 			height: 500,                  // 에디터 높이

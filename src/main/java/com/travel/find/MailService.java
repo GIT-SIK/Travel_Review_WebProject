@@ -75,7 +75,7 @@ public class MailService {
     private String setContext(String code) { // 보낼 내용
         Context context = new Context();
         context.setVariable("code", code); // Template에 코드 전달
-        return templateEngine.process("view/find/user-mail", context); // user-mail.html
+        return templateEngine.process("find/user-mail", context); // user-mail.html
     }
 
     private String createCode() {

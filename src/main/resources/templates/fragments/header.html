@@ -2,11 +2,13 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thyeleaf-extras-springsecurity5">>
 <head>
+
 <div th:fragment="fragment-header" id="nav">
-<link rel="stylesheet" type="text/css" th:href="@{/css/header.css}" />
-<link href="https://webfontworld.github.io/goodchoice/Jalnan.css" rel="stylesheet">
-<meta charset="UTF-8">
-<title>Header</title>
+<head>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}"/>
+  <link href="https://webfontworld.github.io/goodchoice/Jalnan.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Header</title>
 </head>
     <header sec:authorize="isAnonymous()">
         <nav class="custom-header">
@@ -33,16 +35,26 @@
 
 </div>
 
+  <style>
+    body{
+      padding-top: 100px;
+    }
+  </style>
+  
 
     <script>
-        window.onscroll = function() {scrollFunction()};
+        window.onscroll = function() {
+          scrollFunction()
+        };
 
-        function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                document.getElementById("nav").style.top = "0";
-            } else {
-                document.getElementById("nav").style.top = "0px";
-            }
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      document.getElementById("nav").style.top = "0";
+    } else {
+      document.getElementById("nav").style.top = "0";
     }
+  }
+
 </script>
+</div>
 </html>
