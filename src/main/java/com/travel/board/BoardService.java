@@ -32,4 +32,9 @@ public class BoardService {
         sort);
     return boardRepository.findAll(pageable);
   }
+  //id로 보드 반환
+  public Board findBoardByIdx(Integer bid) {
+    return boardRepository.findById(bid).orElse(null);
+  }
+
 }
