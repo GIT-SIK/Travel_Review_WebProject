@@ -8,8 +8,7 @@
 </head>
 
 
-<div th:fragment="fragment-header" class="container-fluid" style="background-color: #F63543">
-    <div class="container">
+<div th:fragment="fragment-header">
         <div id="nav">
             <header sec:authorize="isAnonymous()">
                 <nav class="custom-header">
@@ -44,7 +43,6 @@
                 </nav>
             </header>
         </div>
-    </div>
 </div>
 
   <style>
