@@ -50,6 +50,20 @@ public class BoardController {
     return board;
   }
 
+  //게시판 수정페이지 이동
+  @GetMapping("/rewrite")
+  public String communityReWriteMapping(@RequestParam(value = "idx", defaultValue = "0") Integer idx, Model model) {
+    model.addAttribute("board", boardService.findBoardByIdx(idx));
+    return "board/board-rewrite";
+  }
+  //게시판 수정
+  @PostMapping("/rewrite")
+  public String communityPostReWriteMapping(@ModelAttribute("board") Board board) {
+    boardService.updateBoard(board);
+    String redirect = "redirect:/board/list";
+    return redirect;
+  }
+
 
   //게시판 기본 조회, 추천하기
   @GetMapping("/details")

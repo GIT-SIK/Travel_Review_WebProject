@@ -25,6 +25,12 @@ public class BoardService {
     boardRepository.save(board);
   }
 
+  //보드 갱신
+  @Transactional
+  public void updateBoard(Board board){
+    boardRepository.save(board);
+  }
+
   //페이징하여 보드 반환
   public Page<Board> findBoardList(Pageable pageable, String column) {
     Sort sort = Sort.by(column).descending();
