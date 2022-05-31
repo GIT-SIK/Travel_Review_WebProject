@@ -3,7 +3,6 @@ package com.travel.user;
 
 import com.travel.domain.User;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -12,20 +11,24 @@ public class UserService {
     private final UserRepository userRepository;
 
 
+
+    /* ************************************* 회원가입 ************************************* */
+    
+    /* 회원가입 영역 */
     public void signupUser(User user){
         userRepository.save(user);
-
     }
 
-    public int idCheck(String id){
+    /* 중복된 아이디 */
+    public boolean isId(String id){
         User user = userRepository.findById(id);
         if(user == null) {
-            return 0;
+            return false;
         } else if( user.getId().equals(id)) {
-            return 1;
+            return true;
+        } else {
+            return false;
         }
-            return 0;
-
     }
-
+    /* ************************************* 회원가입 끝 ************************************* */
 }

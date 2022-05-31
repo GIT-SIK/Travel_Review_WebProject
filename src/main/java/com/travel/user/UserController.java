@@ -19,13 +19,17 @@ public class UserController {
     private final UserService userService;
 
 
+    
+    /* ************************************* 회원가입  ************************************* */
 
-
+    /* 회원가입 페이지 매핑 */
     @GetMapping("/signup")
     public String signupMapping() {
         return "user/signup";
     }
 
+    
+    /* 회원가입 영역 */
     @PostMapping("/signup/data")
     public String signupData(@RequestParam("id") String id, @RequestParam("password") String pw, @RequestParam("email") String email, @RequestParam("tel") String tel) {
 
@@ -49,16 +53,23 @@ public class UserController {
 
     }
 
-
-    @PostMapping("/idCheck")
+    /* 중복된 아이디 */
+    @PostMapping("/isId")
     @ResponseBody
-    public int idCheck(@RequestBody String id){
-        int count = 0;
-        if(id!=null) count = userService.idCheck(id);
-        return count;
+    public boolean isId(@RequestBody String id){
+        boolean check = false;
+        if(id!=null)
+        {
+            check = userService.isId(id);
+        }
+        return check;
 
     }
 
+    /* ************************************* 회원가입 끝 ************************************* */
+
+    /* ************************************* 로그인 ************************************* */
     @GetMapping("/login")
     String loginMapping(){ return "user/login"; }
+    
 }
