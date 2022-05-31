@@ -61,8 +61,8 @@ public class FindController {
         }
     }
 
-    @PostMapping("/findPwEmail")
-    public String findPwEmail(@RequestParam("code") String code, Model model) {
+    @PostMapping("/findPwByEmail")
+    public String findPwByEmail(@RequestParam("code") String code, Model model) {
         String result = mailService.getUserIdByEmailCode(code);
         if (result.equals("fail")) {
             model.addAttribute("message", "인증코드를 다시 한 번 확인해주세요.");
@@ -73,8 +73,8 @@ public class FindController {
         }
     }
 
-    @PostMapping("/findPwTel")
-    public String findPwTel(@RequestParam("code") String code, Model model) {
+    @PostMapping("/findPwByTel")
+    public String findPwByTel(@RequestParam("code") String code, Model model) {
         String result = mailService.getUserIdByTelCode(code);
         if (result.equals("fail")) {
             model.addAttribute("message", "인증코드를 다시 한 번 확인해주세요.");

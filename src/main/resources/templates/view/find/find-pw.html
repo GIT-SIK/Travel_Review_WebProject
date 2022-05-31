@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>비밀번호 찾기</title>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/find.css" />
-    <script src="/find.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!--    <link rel="stylesheet" type="text/css" href="/find.css" />-->
 </head>
 <style type="text/css">
     @font-face {
@@ -27,25 +27,26 @@
     <div>
         <h2 id="page-title">비밀번호 찾기</h2>
     </div>
-    <form th:action="@{/find/findPwByTel}">
+    <form method="post" th:action="@{/find/findPwByTel}">
         <div>전화번호로 찾기</div>
         <input type="text" id="tel_id" th:name="id" placeholder="ID를 입력해주세요"> <br>
-        <input type="text" id="tel_find_pw" th:name="tel" placeholder="ex) 010-1234-4567">
-        <input type="button" id="tel_find_pw_btn" value="인증번호 받기"> <br>
-        <input type="text" id="tel_find_pw_auth" th:name="code" placeholder="인증번호를 입력해주세요"> <div id="telTimer"></div>
-        <input type="button" id="tel_find_pw_auth_btn" value="확인"> <br>
+        <input type="text" id="tel" th:name="tel" placeholder="ex) 010-1234-4567">
+        <input type="button" id="tel_auth_req_btn" value="인증번호 받기"> <br>
+        <input type="text" id="tel_code" th:name="code" placeholder="인증번호를 입력해주세요"> <div id="tel_timer"></div>
+        <button type="submit" id="tel_auth_btn"> 확인 </button><br>
         <br>
     </form>
 
-    <form th:action="@{/find/findPwByEmail}">
+    <form method="post" th:action="@{/find/findPwByEmail}">
         <div>이메일로 찾기</div>
         <input type="text" id="email_id" th:name="id" placeholder="ID를 입력해주세요"> <br>
-        <input type="text" id="email_find_pw" th:name="email" placeholder="ex) guest123@guest.com">
-        <input type="button" id="email_find_pw_btn" value="인증번호 받기"> <br>
-        <input type="text" id="email_find_pw_auth" th:name="code" placeholder="인증번호를 입력해주세요"> <div id="emailTimer"></div>
-        <input type="button" id="email_find_pw_auth_btn" value="확인"> <br>
+        <input type="text" id="email" th:name="email" placeholder="ex) guest123@guest.com">
+        <input type="button" id="email_auth_req_btn" value="인증번호 받기"> <br>
+        <input type="text" id="email_code" th:name="code" placeholder="인증번호를 입력해주세요"> <div id="email_timer"></div>
+        <button type="submit" id="email_auth_btn"> 확인 </button><br>
         <br>
     </form>
 </div>
+<script th:src="@{/js/find-pw.js}"></script>
 </body>
 </html>
