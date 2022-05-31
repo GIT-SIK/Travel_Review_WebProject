@@ -5,7 +5,8 @@
 
 
 - 파일 명명규칙 작성
-- 카멜: DB, 함수명    == (userId)
+- 스네이크: DB ==(user_id)
+- 카멜: 함수명    == (userId)
 - 케밥: 파일명        == (board-write)
 - 파스칼: 클래스명     ==  (UserController)
 
