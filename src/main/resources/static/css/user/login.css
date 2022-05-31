@@ -1,0 +1,78 @@
+#box{
+    width: 450px;
+    height: 500px;
+    margin: 125px auto;
+    border: 1px solid lightgray;
+}
+.logo a{
+    color: #F63543;
+    font-family: 'Jalnan';
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 28px;
+}
+#login-title{
+    height: 42px;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+.line{
+    width: 400px;
+    height: 300px;
+    margin: 0 auto;
+    text-align: center;
+}
+input[type=text], input[type=password]{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 350px;
+    height: 40px;
+    margin: 8px;
+    border-radius: 5px;
+    border: 0.01em solid darkgray;
+}
+.btn{
+    display: inline-block;
+    width: 350px;
+    background-color: #F63543;
+    color: #ffff;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+.line span a{
+    color: #6c757d;
+    text-decoration: none;
+}
+.line span a:hover, .line span a:focus{
+    text-decoration: underline;
+}
+.line span{
+    margin: 20px;
+}
+#user-connect{
+    margin-top: 30px;
+    color: #6c757d;
+}
+@media screen and (max-width: 900px) {
+    #box{
+        width: 93vw;
+        height: 100vh;
+        margin: 0 auto;
+        border: none;
+    }
+    .line{
+        width: 93vw;
+        height: 100vh;
+    }
+    input[type=text], input[type=password]{
+        width: 93vw;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .btn{
+        width: 93vw;
+        height: 50px;
+    }
+}

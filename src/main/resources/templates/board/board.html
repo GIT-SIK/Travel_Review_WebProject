@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="fragments/head.html :: fragment-head"></div>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Board</title>
+  <style>
+    a{
+      text-decoration: none;
+    }
+
+    a:hover{
+      font-weight: bold;
+      text-decoration: red;
+    }
+    body{
+      margin: 50px;
+    }
+  </style>
+</head>
+<body>
+
+<h2 style="text-align: center">TOP 3 후기</h2>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col">
+    <div class="card h-100">
+      <img src="https://t1.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/1jPF/image/1sfH1iuBL1-CxyxwRYcKrQ2b3v8.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <img src="https://t1.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/1jPF/image/1sfH1iuBL1-CxyxwRYcKrQ2b3v8.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <img src="https://t1.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/1jPF/image/1sfH1iuBL1-CxyxwRYcKrQ2b3v8.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="region" style="float: left">
+<ul class="list-group list-group-horizontal">
+  <a href="#"><li class="list-group-item">전체</li></a>
+  <a href="#"><li class="list-group-item">대구</li></a>
+</ul>
+<ul class="list-group list-group-horizontal">
+  <a href="#"><li class="list-group-item">서울</li></a>
+  <a href="#"><li class="list-group-item">부산</li></a>
+</ul>
+<ul class="list-group list-group-horizontal">
+  <a href="#"><li class="list-group-item">경기</li></a>
+  <a href="#"><li class="list-group-item">울산</li></a>
+</ul>
+<ul class="list-group list-group-horizontal">
+  <a href="#"><li class="list-group-item">인천</li></a>
+  <a href="#"><li class="list-group-item">경북</li></a>
+</ul>
+<ul class="list-group list-group-horizontal">
+  <a href="#"><li class="list-group-item">강원</li></a>
+  <a href="#"><li class="list-group-item">경남</li></a>
+</ul>
+<ul class="list-group list-group-horizontal">
+  <a href="#"><li class="list-group-item">세종</li></a>
+  <a href="#"><li class="list-group-item">광주</li></a>
+</ul>
+<ul class="list-group list-group-horizontal">
+  <a href="#"><li class="list-group-item">대전</li></a>
+  <a href="#"><li class="list-group-item">전북</li></a>
+</ul>
+<ul class="list-group list-group-horizontal">
+  <a href="#"><li class="list-group-item">충북</li></a>
+  <a href="#"><li class="list-group-item">전남</li></a>
+</ul>
+<ul class="list-group list-group-horizontal">
+  <a href="#"><li class="list-group-item">충남</li></a>
+  <a href="#"><li class="list-group-item">제주</li></a>
+</ul>
+</div>
+<div class="table-responsive">
+  <table class="table" style="text-align: center">
+    <thead>
+    <tr class="text-center">
+      <th>No</th>
+      <th>제목</th>
+      <th>글쓴이</th>
+      <th>작성시간</th>
+      <th>조회수</th>
+      <th>추천수</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>Cell 1</td>
+      <td>Cell 1</td>
+      <td>Cell 1</td>
+      <td>Cell 1</td>
+      <td>Cell 1</td>
+      <td>Cell 1</td>
+    </tr>
+    <tr>
+      <td>Cell 1</td>
+      <td>Cell 1</td>
+      <td>Cell 1</td>
+      <td>Cell 1</td>
+      <td>Cell 1</td>
+      <td>Cell 1</td>
+    </tr>
+    <tr>
+      <td>Cell 1</td>
+      <td>Cell 1</td>
+      <td>Cell 1</td>
+      <td>Cell 1</td>
+      <td>Cell 1</td>
+      <td>Cell 1</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+  <button class="btn btn-primary w-35 my-2 write-btn" style="float:right" onclick="location.href='/board/write'"> 후기 작성 </button>
+<div th:replace="fragments/footer.html :: fragment-footer"></div>
+
+</body>
+</html>
