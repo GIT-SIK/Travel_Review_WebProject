@@ -1,15 +1,21 @@
 #box{
     width: 450px;
-    height: 700px;
+    height: 500px;
     margin: 125px auto;
+    border: 1px solid lightgray;
+}
+.logo a{
+    color: #F63543;
+    font-family: 'Jalnan';
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 28px;
 }
 #login-title{
-    background-color: #F63543;
-    color: #ffff;
     height: 42px;
     text-align: center;
-    padding-top: 8px;
-    margin-bottom: 40px;
+    margin-top: 40px;
+    margin-bottom: 30px;
 }
 .line{
     width: 400px;
@@ -54,6 +60,7 @@ input[type=text], input[type=password]{
         width: 93vw;
         height: 100vh;
         margin: 0 auto;
+        border: none;
     }
     .line{
         width: 93vw;
