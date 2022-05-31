@@ -26,19 +26,15 @@ public class User {
     @Column(name = "tel")
     private String tel;
 
-    @Column(name = "username")
-    private String username;
-
     @Column(name = "role")
     private String role;
 
     @Builder
-    public User(String id, String password, String email, String tel, String username, String role) {
+    public User(String id, String password, String email, String tel, String role) {
         this.id = id;
         this.password = password;
         this.email = email;
         this.tel = tel;
-        this.username = username;
         this.role = role;
     }
 }
