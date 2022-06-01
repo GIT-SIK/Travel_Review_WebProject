@@ -1,8 +1,8 @@
 package com.travel.board;
 
 import com.travel.domain.Board;
-import com.travel.user.UserService;
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -45,6 +45,47 @@ public class BoardController {
   public Board boardCreate(@RequestBody Board board) {
     boardService.boardCreate(board);
     return board;
+  }
+
+  //게시판 수정페이지 이동
+  @GetMapping("/rewrite")
+  public String communityReWriteMapping(@RequestParam(value = "idx", defaultValue = "0") Integer idx, Model model) {
+    model.addAttribute("board", boardService.findBoardByIdx(idx));
+    return "board/board-rewrite";
+  }
+  //게시판 수정
+  @PostMapping("/rewrite")
+  public String communityPostReWriteMapping(@ModelAttribute("board") Board board) {
+    boardService.updateBoard(board);
+    String redirect = "redirect:/board/list";
+    return redirect;
+  }
+
+  //게시판 삭제
+  @PostMapping("/delete")
+  public @ResponseBody Boolean communityDeleteMapping(@RequestBody JSONObject jsonObject) {
+    Integer idx = (Integer)jsonObject.get("idx");
+    boardService.deleteBoard(idx);
+    return true;
+  }
+
+  //게시판 기본 조회
+  @GetMapping("/details")
+  public String boardDetails(@RequestParam(value = "idx", defaultValue = "0") Integer idx, Model model, HttpServletRequest request, HttpServletResponse response) {
+    boardService.viewUpdate(idx, request, response);
+    Board board = boardService.findBoardByIdx(idx);
+    model.addAttribute("idx", idx);
+    model.addAttribute("board", board);
+    return "/board/board-details";
+  }
+  //게시판 추천하기
+  @GetMapping("/recommend")
+  public String boardDetailsRecommend(@RequestParam(value = "idx", defaultValue = "0") Integer idx, Model model, HttpServletRequest request, HttpServletResponse response) {
+    boardService.recommendUpdate(idx, request, response);
+    Board board = boardService.findBoardByIdx(idx);
+    model.addAttribute("idx", idx);
+    model.addAttribute("board", board);
+    return "/board/board-details";
   }
 
 

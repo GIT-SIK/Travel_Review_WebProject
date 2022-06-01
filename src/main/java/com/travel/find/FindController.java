@@ -15,26 +15,26 @@ public class FindController {
 
     @GetMapping("/findId")
     public String findId() {
-        return "view/find/find-id";
+        return "find/find-id";
     }
 
     @PostMapping("/findIdByTel")
     public String findIdByTel(@RequestParam("tel") String tel, Model model) {
         String message = findService.findIdByTel(tel);
         model.addAttribute("message", message);
-        return "view/find/find-id-result";
+        return "find/find-id-result";
     }
 
     @PostMapping("/findIdByEmail")
     public String findIdByEmail(@RequestParam("email") String email, Model model) {
         String message = findService.findIdByEmail(email);
         model.addAttribute("message", message);
-        return "view/find/find-id-result";
+        return "find/find-id-result";
     }
 
     @GetMapping("/findPw")
     public String findPwAuth() {
-        return "view/find/find-pw";
+        return "find/find-pw";
     }
 
     @PostMapping("/emailGetCode")
@@ -66,10 +66,10 @@ public class FindController {
         String result = mailService.getUserIdByEmailCode(code);
         if (result.equals("fail")) {
             model.addAttribute("message", "인증코드를 다시 한 번 확인해주세요.");
-            return ("view/find/find-pw-fail");
+            return ("find/find-pw-fail");
         } else {
             model.addAttribute("userId", result);
-            return ("view/find/find-pw-success");
+            return ("find/find-pw-success");
         }
     }
 
@@ -78,10 +78,10 @@ public class FindController {
         String result = mailService.getUserIdByTelCode(code);
         if (result.equals("fail")) {
             model.addAttribute("message", "인증코드를 다시 한 번 확인해주세요.");
-            return ("view/find/find-pw-fail");
+            return ("find/find-pw-fail");
         } else {
             model.addAttribute("userId", result);
-            return ("view/find/find-pw-success");
+            return ("find/find-pw-success");
         }
     }
 

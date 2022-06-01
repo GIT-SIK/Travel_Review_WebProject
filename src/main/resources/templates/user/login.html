@@ -12,15 +12,20 @@
     <div id="box">
         <div id="login-title" class="logo"><a th:href="@{/}">여긴어때?</a></div>
         <form action = "/login" method="post">
+            <!--
+            <div th:if="${param.error}" class="form-group d-flex justify-content-center">
+                <span th:text="${exception}" class="alert alert-danger"></span>
+            </div>
+            -->
             <div class="line">
-                <input type="text" name="id" placeholder="아이디">
+                <input type="text" name="username" placeholder="아이디">
                 <input type="password" name="password" placeholder="비밀번호">
                 <br>
                 <div id="login-fail"></div>
                 <br>
                 <input class="btn" type="submit" value="로그인">
                 <div id="user-connect">
-                    <span><a href="#">아이디 찾기</a></span>|<span><a href="#">비밀번호 찾기</a></span>|<span><a href="/user/signup">회원가입</a></span>
+                    <span><a th:href="@{/find/findId}">아이디 찾기</a></span>|<span><a th:href="@{/find/findPw}">비밀번호 찾기</a></span>|<span><a th:href="@{/user/signup}">회원가입</a></span>
                 </div>
             </div>
         </form>
