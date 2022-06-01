@@ -55,7 +55,7 @@ input[type=text], input[type=password]{
     margin-top: 30px;
     color: #6c757d;
 }
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 550px) {
     #box{
         width: 93vw;
         height: 100vh;
