@@ -1,4 +1,4 @@
-package com.travel.repository;
+package com.travel.festival;
 
 import com.travel.domain.Festival;
 import org.springframework.data.jpa.repository.JpaRepository;
