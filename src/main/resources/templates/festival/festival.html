@@ -56,18 +56,22 @@
     <div th:replace="fragments/footer.html :: fragment-footer"></div>
 
     <script type="text/javascript">
+
+        // title, option 현재 달 선택
         $(document).ready(function () {
             let today = new Date();
             let month = today.getMonth() + 1;
             $('#month').val(month).attr("selected", "selected");
             $('#month2').text(month);
-            // 초기 데이터 불러오는 로직 필요
         });
 
+        // 초기 데이터 불러온거 표시
+
+        // 사용자가 달 변경시 표시 변경 & 데이터 변경
         $('#month').change(function(){
             var month = $(this).val();
             $('#month2').text(month);
-            // 해당 월에 맞는 데이터 불러오는 로직 필요
+            // 해당 월에 맞는 데이터 불러오는 로직 (ajax 해야할듯)
         });
     </script>
 </body>
