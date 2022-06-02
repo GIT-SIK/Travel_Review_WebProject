@@ -24,6 +24,7 @@
     text-align: center;
 }
 input[type=text], input[type=password]{
+    font-family: 'SuncheonR';
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -35,6 +36,7 @@ input[type=text], input[type=password]{
     border: 0.01em solid darkgray;
 }
 .btn{
+    font-family: 'SuncheonR';
     display: inline-block;
     width: 350px;
     background-color: #F63543;
@@ -44,6 +46,7 @@ input[type=text], input[type=password]{
     -moz-user-select: none;
 }
 .line span a{
+    font-family: 'SuncheonR';
     color: #6c757d;
     text-decoration: none;
 }

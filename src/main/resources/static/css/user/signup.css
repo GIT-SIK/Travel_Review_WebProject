@@ -51,6 +51,7 @@
 #passwordCheck,
 #email,
 #tel {
+    font-family: 'SuncheonR';
     margin: 0 0 20px 0;
     padding: 10px;
     width: 400px;
@@ -61,6 +62,7 @@
 }
 
 #id {
+    font-family: 'SuncheonR';
     margin: 0 0 20px 0;
     padding: 10px;
     width: 300px;
@@ -71,6 +73,7 @@
 
 
 #idCheck {
+    font-family: 'SuncheonR';
     display: inline;
     width: 95px;
     height: 37px;
@@ -86,6 +89,7 @@
 }
 
 #btSignup {
+    font-family: 'SuncheonR';
     width: 400px;
     height: 37px;
     margin: 0;
