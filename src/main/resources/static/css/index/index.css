@@ -44,6 +44,7 @@
 #ulsan {}
 
 .location>span {
+    font-family: 'SuncheonB';
     position: absolute;
     cursor: pointer;
 }
