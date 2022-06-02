@@ -4,12 +4,9 @@ import com.travel.domain.Festival;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
-import com.travel.repository.FestivalRepository;
+import com.travel.festival.FestivalRepository;
 import lombok.RequiredArgsConstructor;
-import org.json.simple.JSONValue;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;

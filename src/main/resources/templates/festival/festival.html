@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>축제정보</title>
+    <div th:replace="fragments/head.html :: fragment-head"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <div th:replace="fragments/header.html :: fragment-header"></div>
+
+    <div><h1><span id="month2">6</span>월 축제 & 행사</h1></div>
+
+    <div>
+        <select id='month'>
+            <option value=''>--달을 선택해 주세요--</option>
+            <option value='1'>1월</option>
+            <option value='2'>2월</option>
+            <option value='3'>3월</option>
+            <option value='4'>4월</option>
+            <option value='5'>5월</option>
+            <option value='6'>6월</option>
+            <option value='7'>7월</option>
+            <option value='8'>8월</option>
+            <option value='9'>9월</option>
+            <option value='10'>10월</option>
+            <option value='11'>11월</option>
+            <option value='12'>12월</option>
+        </select>
+    </div>
+
+    <div>지역 리스트</div>
+    <ul>
+        <li>전체</li>
+        <li>서울</li>
+        <li>경기</li>
+        <li>인천</li>
+        <li>강원</li>
+        <li>세종</li>
+        <li>대전</li>
+        <li>충북</li>
+        <li>충남</li>
+        <li>대구</li>
+        <li>부산</li>
+        <li>울산</li>
+        <li>경북</li>
+        <li>경남</li>
+        <li>광주</li>
+        <li>전북</li>
+        <li>전남</li>
+        <li>제주</li>
+    </ul>
+
+    <div th:replace="fragments/footer.html :: fragment-footer"></div>
+    <script type="text/javascript">
+        $('#month').change(function(){
+            var month = $(this).val();
+            $('#month2').text(month);
+        });
+    </script>
+</body>
+</html>
