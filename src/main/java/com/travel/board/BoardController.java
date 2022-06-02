@@ -1,11 +1,15 @@
 package com.travel.board;
 
 import com.travel.domain.Board;
+import com.travel.security.auth.UserDetails;
+import java.util.List;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,9 +25,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class BoardController {
 
   private final BoardService boardService;
+  private final ReplyService replyService;
 
-  public BoardController(BoardService boardService) {
+  public BoardController(BoardService boardService, ReplyService replyService) {
     this.boardService = boardService;
+    this.replyService = replyService;
   }
 
   @GetMapping("/list")
@@ -76,10 +82,26 @@ public class BoardController {
   public String boardDetails(@RequestParam(value = "idx", defaultValue = "0") Integer idx, Model model, HttpServletRequest request, HttpServletResponse response) {
     boardService.viewUpdate(idx, request, response);
     Board board = boardService.findBoardByIdx(idx);
+    List<ReplyDto> replyList = replyService.getReplyList(idx);
+    int countAllReply = replyService.countAllReply(idx);
+
     model.addAttribute("idx", idx);
     model.addAttribute("board", board);
+    model.addAttribute("replyList", replyList);
+    model.addAttribute("countAllReply", countAllReply);
     return "/board/board-details";
   }
+
+  @PostMapping("/reply")
+  @ResponseBody
+  public String reply(@AuthenticationPrincipal UserDetails customUserDetails, @RequestBody Map<String, String> map) {
+    if(map.get("text").equals("")){
+      return "fail";
+    }
+    replyService.saveReply(map, customUserDetails);
+    return "success";
+  }
+
   //게시판 추천하기
   @GetMapping("/recommend")
   public String boardDetailsRecommend(@RequestParam(value = "idx", defaultValue = "0") Integer idx, Model model, HttpServletRequest request, HttpServletResponse response) {
