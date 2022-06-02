@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Registration Succeeded</title>
+    <title>여긴어때</title>
     <div th:replace="fragments/head.html :: fragment-head"></div>
 </head>
 <body>
@@ -10,10 +10,9 @@
     Swal.fire({
         icon: 'success',
         title: '가입에 성공하셨습니다.',
-        text: '환영합니다.',
     }).then(function (result) {
         if (true) {
-            window.location = "/user/login";
+            window.location = "/user/loginForm";
         }
     })
 </script>

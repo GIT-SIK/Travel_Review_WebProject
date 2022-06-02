@@ -76,18 +76,18 @@ public class UserController {
         return "user/login";
     }
 
-    /*
-    @GetMapping("/loginForm")
-    public String loginForm(HttpServletRequest request, @RequestParam(value = "error", required = false) String error,
-                            @RequestParam(value = "exception", required = false) String exception , Model model) {
+    /* 로그인 실패 핸들러 */
+        @GetMapping("/loginForm")
+        public String loginForm(@RequestParam(value = "error", required = false) String error,
+                                @RequestParam(value = "exception", required = false) String exception, Model model) {
+            model.addAttribute("error", error);
+            model.addAttribute("exception", exception);
+            return "user/login";
+        }
 
-        model.addAttribute("error", error);
-        model.addAttribute("exception",exception);
-        return "user/loginForm";
-    }
-    */
     /* ************************************* 로그인 끝************************************* */
     /* ************************************* 관리자 ************************************* */
+
     @GetMapping("/admin")
     String adminMapping(){
         return "user/admin";

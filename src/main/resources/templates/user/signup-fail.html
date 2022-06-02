@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Registration Failed</title>
+    <title>여긴어때</title>
     <div th:replace="fragments/head.html :: fragment-head"></div>
 </head>
 <body>
 <script>
     Swal.fire({
         icon: 'error',
-        title: '가입에 실패하셨습니다.',
+        title: '가입을 실패하셨습니다.',
         text: ('이미 사용중인 이메일 혹은 휴대전화입니다.'),
     }).then(function (result) {
         if (true) {
-            window.location = "/user/signUp";
+            window.location = "/user/signup";
         }
     })
 </script>

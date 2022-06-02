@@ -1,6 +1,7 @@
 package com.travel.security.config;
 
 import com.travel.security.auth.UserDetailsService;
+import com.travel.security.handler.LoginFailHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -38,12 +39,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/user/login") // 로그인페이지 설정
                 .loginProcessingUrl("/login") // login주소가 호출시 시큐리티가 낚아채서 CustomUserDetails 로 이동
                 .defaultSuccessUrl("/") //로그인 성공 후
+                .failureHandler(loginFailHandler()) // 로그인 실패시 핸들러로 오류 메시지 출력
               .and()
                 .logout()
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/") // 로그아웃경우 기본경로 위치설정
                 .deleteCookies("JSESSIONID")
                 .invalidateHttpSession(true);
+
 
         http
                 .exceptionHandling()
@@ -62,5 +65,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
+    }
+
+    @Bean
+    public LoginFailHandler loginFailHandler(){
+        return new LoginFailHandler();
     }
 }
