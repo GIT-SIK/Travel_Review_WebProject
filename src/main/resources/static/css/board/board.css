@@ -24,14 +24,20 @@
 .pagination > ul > li {
   list-style-type: none;
   display: inline-block;
-  margin-right: 10px;
+}
+
+.pagination > ul > li > .btn{
+  width: 16px;
+  padding-right: 22px;
+  -webkit-user-select: none;
 }
 
 .pagination > ul > li > a {
-  color: black;
   text-decoration: none;
+  color: black;
 }
 
 .pagination > ul > li > strong {
-  color: #F63543;
+  font-weight: bold;
+  border: solid #6c757d 2px;
 }

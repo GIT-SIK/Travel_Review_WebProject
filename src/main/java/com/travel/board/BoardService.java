@@ -44,7 +44,7 @@ public class BoardService {
   //페이징하여 보드 반환
   public Page<Board> findBoardList(Pageable pageable, String column) {
     Sort sort = Sort.by(column).descending();
-    pageable = PageRequest.of(pageable.getPageNumber() <= 0 ? 0 : pageable.getPageNumber() - 1, 7,
+    pageable = PageRequest.of(pageable.getPageNumber() <= 0 ? 0 : pageable.getPageNumber() - 1, 10,
         sort);
     return boardRepository.findAll(pageable);
   }
