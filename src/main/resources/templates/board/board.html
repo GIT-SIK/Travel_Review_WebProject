@@ -108,7 +108,8 @@
         <div class="d-flex align-content-center flex-wrap"
              style="height: 30px; font-size: 20px;" th:with="idx=${board.idx}">
           <a class="board-title" th:text="${board.title}"
-             th:href=@{/board/details/(idx=${board.idx})} style="text-decoration: none; color: black;"></a>&nbsp;
+             style="text-decoration: none; color: black"
+             th:href=@{/board/details/boardView(idx=${board.idx})}></a>&nbsp;
         </div>
       </td>
       <td style="font-size: 17px" th:with="userId = ${board.userId}">

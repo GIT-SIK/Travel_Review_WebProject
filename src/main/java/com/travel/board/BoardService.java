@@ -68,51 +68,35 @@ public class BoardService {
 
   @Transactional
   @Modifying
-  public void viewUpdate(Integer idx, HttpServletRequest request,
-      HttpServletResponse response) {
+  public void viewRecommendUpdate(Integer idx, HttpServletRequest request, HttpServletResponse response, String param) {
     boolean cookieHas = false;
+//        param = "boardView or boardRecommend"
     Cookie[] cookies = request.getCookies();
-    if (cookies != null) {
-      for (Cookie cookie : cookies) {
+    if(cookies != null) {
+      for(Cookie cookie : cookies) {
         String name = cookie.getName();
         String value = cookie.getValue();
-        if ("boardView".equals(name) && value.contains("|" + idx + "|")) {
+        if(param.equals(name) && value.contains("|" + idx + "|")) {
           cookieHas = true;
           break;
         }
       }
     }
 
-    if (!cookieHas) {
-      Cookie cookie = new Cookie("boardView", "boardView|" + idx + "|");
-      cookie.setMaxAge(-1);
-      response.addCookie(cookie);
-      this.updateView(idx);
-    }
-  }
-
-  @Transactional
-  @Modifying
-  public void recommendUpdate(Integer idx, HttpServletRequest request,
-      HttpServletResponse response) {
-    boolean cookieHas = false;
-    Cookie[] cookies = request.getCookies();
-    if (cookies != null) {
-      for (Cookie cookie : cookies) {
-        String name = cookie.getName();
-        String value = cookie.getValue();
-        if ("boardView".equals(name) && value.contains("|" + idx + "|")) {
-          cookieHas = true;
-          break;
-        }
+    if(!cookieHas) {
+      Cookie cookie = new Cookie(param, param+"|" + idx + "|");
+      if (param.equals("boardView")){
+        cookie.setMaxAge(-1);
+        //브라우저 끄면 쿠기 사라지고 조회수 증가 가능
+        response.addCookie(cookie);
+        this.updateView(idx);
+      } else if (param.equals("boardRecommend")){
+        cookie.setMaxAge(60 * 60 * 24 * 365);
+        //브라우저 꺼도 쿠키 안사라지고 1년동안 보관.
+        // 쿠키를 지우지 않고선 1년 동안 추천수 조작 불가
+        response.addCookie(cookie);
+        this.updateRecommend(idx);
       }
-    }
-
-    if (!cookieHas) {
-      Cookie cookie = new Cookie("boardView", "boardView|" + idx + "|");
-      cookie.setMaxAge(-1);
-      response.addCookie(cookie);
-      this.updateRecommend(idx);
     }
   }
 }

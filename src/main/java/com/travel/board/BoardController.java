@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -84,10 +85,11 @@ public class BoardController {
     return true;
   }
 
-  //게시판 기본 조회
-  @GetMapping("/details")
-  public String boardDetails(@RequestParam(value = "idx", defaultValue = "0") Integer idx, Model model, HttpServletRequest request, HttpServletResponse response) {
-    boardService.viewUpdate(idx, request, response);
+  //게시판 기본 조회, 추천하기
+  @GetMapping("/details/{param}")
+  public String boardDetails(@RequestParam(value = "idx", defaultValue = "0") Integer idx, @PathVariable String param, Model model, HttpServletRequest request, HttpServletResponse response) {
+    boardService.viewRecommendUpdate(idx, request, response, param);
+
     Board board = boardService.findBoardByIdx(idx);
     List<ReplyDto> replyList = replyService.getReplyList(idx);
     int countAllReply = replyService.countAllReply(idx);
@@ -96,8 +98,12 @@ public class BoardController {
     model.addAttribute("board", board);
     model.addAttribute("replyList", replyList);
     model.addAttribute("countAllReply", countAllReply);
+
     return "/board/board-details";
   }
+
+
+
 
   @PostMapping("/reply")
   @ResponseBody
@@ -109,15 +115,6 @@ public class BoardController {
     return "success";
   }
 
-  //게시판 추천하기
-  @GetMapping("/recommend")
-  public String boardDetailsRecommend(@RequestParam(value = "idx", defaultValue = "0") Integer idx, Model model, HttpServletRequest request, HttpServletResponse response) {
-    boardService.recommendUpdate(idx, request, response);
-    Board board = boardService.findBoardByIdx(idx);
-    model.addAttribute("idx", idx);
-    model.addAttribute("board", board);
-    return "/board/board-details";
-  }
 
 
 }

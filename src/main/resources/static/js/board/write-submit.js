@@ -11,7 +11,7 @@ window.writeSubmit = function () {
     view: 0,
     visible:1,
     recommend:0,
-    userId: "홍길동"
+    userId: $('#loginId').val()
   };
   const referrer = document.referrer;
 
