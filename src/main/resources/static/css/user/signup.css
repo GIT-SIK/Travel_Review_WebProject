@@ -1,9 +1,3 @@
-@font-face {
-    font-family: 'yg-jalnan';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
 
 .swal-button {
 
@@ -51,7 +45,7 @@
 #passwordCheck,
 #email,
 #tel {
-    font-family: 'SuncheonR';
+    font-family: 'Pretendard';
     margin: 0 0 20px 0;
     padding: 10px;
     width: 400px;
@@ -62,7 +56,7 @@
 }
 
 #id {
-    font-family: 'SuncheonR';
+    font-family: 'Pretendard';
     margin: 0 0 20px 0;
     padding: 10px;
     width: 300px;
@@ -73,7 +67,7 @@
 
 
 #idCheck {
-    font-family: 'SuncheonR';
+    font-family: 'Pretendard';
     display: inline;
     width: 95px;
     height: 37px;
@@ -89,7 +83,7 @@
 }
 
 #btSignup {
-    font-family: 'SuncheonR';
+    font-family: 'Pretendard';
     width: 400px;
     height: 37px;
     margin: 0;

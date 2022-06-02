@@ -9,8 +9,7 @@
 <script>
     Swal.fire({
         icon: 'error',
-        title: '가입을 실패하셨습니다.',
-        text: ('이미 사용중인 이메일 혹은 휴대전화입니다.'),
+        html: ('가입을 실패하셨습니다. <br> 이미 사용중인 이메일 혹은 휴대전화입니다.'),
     }).then(function (result) {
         if (true) {
             window.location = "/user/signup";
