@@ -16,17 +16,26 @@
   position: relative;
   top: 14px;
   margin-left: 100px;
+  text-decoration: none;
+}
+.logo:hover{
+  color: white;
 }
 
 /* Style the navbar links */
 
-#nav a {
+.menu > a {
+  font-family: 'Jalnan';
   color: white;
   font-size: 14pt;
   float: right;
   margin: 20px 40px 0px 10px;
   text-decoration: none;
   display: block;
+}
+.menu >  a:hover {
+  border-bottom: 2px solid white;
+  color: white;
 }
 
 /*.dropdown-login{*/
