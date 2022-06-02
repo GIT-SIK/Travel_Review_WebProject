@@ -1,6 +1,7 @@
 package com.travel.find;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ public class FindController {
 
     private final FindService findService;
     private final MailService mailService;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @GetMapping("/findId")
     public String findId() {
@@ -87,7 +89,7 @@ public class FindController {
 
     @PostMapping("/changePw")
     public String changePw(@RequestParam("id") String id, @RequestParam("password") String password) {
-//        password = bCryptPasswordEncoder.encode(password);
+        password = bCryptPasswordEncoder.encode(password);
         findService.changePassword(id, password);
         return "redirect:/";
     }
