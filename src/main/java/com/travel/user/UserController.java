@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/user")
 public class UserController {
 
 
@@ -56,7 +55,7 @@ public class UserController {
     }
 
     /* 중복된 아이디 */
-    @PostMapping("/isId")
+    @PostMapping("/signup/isId")
     @ResponseBody
     public boolean isId(@RequestBody String id){
         boolean check = false;
@@ -71,26 +70,30 @@ public class UserController {
     /* ************************************* 회원가입 끝 ************************************* */
 
     /* ************************************* 로그인 ************************************* */
-    @GetMapping("/login")
-    String loginMapping(){
-        return "user/login";
-    }
-
-    /* 로그인 실패 핸들러 */
-        @GetMapping("/loginForm")
+        @GetMapping("/login")
         public String loginForm(@RequestParam(value = "error", required = false) String error,
                                 @RequestParam(value = "exception", required = false) String exception, Model model) {
+            if(error!=null)
             model.addAttribute("error", error);
+            if(exception!=null)
             model.addAttribute("exception", exception);
+
             return "user/login";
         }
 
     /* ************************************* 로그인 끝************************************* */
     /* ************************************* 관리자 ************************************* */
 
-    @GetMapping("/admin")
+    @GetMapping("/user/admin")
     String adminMapping(){
         return "user/admin";
+    }
+
+
+    /* ************************************* 일반유저 ************************************* */
+    @GetMapping("/user/mypage")
+    String mypageMapping(){
+        return "user/mypage";
     }
     
 }

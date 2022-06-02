@@ -31,6 +31,17 @@ body{
 }
 
 /* Style the navbar links */
+.dropdown-menu > div{
+  font-family: 'Pretendard';
+  padding : 4px 16px;
+  text-align: center;
+}
+
+.dropdown-menu > div > hr{
+  text-align: center;
+  width : 125px;
+  margin: 8px 0 8px 0;
+}
 
 .menu > a{
   font-family: 'Pretendard';
