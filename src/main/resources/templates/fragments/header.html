@@ -22,22 +22,20 @@
             </header>
             <header sec:authorize="isAuthenticated()">
                 <nav class="custom-header">
-                    <span class="logo">여긴어때?</span>
+                    <a class="logo" href="/">여긴어때?</a>
 
                     <span class="menu">
-                    <a th:href="@{/logout}"> 로그아웃</a>
-                    <a href="#"> 축제정보</a>
-                    <a href="/board/list"> 여행후기 </a>
-                     <!--    <div class="dropdown-login">
-                              <a class="dropbtn">drop down</a>
-                              <div class="dropdown-content">
-                                <li href="#">link 1</li>
-                                <li href="#">link 2</li>
-                                <li href="#">link 3</li>
-                          drop down
-                              </div>
+                    <a class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="padding: 0; margin: 0; position: relative; top:19px; ">
+                        마이페이지
+                    </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">내정보1</a>
+                            <a class="dropdown-item" href="#">내정보2</a>
+                            <a class="dropdown-item" href="#">내정보3</a>
+                            <a class="dropdown-item" th:href="@{/logout}">로그아웃</a>
                         </div>
-                    -->
+                    <a class="menubtn" href="#"> 축제정보</a>
+                    <a class="menubtn" href="/board/list"> 여행후기 </a>
                     </span>
                 </nav>
             </header>
