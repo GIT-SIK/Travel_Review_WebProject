@@ -129,14 +129,14 @@
 
 <div class="pagination">
   <ul>
-    <li>
+    <li th:if="${nowPage != 1}">
       <a th:href="@{/board/list(page=${nowPage-1})}"><</a>
     </li>
     <li th:each="page:${#numbers.sequence(startPage, endPage)}">
       <a th:if="${page != nowPage}" th:href="@{/board/list(page=${page})}" th:text="${page}"></a>
       <strong th:if="${page == nowPage}" th:text="${page}"></strong>
     </li>
-    <li>
+    <li th:if="${nowPage < totalPage}">
       <a th:href="@{/board/list(page=${nowPage+1})}">></a>
     </li>
   </ul>
