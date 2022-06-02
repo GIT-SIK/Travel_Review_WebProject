@@ -28,7 +28,7 @@ body{
 /* Style the navbar links */
 
 .menu > a{
-  font-family: 'Jalnan';
+  font-family: 'Pretendard';
   color: white;
   font-size: 14pt;
   float: right;
@@ -40,8 +40,9 @@ body{
   border-bottom: 2px solid white;
   color: white;
 }
-.dropdown-menu{
-  font-family: 'Jalnan';
+
+.dropdown-item{
+  font-family: 'Pretendard';
   text-align: center;
 }
 
