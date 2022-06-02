@@ -35,18 +35,20 @@
             </div>
           </div>
           <hr>
-            <div class="d-flex justify-content-end mt-2">
+          <div th:if="${#authentication.getPrincipal()!='anonymousUser'}">
+            <div class="d-flex justify-content-end mt-2" th:if="${#authentication.getPrincipal().getUsername()} == ${board.userId}">
               <a class="text-decoration-none text-muted"
                  th:href=@{/board/rewrite/(idx=${board.idx})}>수정</a>
               <span class="text-muted mx-3">|</span>
               <a class="text-decoration-none text-muted" href='javascript:void(0);' onclick="deleteAlert()">삭제</a>
             </div>
+          </div>
 
           <div class="w-100 py-4" th:utext="${board.content}"
                style="padding: 10px; word-wrap:break-word;"></div>
           <div style="text-align: center; margin-top: 20px;">
             <input type="button" id="recommend" style="width: 80px;height: 80px; font-size: x-large"
-                   th:onclick="|location.href='@{/board/recommend(idx=${board.idx})}'|" th:value="|👍&#10;${board.recommend}추|"/>
+                   th:onclick="|location.href='@{/board/details/boardRecommend(idx=${board.idx})}'|" th:value="|👍&#10;${board.recommend}추|"/>
           </div>
           <div style="padding: 10px 0px; border-bottom: 2px solid black;">
             <button
