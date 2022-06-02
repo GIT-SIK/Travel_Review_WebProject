@@ -16,8 +16,9 @@
   background: lightgray;
 }
 
-.pagination {
+.pagination > ul {
   text-align: center;
+  margin-top: 20px;
 }
 
 .pagination > ul > li {
@@ -31,7 +32,6 @@
   text-decoration: none;
 }
 
-.pagination > ul > li > a :hover, .pagination > ul > li > a :focus{
-  color: red;
-  text-decoration: underline;
+.pagination > ul > li > strong {
+  color: #F63543;
 }
