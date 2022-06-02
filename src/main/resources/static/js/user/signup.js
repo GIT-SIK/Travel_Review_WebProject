@@ -106,7 +106,7 @@ function checkId(){
                 async : true,
                 type : 'POST',
                 data: id,
-                url : "/user/isId",
+                url : "/signup/isId",
                 /* json 형태가 아니면 "="가 들어가서 json으로 처리할 것.*/
                 dataType: "json",
                 contentType: "application/json; charset=UTF-8",
