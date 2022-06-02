@@ -11,6 +11,11 @@ body{
   padding-top:130px;
 }
 
+
+.dropdown-menu.show {
+  display: block !important;
+}
+
 .logo {
   color: white;
   font-family: 'Jalnan';
@@ -19,7 +24,7 @@ body{
   position: relative;
   top: 14px;
   margin-left: 100px;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 .logo:hover{
   color: white;
@@ -29,16 +34,16 @@ body{
 
 .menu > a{
   font-family: 'Pretendard';
-  color: white;
+  color: white !important;
   font-size: 14pt;
   float: right;
   margin: 20px 40px 0px 10px;
-  text-decoration: none;
+  text-decoration: none !important;
   display: block;
 }
 .menu > a:hover {
   border-bottom: 2px solid white;
-  color: white;
+  color: white !important;
 }
 
 .dropdown-item{
