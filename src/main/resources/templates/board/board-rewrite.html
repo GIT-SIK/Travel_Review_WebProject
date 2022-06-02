@@ -18,7 +18,7 @@
 
 <body>
 <div th:replace="fragments/header.html :: fragment-header"></div>
-
+<br><br>
 <section class="container write-form-wrapper mt-5" >
 	<form method="post" th:action="@{/board/rewrite}" th:object="${board}" onsubmit="return rewriteSubmit()">
 		<div class="input-group mb-3">

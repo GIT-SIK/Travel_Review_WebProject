@@ -126,6 +126,13 @@
   </table>
 </div>
 <br>
+<div class="pagination">
+  <ul>
+    <li th:each="page : ${#numbers.sequence(0, totalPage - 1)}">
+        <a th:href="@{/board/list(page=${pageStat.index})}" th:text="${pageStat.index + 1}"></a>
+    </li>
+  </ul>
+</div>
 </div>
   <button class="btn btn-primary w-35 my-2 write-btn" style="float:right" onclick="location.href='/board/write'"> 후기 작성 </button>
 <div th:replace="fragments/footer.html :: fragment-footer"></div>
