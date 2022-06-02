@@ -29,7 +29,9 @@ public class BoardController {
   @GetMapping("/list")
   String communityMapping(Model model,Pageable pageable) {
     Page<Board> p = boardService.findBoardList(pageable, "idx");
+    int totalPage = p.getTotalPages();
     model.addAttribute("boardList", p);
+    model.addAttribute("totalPage", totalPage);
     return "board/board";
   }
 
