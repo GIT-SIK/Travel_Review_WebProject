@@ -7,6 +7,9 @@
   background: #F63543;
   height: 70px;
 }
+body{
+  padding-top:130px;
+}
 
 .logo {
   color: white;
@@ -24,7 +27,7 @@
 
 /* Style the navbar links */
 
-.menu > a {
+.menu > a{
   font-family: 'Jalnan';
   color: white;
   font-size: 14pt;
@@ -33,7 +36,7 @@
   text-decoration: none;
   display: block;
 }
-.menu >  a:hover {
+.menu > a:hover {
   border-bottom: 2px solid white;
   color: white;
 }
