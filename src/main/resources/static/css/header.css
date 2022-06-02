@@ -40,6 +40,10 @@ body{
   border-bottom: 2px solid white;
   color: white;
 }
+.dropdown-menu{
+  font-family: 'Jalnan';
+  text-align: center;
+}
 
 /*.dropdown-login{*/
 /*  position : relative;*/
