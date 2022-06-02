@@ -35,6 +35,7 @@ public class BoardController {
   @GetMapping("/list")
   String communityMapping(Model model,Pageable pageable) {
     Page<Board> p = boardService.findBoardList(pageable, "idx");
+
     int totalPage = p.getTotalPages();
     int nowPage = p.getPageable().getPageNumber()+1;
     int startPage = Math.max(nowPage-4, 1);
@@ -45,6 +46,7 @@ public class BoardController {
     model.addAttribute("nowPage", nowPage);
     model.addAttribute("startPage", startPage);
     model.addAttribute("endPage", endPage);
+
     return "board/board";
   }
 
