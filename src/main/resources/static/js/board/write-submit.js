@@ -11,7 +11,8 @@ window.writeSubmit = function () {
     view: 0,
     visible:1,
     recommend:0,
-    userId: $('#loginId').val()
+    userId: $('#loginId').val(),
+    category: $('#inputGroupSelect02').val()
   };
   const referrer = document.referrer;
 

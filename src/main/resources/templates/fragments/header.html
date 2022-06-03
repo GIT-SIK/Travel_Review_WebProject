@@ -1,21 +1,17 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thyeleaf-extras-springsecurity5">>
+      xmlns:sec="http://www.thymeleaf.org/thyeleaf-extras-springsecurity5">
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link
-            rel="stylesheet"
-            type="text/css"
-            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
-    />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"/>
     <meta charset="UTF-8">
-    <title>Header</title>
+    <title>여기어때</title>
 </head>
 
 
 <div th:fragment="fragment-header">
         <div id="nav">
-            <header sec:authorize="isAnonymous()">
+            <header class="container" sec:authorize="isAnonymous()">
                 <nav class="custom-header">
                     <a class="logo" href="/">여긴어때?</a>
 
@@ -26,7 +22,7 @@
                    </span>
                 </nav>
             </header>
-            <header sec:authorize="isAuthenticated()">
+            <header class="container" sec:authorize="hasRole('ROLE_USER')">
                 <nav class="custom-header">
                     <a class="logo" href="/">여긴어때?</a>
 
@@ -35,9 +31,33 @@
                         마이페이지
                     </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">내정보1</a>
-                            <a class="dropdown-item" href="#">내정보2</a>
-                            <a class="dropdown-item" href="#">내정보3</a>
+                            <div sec:authentication="name"></div>
+                            <div> <hr> </div>
+                            <a class="dropdown-item" th:href="@{/user/mypage}">내정보</a>
+                            <a class="dropdown-item" href="#">NULL</a>
+                            <a class="dropdown-item" href="#">NULL</a>
+                            <a class="dropdown-item" th:href="@{/logout}">로그아웃</a>
+                        </div>
+                    <a class="menubtn" href="/festival/list"> 축제정보</a>
+                    <a class="menubtn" href="/board/list"> 여행후기 </a>
+                    </span>
+                </nav>
+            </header>
+
+            <header class="container" sec:authorize="hasRole('ROLE_ADMIN')">
+                <nav class="custom-header">
+                    <a class="logo" href="/">여긴어때?</a>
+
+                    <span class="menu">
+                    <a class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        마이페이지
+                    </a>
+                        <div class="dropdown-menu">
+                            <div sec:authentication="name"></div>
+                            <div> <hr> </div>
+                            <a class="dropdown-item" th:href="@{/user/admin}">관리자페이지</a>
+                            <a class="dropdown-item" href="#">NULL</a>
+                            <a class="dropdown-item" href="#">NULL</a>
                             <a class="dropdown-item" th:href="@{/logout}">로그아웃</a>
                         </div>
                     <a class="menubtn" href="/festival/list"> 축제정보</a>
@@ -55,29 +75,19 @@
   </style>
   
 
-    <script type="text/javascript">
 
-        // $('.dropdown-login').on('click', function(){
-        //     if($('.dropdown-content').css("display") == "none"){
-        //         $('.dropdown-content').css("display", "block");
-        //     } else {
-        //         $('.dropdown-content').hide();
-        //     }
-        // });
 
-        window.onscroll = function() {
-          scrollFunction()
-        };
+<!--        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {-->
+<!--            document-->
+<!--          document.getElementById("nav").style.top = "0";-->
+<!--          document.getElementById('nav').style.backgroundColor = 'white';-->
+<!--        } else {-->
+<!--          document.getElementById("nav").style.top = "0";-->
+<!--            document.getElementById('nav').style.backgroundColor = '#F63543';-->
+<!--        }-->
+<!--      }-->
 
-      function scrollFunction() {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            document
-          document.getElementById("nav").style.top = "0";
-        } else {
-          document.getElementById("nav").style.top = "0";
-        }
-      }
-
-</script>
+<!--           -->
+<!--      }-->
 </div>
 </html>

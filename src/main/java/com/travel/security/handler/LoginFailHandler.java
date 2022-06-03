@@ -29,7 +29,7 @@ public class LoginFailHandler extends SimpleUrlAuthenticationFailureHandler {
         }
         /* 한글 인코딩 깨지는 현상 방지*/
         errorMessage= URLEncoder.encode(errorMessage,"UTF-8");
-        setDefaultFailureUrl("/user/loginForm?error=true&exception=" + errorMessage);
+        setDefaultFailureUrl("/login?error=true&exception=" + errorMessage);
         super.onAuthenticationFailure(httpServletRequest,httpServletResponse,e);
     }
 

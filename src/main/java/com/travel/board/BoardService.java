@@ -42,10 +42,47 @@ public class BoardService {
   }
 
   //페이징하여 보드 반환
-  public Page<Board> findBoardList(Pageable pageable, String column) {
+  public Page<Board> findBoardList(Pageable pageable, String column, String param) {
+
     Sort sort = Sort.by(column).descending();
-    pageable = PageRequest.of(pageable.getPageNumber() <= 0 ? 0 : pageable.getPageNumber() - 1, 7,
+    pageable = PageRequest.of(pageable.getPageNumber() <= 0 ? 0 : pageable.getPageNumber() - 1,
+        10,
         sort);
+    if (param.equals("서울")) {
+      return boardRepository.findByCategory(param, pageable);
+    } else if (param.equals("경기")) {
+      return boardRepository.findByCategory(param, pageable);
+    } else if (param.equals("인천")) {
+      return boardRepository.findByCategory(param, pageable);
+    } else if (param.equals("강원")) {
+      return boardRepository.findByCategory(param, pageable);
+    } else if (param.equals("세종")) {
+      return boardRepository.findByCategory(param, pageable);
+    } else if (param.equals("대전")) {
+      return boardRepository.findByCategory(param, pageable);
+    } else if (param.equals("충북")) {
+      return boardRepository.findByCategory(param, pageable);
+    } else if (param.equals("충남")) {
+      return boardRepository.findByCategory(param, pageable);
+    } else if (param.equals("대구")) {
+      return boardRepository.findByCategory(param, pageable);
+    } else if (param.equals("부산")) {
+      return boardRepository.findByCategory(param, pageable);
+    } else if (param.equals("울산")) {
+      return boardRepository.findByCategory(param, pageable);
+    } else if (param.equals("경북")) {
+      return boardRepository.findByCategory(param, pageable);
+    } else if (param.equals("경남")) {
+      return boardRepository.findByCategory(param, pageable);
+    } else if (param.equals("광주")) {
+      return boardRepository.findByCategory(param, pageable);
+    } else if (param.equals("전북")) {
+      return boardRepository.findByCategory(param, pageable);
+    } else if (param.equals("전남")) {
+      return boardRepository.findByCategory(param, pageable);
+    } else if (param.equals("제주")) {
+      return boardRepository.findByCategory(param, pageable);
+    }
     return boardRepository.findAll(pageable);
   }
 
@@ -68,29 +105,30 @@ public class BoardService {
 
   @Transactional
   @Modifying
-  public void viewRecommendUpdate(Integer idx, HttpServletRequest request, HttpServletResponse response, String param) {
+  public void viewRecommendUpdate(Integer idx, HttpServletRequest request,
+      HttpServletResponse response, String param) {
     boolean cookieHas = false;
 //        param = "boardView or boardRecommend"
     Cookie[] cookies = request.getCookies();
-    if(cookies != null) {
-      for(Cookie cookie : cookies) {
+    if (cookies != null) {
+      for (Cookie cookie : cookies) {
         String name = cookie.getName();
         String value = cookie.getValue();
-        if(param.equals(name) && value.contains("|" + idx + "|")) {
+        if (param.equals(name) && value.contains("|" + idx + "|")) {
           cookieHas = true;
           break;
         }
       }
     }
 
-    if(!cookieHas) {
-      Cookie cookie = new Cookie(param, param+"|" + idx + "|");
-      if (param.equals("boardView")){
+    if (!cookieHas) {
+      Cookie cookie = new Cookie(param, param + "|" + idx + "|");
+      if (param.equals("boardView")) {
         cookie.setMaxAge(-1);
         //브라우저 끄면 쿠기 사라지고 조회수 증가 가능
         response.addCookie(cookie);
         this.updateView(idx);
-      } else if (param.equals("boardRecommend")){
+      } else if (param.equals("boardRecommend")) {
         cookie.setMaxAge(60 * 60 * 24 * 365);
         //브라우저 꺼도 쿠키 안사라지고 1년동안 보관.
         // 쿠키를 지우지 않고선 1년 동안 추천수 조작 불가
