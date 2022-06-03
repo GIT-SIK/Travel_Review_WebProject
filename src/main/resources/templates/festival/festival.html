@@ -94,7 +94,14 @@
                 </ul>
             </div>
             <div class="col-10">
-
+                <ul>
+                    <li class="festivalData" th:each="festival : ${festivalList}">
+                        <div th:text="${festival.name}"></div>
+                        <div th:text="${festival.startDate}"></div>
+                        <div th:text="${festival.endDate}"></div>
+                        <div th:text="${festival.roadAddress}"></div>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
