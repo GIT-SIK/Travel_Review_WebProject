@@ -125,23 +125,17 @@
   </table>
 </div>
 <br>
-
-<script th:inline="javascript">
-  /*<![CDATA[*/
-  let category = [[${param}]];
-  /*]]>*/
-</script>
 <div class="pagination" th:with="baseUrl=()">
   <ul>
     <li th:if="${nowPage != 1}">
-      <a class="btn" th:href="@{/board/list/category(page=${nowPage-1})}"><</a>
+      <a class="btn" th:href="@{/board/list/}+${checkParam}+'?page='+${nowPage-1}"><</a>
     </li>
     <li th:each="page:${#numbers.sequence(startPage, endPage)}">
-      <a class="btn" th:if="${page != nowPage}" th:href="@{/board/list/category(page=${page})}" th:text="${page}"></a>
+      <a class="btn" th:if="${page != nowPage}" th:href="@{/board/list/}+${checkParam}+'?page='+${page}" th:text="${page}"></a>
       <strong class="btn" th:if="${page == nowPage}" th:text="${page}"></strong>
     </li>
     <li th:if="${nowPage < totalPage}">
-      <a class="btn" th:href="@{/board/list/category(page=${nowPage+1})}">></a>
+      <a class="btn" th:href="@{/board/list/}+${checkParam}+'?page='+${nowPage+1}">></a>
     </li>
   </ul>
 </div>
