@@ -2,6 +2,8 @@ package com.travel.index;
 
 
 import com.travel.domain.Festival;
+import com.travel.domain.idxSlide;
+import com.travel.domain.idxView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +21,14 @@ public class IndexController {
     IndexService indexService;
 
     @GetMapping({"","/"})
-    public String index(){
+    public String index(Model model){
+
+        List<idxSlide> slideLinkList = indexService.findAllSlide();
+        List<idxView> viewList = indexService.findAllView();
+        System.out.println(viewList);
+        System.out.println(viewList);
+        model.addAttribute("SlideLinkList",slideLinkList);
+        model.addAttribute("viewList", viewList);
         return "index";
     }
 
@@ -30,9 +39,11 @@ public class IndexController {
         return indexService.findAllbyDataLocal(local);
     }
 
-    @GetMapping("/index/date")
+    @GetMapping("/index/viewdate")
     @ResponseBody
-    public String indexDate(){
+    public String indexViewDate(){
         return indexService.findDate();
     }
+
+
 }

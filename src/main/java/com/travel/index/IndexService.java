@@ -1,7 +1,8 @@
 package com.travel.index;
 
 import com.travel.domain.Festival;
-import com.travel.domain.TbIndex;
+import com.travel.domain.idxSlide;
+import com.travel.domain.idxView;
 import com.travel.festival.FestivalRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,22 +18,37 @@ import java.util.List;
 public class IndexService {
 
     @Autowired
-    IndexRepository indexRepository;
+    IndexViewRepository indexViewRepository;
+
+    @Autowired
+    IndexSlideRepository indexSlideRepository;
+
     @Autowired
     FestivalRepository festivalRepository;
 
+
+    public List<idxSlide> findAllSlide() {
+        return indexSlideRepository.findAllSlide();
+    }
+
+    public List<idxView> findAllView(){
+        return indexViewRepository.findAllView();
+    }
+    /* index 페이지 / 지도와 축제 부분 코드*/
+
+    /* 메인에 년 월 가져오는 함수 */
     public String findDate(){
-        Date dateTemp = indexRepository.findAuth().get(0).getFestivalDate();;
+        Date dateTemp = indexViewRepository.findAllView().get(0).getFestivalDate();;
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM");
         String date = dateFormat.format(dateTemp);
-
         return date;
     }
 
+    /* 메인에 지도에 축제를 가져오는 함수 */
     public List<Festival> findAllbyDataLocal(String local) {
 
         /* 날짜 변환 */
-        List<TbIndex> index = indexRepository.findAuth();
+        List<idxView> index = indexViewRepository.findAllView();
         Date dateTemp = index.get(0).getFestivalDate();
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM");
         String date = dateFormat.format(dateTemp);
