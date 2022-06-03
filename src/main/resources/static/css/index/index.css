@@ -22,7 +22,17 @@
 
 /* 이미지 슬라이드 */
 
-/* 지도 */
+/* 지도 & 축제 */
+
+.festivalMonthTitle {
+    font-family: Pretendard;
+    font-size: 30px;
+    text-align: center;
+}
+
+.festivalMonthTitle div {
+    display: block;
+}
 
 .location img:nth-child(1) {
     position: absolute;
@@ -45,7 +55,7 @@
 .festivalMonth {
     max-width: 1024px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 420px 1fr;
 
 }
 
@@ -149,4 +159,23 @@
 .location>span[value="gwangju"] {
     top: 323px;
     left: 72px;
+}
+
+
+.festivalData{
+    font-family: Pretendard;
+    border : 1px solid lightgray;
+    border-radius: 5%;
+    margin : 10px;
+    padding : 10px;
+
+}
+
+
+.festivalData div:nth-child(1) {
+    font-size : 20px;
+}
+
+.festivalData div:nth-child(n+2) {
+    font-size : 18px;
 }
