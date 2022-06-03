@@ -125,8 +125,7 @@
   </table>
 </div>
 <br>
-
-<div class="pagination">
+<div class="pagination" th:with="baseUrl=()">
   <ul>
     <li th:if="${nowPage != 1}">
       <a class="btn" th:href="@{/board/list/}+${checkParam}+'?page='+${nowPage-1}"><</a>
