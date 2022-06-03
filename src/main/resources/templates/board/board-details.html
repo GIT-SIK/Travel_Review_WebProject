@@ -51,7 +51,7 @@
           </div>
           <div style="padding: 10px 0px; border-bottom: 2px solid black;">
             <button
-                    onclick="location.href = '/board/list'"
+                    onclick="location.href = '/board/list/main'"
                     style="float: right; background-color: #0059AB;
                     border: 1px solid lightgrey; color: white; font-size: 14pt;
                     padding: 5px; width: 100px">
@@ -165,7 +165,7 @@
         data: JSON.stringify(params),
         contentType: 'application/json',
         success: function (result) {
-          window.location.href = "/board/list/";
+          window.location.href = "/board/list/main";
         }
       });
       });
