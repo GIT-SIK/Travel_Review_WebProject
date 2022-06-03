@@ -13,16 +13,28 @@
 
 <!-- 페이지 원본 -->
 <div class="main">
+
     <!-- 베스트 후기 영역 -->
-    <div>
+    <section>
+        <div>
+            <span class="indextitle"> 베스트 후기 </span>
+        </div>
+        <div>
+            <!--<a th:href="@{/board/list}" class="morebtn">더보기</a>-->
+            <a th:onclick="'location.href=\''+ @{/board/list})} + '\''">더보기</a>
+            <a th:onclick="'location.href=\''+ @{${/board/list}} + '\''">더보기</a>
+        </div>
+        <hr class="indexhr">
 
+        </div>
+    </section>
 
-    </div>
     <!-- 슬라이드 영역 -->
     <div>
 
 
     </div>
+
     <!-- 지도 및 축제 영역 -->
     <div class="festivalMonth container">
         <!-- 지도 영역 -->

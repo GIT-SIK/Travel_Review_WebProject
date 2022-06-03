@@ -1,5 +1,27 @@
 
 
+/* 베스트 후기 */
+.indextitle{
+    font-family: Pretendard;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    margin-top: -35px;
+    margin-bottom: -20px;
+}
+.morebtn{
+    font-family: Pretendard;
+    font-size: 14px;
+    display: flex;
+    color: black;
+    text-decoration: underline;
+    cursor: pointer;
+    justify-content: right;
+}
+
+
+/* 이미지 슬라이드 */
+
 /* 지도 */
 
 .location img:nth-child(1) {
