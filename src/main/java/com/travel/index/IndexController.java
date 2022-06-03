@@ -25,8 +25,6 @@ public class IndexController {
 
         List<idxSlide> slideLinkList = indexService.findAllSlide();
         List<idxView> viewList = indexService.findAllView();
-        System.out.println(viewList);
-        System.out.println(viewList);
         model.addAttribute("SlideLinkList",slideLinkList);
         model.addAttribute("viewList", viewList);
         return "index";
