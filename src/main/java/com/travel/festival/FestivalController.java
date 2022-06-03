@@ -4,8 +4,7 @@ import com.travel.domain.Festival;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -27,4 +26,10 @@ public class FestivalController {
         System.out.println("festivalList = " + festivalList);
         return "festival/festival";
     }
+
+//    @PostMapping("/monthSelect")
+//    @ResponseBody
+//    public List<Festival> changeMonth(@RequestParam("month") int month) {
+//
+//    }
 }
