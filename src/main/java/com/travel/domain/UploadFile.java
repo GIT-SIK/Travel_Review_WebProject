@@ -6,27 +6,33 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@NoArgsConstructor
 public class UploadFile {
 
-    @Id @GeneratedValue
+    @Id
+    @Column(name="id")
+    @GeneratedValue
     private Long id;
 
-    @Column
+    @Column(name = "file_name")
     private String fileName;
 
-    @Column
+    @Column(name = "save_file_name")
     private String saveFileName;
 
-    @Column
+    @Column(name = "file_path")
     private String filePath;
 
-    @Column
+    @Column(name = "content_type")
     private String contentType;
 
+    @Column(name = "size")
     private long size;
 
+    @Column(name = "register_date")
     private LocalDateTime registerDate;
 }
