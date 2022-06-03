@@ -92,6 +92,7 @@
 }
 .slider li dd {
     color:#fff;
+    font-size:1.25rem;
     text-shadow:1px 1px 10px #444;
 }
 
