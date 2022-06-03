@@ -15,7 +15,7 @@
 <div class="main">
 
     <!-- 베스트 후기 영역 -->
-    <section>
+    <section style="height:400px;">
         <div>
             <span class="indextitle"> 베스트 후기 </span>
         </div>
@@ -23,14 +23,40 @@
             <a th:href="@{/board/list/main}" class="morebtn">더보기</a>
         </div>
         <hr class="indexhr">
+        <div>
 
         </div>
     </section>
 
     <!-- 슬라이드 영역 -->
-    <div>
+    <div style="position:relative;">
+            <ul class="slider">
+                <li th:each=" slideList : ${SlideLinkList}">
+                    <div th:style="'background-image:url(' + ${slideList.slideLink} + ');'">
+                        <th:block th:if="${slideList.slidePosition == 'right'}">
+                            <dl class="right container">
+                                <dt th:text="${slideList.slideTitle}"></dt>
+                                <dd th:text="${slideList.slideContent}"></dd>
+                            </dl>
+                        </th:block>
+                        <th:block th:if="${slideList.slidePosition != 'right'}">
+                            <dl class="left container">
+                                <dt th:text="${slideList.slideTitle}"></dt>
+                                <dd th:text="${slideList.slideContent}"></dd>
+                            </dl>
+                        </th:block>
+                    </div>
+                </li>
+            </ul>
 
+            <div class="sliderBack container">
+                <span th:text="${viewList[0].slideTitle}"> </span>
+            </div>
 
+            <div class="sliderBtn container">
+                <img id="prev" th:src="@{/images/all/arrow_l.png}">
+                <img id="next" th:src="@{/images/all/arrow_r.png}">
+            </div>
     </div>
 
     <!-- 지도 및 축제 영역 -->
@@ -40,24 +66,24 @@
 
         <!-- 지도 영역 -->
         <div class="location">
-            <img th:src="@{/images/index/jido.png}">
+            <img th:src="@{/images/index/map/jido.png}">
 
-            <img id="busan" th:src="@{/images/index/busan.png}" />
-            <img id="chungbuk" th:src="@{/images/index/chungbuk.png}" />
-            <img id="chungnam" th:src="@{/images/index/chungnam.png}" />
-            <img id="daegu" th:src="@{/images/index/daegu.png}" />
-            <img id="daejeon" th:src="@{/images/index/daejeon.png}" />
-            <img id="gangwon" th:src="@{/images/index/gangwon.png}" />
-            <img id="gb" th:src="@{/images/index/gb.png}" />
-            <img id="gg" th:src="@{/images/index/gg.png}" />
-            <img id="gyeongnam" th:src="@{/images/index/gyeongnam.png}" />
-            <img id="incheon" th:src="@{/images/index/incheon.png}" />
-            <img id="jeju" th:src="@{/images/index/jeju.png}" />
-            <img id="jeonbuk" th:src="@{/images/index/jeonbuk.png}" />
-            <img id="jeonnam" th:src="@{/images/index/jeonnam.png}" />
-            <img id="seoul" th:src="@{/images/index/seoul.png}" />
-            <img id="ulsan" th:src="@{/images/index/ulsan.png}" />
-            <img id="gwangju" th:src="@{/images/index/gwangju.png}" />
+            <img id="busan" th:src="@{/images/index/map/busan.png}" />
+            <img id="chungbuk" th:src="@{/images/index/map/chungbuk.png}" />
+            <img id="chungnam" th:src="@{/images/index/map/chungnam.png}" />
+            <img id="daegu" th:src="@{/images/index/map/daegu.png}" />
+            <img id="daejeon" th:src="@{/images/index/map/daejeon.png}" />
+            <img id="gangwon" th:src="@{/images/index/map/gangwon.png}" />
+            <img id="gb" th:src="@{/images/index/map/gb.png}" />
+            <img id="gg" th:src="@{/images/index/map/gg.png}" />
+            <img id="gyeongnam" th:src="@{/images/index/map/gyeongnam.png}" />
+            <img id="incheon" th:src="@{/images/index/map/incheon.png}" />
+            <img id="jeju" th:src="@{/images/index/map/jeju.png}" />
+            <img id="jeonbuk" th:src="@{/images/index/map/jeonbuk.png}" />
+            <img id="jeonnam" th:src="@{/images/index/map/jeonnam.png}" />
+            <img id="seoul" th:src="@{/images/index/map/seoul.png}" />
+            <img id="ulsan" th:src="@{/images/index/map/ulsan.png}" />
+            <img id="gwangju" th:src="@{/images/index/map/gwangju.png}" />
 
             <span value="busan"> 부산 </span>
             <!--17-->
@@ -97,20 +123,7 @@
         <div class="festival">
         </div>
     </div>
-
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- 페이지 푸터 -->
 <div th:replace="fragments/footer.html :: fragment-footer"></div>
 
