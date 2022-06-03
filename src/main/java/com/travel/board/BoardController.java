@@ -33,10 +33,47 @@ public class BoardController {
     this.replyService = replyService;
   }
 
-  @GetMapping("/list")
-  String communityMapping(Model model,Pageable pageable) {
-    Page<Board> p = boardService.findBoardList(pageable, "idx");
+  @GetMapping("/list/{param}")
+  String communityMapping(Model model,Pageable pageable, @PathVariable String param) {
 
+    Page<Board> p = null;
+    if (param.equals("main")) {
+      p = boardService.findBoardList(pageable, "idx", param);
+    }else if(param.equals("서울")) {
+      p = boardService.findBoardList(pageable, "idx", param);
+    }else if(param.equals("경기")) {
+      p = boardService.findBoardList(pageable, "idx", param);
+    }else if(param.equals("인천")) {
+      p = boardService.findBoardList(pageable, "idx", param);
+    }else if(param.equals("강원")) {
+      p = boardService.findBoardList(pageable, "idx", param);
+    }else if(param.equals("세종")) {
+      p = boardService.findBoardList(pageable, "idx", param);
+    }else if(param.equals("대전")) {
+      p = boardService.findBoardList(pageable, "idx", param);
+    }else if(param.equals("충북")) {
+      p = boardService.findBoardList(pageable, "idx", param);
+    }else if(param.equals("충남")) {
+      p = boardService.findBoardList(pageable, "idx", param);
+    }else if(param.equals("대구")) {
+      p = boardService.findBoardList(pageable, "idx", param);
+    }else if(param.equals("부산")) {
+      p = boardService.findBoardList(pageable, "idx", param);
+    }else if(param.equals("울산")) {
+      p = boardService.findBoardList(pageable, "idx", param);
+    }else if(param.equals("경북")) {
+      p = boardService.findBoardList(pageable, "idx", param);
+    }else if(param.equals("경남")) {
+      p = boardService.findBoardList(pageable, "idx", param);
+    }else if(param.equals("광주")) {
+      p = boardService.findBoardList(pageable, "idx", param);
+    }else if(param.equals("전북")) {
+      p = boardService.findBoardList(pageable, "idx", param);
+    }else if(param.equals("전남")) {
+      p = boardService.findBoardList(pageable, "idx", param);
+    }else if(param.equals("제주")) {
+      p = boardService.findBoardList(pageable, "idx", param);
+    }
     int totalPage = p.getTotalPages();
     int nowPage = p.getPageable().getPageNumber()+1;
     int startPage = Math.max(nowPage-4, 1);
