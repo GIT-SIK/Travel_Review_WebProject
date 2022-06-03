@@ -84,6 +84,7 @@ public class BoardController {
     model.addAttribute("nowPage", nowPage);
     model.addAttribute("startPage", startPage);
     model.addAttribute("endPage", endPage);
+    model.addAttribute("param", param);
 
     return "board/board";
   }
