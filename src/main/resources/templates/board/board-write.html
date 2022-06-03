@@ -17,8 +17,40 @@
 	</head>
 
 	<body>
+	<style>
+		.btn-primary{
+			background: #F63543;
+			border: #F63543;
+		}
+	</style>
+
 	<div th:replace="fragments/header.html :: fragment-header"></div>
 		<section class="container write-form-wrapper mt-5" >
+			<div class="input-group mb-3">
+				<select class="custom-select" id="inputGroupSelect02">
+					<option selected>지역을 골라주세요</option>
+					<option value="서울">서울</option>
+					<option value="인천">인천</option>
+					<option value="경기">경기</option>
+					<option value="대전">대전</option>
+					<option value="세종">세종</option>
+					<option value="대구">대구</option>
+					<option value="부산">부산</option>
+					<option value="울산">울산</option>
+					<option value="경북">경북</option>
+					<option value="강원">강원</option>
+					<option value="경남">경남</option>
+					<option value="광주">광주</option>
+					<option value="전북">전북</option>
+					<option value="충북">충북</option>
+					<option value="전남">전남</option>
+					<option value="충남">충남</option>
+					<option value="제주">제주</option>
+				</select>
+				<div class="input-group-append">
+					<label class="input-group-text" for="inputGroupSelect02">목록</label>
+				</div>
+			</div>
 			<!--여기부터 폼 시작-->
 			<form id="board" th:action="@{/community/board/create}" method="post">
         <div class="input-group mb-3">

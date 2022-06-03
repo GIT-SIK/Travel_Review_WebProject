@@ -1,9 +1,24 @@
 .region > ul > a {
   text-decoration: none;
+  font-size: 16pt;
+  font-family: 'Jalnan';
+}
+
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: 1.5rem 1rem;
+  border: 1px solid lavenderblush;
+}
+
+.btn-primary{
+  background: #F63543;
+  border: #F63543;
 }
 
 .region > ul > a:hover {
-  font-weight: bold;
+  font-size: 16.5pt;
+  box-shadow: 5px 5px 5px gray;
 }
 
 .title {
@@ -11,9 +26,15 @@
   font-family: Jalnan;
 }
 
-.board-title:hover {
+.board-title {
+  text-decoration: none;
+  color: cornflowerblue;
   font-weight: bold;
-  background: lightgray;
+  font-family: Pretendard;
+}
+
+.board-title:hover {
+  font-family: Jalnan;
 }
 
 .pagination > ul {
@@ -26,7 +47,7 @@
   display: inline-block;
 }
 
-.pagination > ul > li > .btn{
+.pagination > ul > li > .btn {
   width: 16px;
   padding-right: 22px;
   -webkit-user-select: none;

@@ -8,43 +8,43 @@
   </p>
   <!-- Channel Plugin Scripts -->
   <script>
-    (function() {
+      (function() {
       var w = window;
       if (w.ChannelIO) {
-        return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
-      }
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
       var ch = function() {
-        ch.c(arguments);
-      };
+      ch.c(arguments);
+    };
       ch.q = [];
       ch.c = function(args) {
-        ch.q.push(args);
-      };
+      ch.q.push(args);
+    };
       w.ChannelIO = ch;
       function l() {
-        if (w.ChannelIOInitialized) {
-          return;
-        }
-        w.ChannelIOInitialized = true;
-        var s = document.createElement('script');
-        s.type = 'text/javascript';
-        s.async = true;
-        s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
-        s.charset = 'UTF-8';
-        var x = document.getElementsByTagName('script')[0];
-        x.parentNode.insertBefore(s, x);
-      }
+      if (w.ChannelIOInitialized) {
+      return;
+    }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
       if (document.readyState === 'complete') {
-        l();
-      } else if (window.attachEvent) {
-        window.attachEvent('onload', l);
-      } else {
-        window.addEventListener('DOMContentLoaded', l, false);
-        window.addEventListener('load', l, false);
-      }
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
     })();
-    ChannelIO('boot', {
-      "pluginKey": "c97d3d4f-809a-4483-9e0b-a27a03f4f180"
+      ChannelIO('boot', {
+      "pluginKey": "81acf5c6-0e6a-4c2f-a72f-62a07ba5c615"
     });
   </script>
   <!-- End Channel Plugin -->
