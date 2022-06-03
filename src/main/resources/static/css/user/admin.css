@@ -1,0 +1,83 @@
+.subTitle {
+    margin: 20px 0;
+    font-weight: bold;
+}
+
+.admin {
+    font-family: Pretendard;
+}
+
+.subTitle {
+    margin: 20px 0;
+    font-weight: bold;
+}
+
+.adminTop {
+    display: grid;
+    grid-template-rows: 100px 1fr;
+}
+
+.adminTop span {
+    position: relative;
+    width: 100px;
+    height: 50px;
+    top: 25%;
+    left: 35%;
+    font-size: 28px;
+}
+
+
+/* 미들 메뉴 */
+
+
+.adminMd {
+    display: grid;
+    grid-template-columns: 200px 20px 1fr;
+}
+
+.adminMd ul {
+    font-size: 20px;
+    text-decoration: none;
+    list-style: none;
+}
+
+.adminMd ul li {
+    padding: 10px;
+    text-align: center;
+}
+
+.adminMd ul li:hover {
+    color: #F63543;
+    cursor: pointer;
+
+
+}
+
+/* ************** 관리자 ************** */
+
+
+.indexMg>form>div {
+    margin-bottom: 20px;
+}
+
+.indexSlideMg,
+.indexFestivalMg {
+    font-size: 20px;
+}
+
+.indexSlideMg div,
+.indexFestivalMg div {
+    max-width: 1200px;
+}
+
+
+.indexSlideMg label,
+.indexFestivalMg label {
+    width: 150px;
+    height: 40px
+}
+
+.indexSlideMg input,
+.indexFestivalMg input {
+    width: 600px;
+}

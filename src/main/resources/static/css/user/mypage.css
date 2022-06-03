@@ -1,0 +1,63 @@
+.mypage {
+    font-family: Pretendard;
+}
+
+.subTitle {
+    margin: 20px 0;
+    font-weight: bold;
+}
+
+.mypageTop {
+    display: grid;
+    grid-template-rows: 100px 1fr;
+}
+
+.mypageTop span {
+    position: relative;
+    width: 100px;
+    height: 50px;
+    top: 25%;
+    left: 35%;
+    font-size: 28px;
+}
+
+
+
+/* 미들 메뉴 */
+
+
+.mypageMd {
+    display: grid;
+    grid-template-columns: 200px 20px 1fr;
+}
+
+.mypageMd ul {
+    font-size: 20px;
+    text-decoration: none;
+    list-style: none;
+}
+
+.mypageMd ul li {
+    padding: 10px;
+    text-align: center;
+}
+
+.mypageMd ul li:hover {
+    color: #F63543;
+    cursor: pointer;
+
+
+}
+
+/* 미들 정보 */
+/* ************** 사용자 ************** */
+
+.userInfoSub {
+    font-size: 20px;
+}
+
+.userInfoSub label {
+    width: 150px;
+    height: 40px
+}
+
