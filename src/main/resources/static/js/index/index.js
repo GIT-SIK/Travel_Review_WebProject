@@ -1,65 +1,68 @@
 
 
 $(document).ready(function ($) {
+    /* ********************* 시작 영역 시작 ************************ */
     /* 시작할 때 필요한 부분 */
+    /* 지도 시작 값 지정 */
     var localData = 22;
-
+    /* 17:부산 / 18:충북 / 19:충남 / 20:대구 / 21:대전 / 22:강원 / 23:경북 */
+    /* 24:경기 / 25:경남 / 26:인천 / 27:제주 / 28:전북 / 29:전남 / 30:서울 */
+    /* 31:울산 / 32:광주 */
 
 
     festivalDateAjax();
     festivalLocationClick(localData);
     festivalAjax(localData);
-
+    /* ********************* 시작 영역 끝 ************************ */ 
     /* **************************************** 이미지 슬라이드 *****************************************/
     var $slider = $('.slider'),
-        $firstSlide = $slider.find('li').first() // 첫번째 슬라이드
-            .stop(true).animate({'opacity':1},200); // 첫번째 슬라이드만 보이게 하기
+        $firstSlide = $slider.find('li').first()
+            .stop(true).animate({'opacity':1},200);
 
-    function PrevSlide(){ // 이전버튼 함수
-        stopSlide();startSlide(); //타이머 초기화
-        var $lastSlide = $slider.find('li').last() //마지막 슬라이드
-            .prependTo($slider); //마지막 슬라이드를 맨 앞으로 보내기  
-        $secondSlide = $slider.find('li').eq(1)//두 번째 슬라이드 구하기
-            .stop(true).animate({'opacity':0},400); //밀려난 두 번째 슬라이드는 fadeOut 시키고
-        $firstSlide = $slider.find('li').first() //맨 처음 슬라이드 다시 구하기
-            .stop(true).animate({'opacity':1},400);//새로 들어온 첫 번째 슬라이드는 fadeIn 시키기
+    function PrevSlide(){
+        stopSlide();startSlide();
+        var $lastSlide = $slider.find('li').last()
+            .prependTo($slider);
+        $secondSlide = $slider.find('li').eq(1)
+            .stop(true).animate({'opacity':0},400);
+        $firstSlide = $slider.find('li').first()
+            .stop(true).animate({'opacity':1},400);
     }
 
-    function NextSlide(){ // 다음 버튼 함수
-        stopSlide();startSlide(); //타이머 초기화
-        $firstSlide = $slider.find('li').first() // 첫 번째 슬라이드
-            .appendTo($slider); // 맨 마지막으로 보내기
-        var $lastSlide = $slider.find('li').last() // 맨 마지막으로 보낸 슬라이드
-            .stop(true).animate({'opacity':0},400); // fadeOut시키기
-        $firstSlide = $slider.find('li').first()// 맨 처음 슬라이드
-            .stop(true).animate({'opacity':1},400);// fadeIn 시키기
+    function NextSlide(){
+        stopSlide();startSlide();
+        $firstSlide = $slider.find('li').first()
+            .appendTo($slider);
+        var $lastSlide = $slider.find('li').last()
+            .stop(true).animate({'opacity':0},400);
+        $firstSlide = $slider.find('li').first()
+            .stop(true).animate({'opacity':1},400);
     }
 
-    $('#next').on('click', function(){ //다음버튼 클릭
+    $('#next').on('click', function(){
         NextSlide();
     });
-    $('#prev').on('click', function(){ //이전 버튼 클릭
+    $('#prev').on('click', function(){
         PrevSlide();
     });
 
-    startSlide(); // 자동 슬라이드 시작
+    startSlide();
 
     var theInterval;
 
     function startSlide() {
-        theInterval = setInterval(NextSlide, 5000); //자동 슬라이드 설정
+        theInterval = setInterval(NextSlide, 4500);
     }
 
-    function stopSlide() { //자동 멈추기
+    function stopSlide() {
         clearInterval(theInterval);
     }
 
-    $('.slider').hover(function(){ //마우스 오버시 슬라이드 멈춤
+    $('.slider').hover(function(){
         stopSlide();
     }, function (){
         startSlide();
     });
-
 
 
     /* **************************** 밑 지도 부분 시작 ********************** */
@@ -95,6 +98,7 @@ $(document).ready(function ($) {
 
 /* **************************** 밑 지도 부분 시작 ********************** */
 
+/* 지도에 따른 지역에 사용 될 데이터를 가져오는 Ajax */
 function festivalAjax(index) {
     $.ajax({
         url : "/index/festival",
@@ -105,7 +109,7 @@ function festivalAjax(index) {
         },
     });
 }
-
+/* 지도 핫플영역 월 가져오는 Ajax */
 function festivalDateAjax() {
     $.ajax({
         url : "/index/viewdate",
@@ -116,13 +120,14 @@ function festivalDateAjax() {
     });
 }
 
-
+/* 지도 핫플영역 월 적용 함수 */
 function festivalDate(data) {
     var Festivaltitle = `<div>`+ data.slice(6,7) +`월 핫플 축제! </div>`
     $(".festivalMonthTitle").html(Festivaltitle);
 }
 
 
+/* 지도에 따른 지역에 사용될 데이터 innerhtml 하는 함수 */
 function festivalData(data) {
 
 
