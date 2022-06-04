@@ -51,7 +51,7 @@
   </div>
 </div>
 <br>
-<div class="region" style="float: left; padding-left: 50px; padding-right:50px ">
+<div class="region" style="float: left; padding-left: 20px; padding-right:20px ">
 <ul class="list-group list-group-horizontal">
   <a href="/board/list/main"><li class="list-group-item">전체</li></a>
   <a href="/board/list/대구"><li class="list-group-item">대구</li></a>
@@ -94,6 +94,7 @@
     <thead>
     <tr class="text-center">
       <th>No</th>
+      <th>지역</th>
       <th>제목</th>
       <th>글쓴이</th>
       <th>작성시간</th>
@@ -104,9 +105,10 @@
     <tbody class="table-content" th:each="board : ${boardList}">
     <tr class="text-center">
       <td th:text="${board.idx}"></td>
+      <td th:text="${board.category}" style="margin-left: 100px"></td>
       <td class="text-start ps-5">
         <div class="d-flex align-content-center flex-wrap"
-             style="height: 30px; font-size: 20px;" th:with="idx=${board.idx}">
+             style="height: 30px; font-size: 20px; padding-left: 100px" th:with="idx=${board.idx}">
           <a class="board-title" th:text="${board.title}"
              th:href=@{/board/details/boardView(idx=${board.idx})}></a>&nbsp;
         </div>
@@ -124,6 +126,7 @@
 
   </table>
 </div>
+<button class="btn btn-primary w-35 my-2 write-btn" style="float:right" onclick="location.href='/board/write'"> 후기 작성 </button>
 <br>
 
 <div class="pagination">
@@ -142,7 +145,7 @@
 </div>
 
 </div>
-  <button class="btn btn-primary w-35 my-2 write-btn" style="float:right" onclick="location.href='/board/write'"> 후기 작성 </button>
+
 <div th:replace="fragments/footer.html :: fragment-footer"></div>
 
 </body>
