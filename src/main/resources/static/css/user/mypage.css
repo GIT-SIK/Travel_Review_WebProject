@@ -16,8 +16,8 @@
     position: relative;
     width: 100px;
     height: 50px;
-    top: 25%;
-    left: 35%;
+    top: 10%;
+    left: 11%;
     font-size: 28px;
 }
 
@@ -42,7 +42,13 @@
     text-align: center;
 }
 
-.mypageMd ul li:hover {
+.mypageMenu ul li a{
+    color: black;
+    text-decoration: none;
+    display:block;
+}
+
+.mypageMenu ul li:hover {
     color: #F63543;
     cursor: pointer;
 
@@ -61,3 +67,18 @@
     height: 40px
 }
 
+/* *********** 회원탈퇴 영역 **************** */
+.userDelete div {
+    font-size : 18px;
+    text-align: center;
+    margin : 20px;
+}
+
+.userDelete div a {
+    text-decoration: none;
+    color:black;
+}
+
+.userDelete div a:hover {
+    color: #F63543;
+}
