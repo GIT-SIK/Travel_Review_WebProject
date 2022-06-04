@@ -2,14 +2,17 @@ package com.travel.user;
 
 
 import com.travel.domain.User;
+import com.travel.security.auth.UserDetails;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequiredArgsConstructor
@@ -94,6 +97,19 @@ public class UserController {
     @GetMapping("/user/mypage")
     String mypageMapping(){
         return "user/mypage";
+    }
+
+    @GetMapping("/user/mypage/delete")
+    public String deleteUser(@AuthenticationPrincipal UserDetails userDetails, HttpServletRequest request) {
+        userService.deleteUser(userDetails.getUser());
+
+        // 삭제가 완료할 경우 세션 끊기
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate();
+        }
+
+        return "redirect:/";
     }
     
 }

@@ -31,4 +31,12 @@ public class UserService {
         }
     }
     /* ************************************* 회원가입 끝 ************************************* */
+
+
+    /* ************************* 유저 영역 ******************************** */
+    public void deleteUser(User user) {
+        if (userRepository.findById(user.getId()) != null)
+            userRepository.delete(userRepository.findById(user.getId()));
+    }
+
 }
