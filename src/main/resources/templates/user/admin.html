@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <div th:replace="fragments/head.html :: fragment-head"></div>
     <link rel="stylesheet" type="text/css" th:href="@{/css/user/admin.css}" />
-    <!-- <script th:src="@{/js/user/admin.js}" type="text/javascript"></script> -->
+    <script th:src="@{/js/user/admin.js}" type="text/javascript"></script>
     <title>여긴어때</title>
 </head>
 <body>
 <!-- 페이지 헤더 -->
 <div th:replace="fragments/header.html :: fragment-header"></div>
 
-<div class="admin">
-    <div class="adminTop"> <span> 내 정보 </span> </div>
+<div class="admin container">
+    <div class="adminTop"> <span> 관리자 페이지 </span> </div>
+    <div> <hr> </div>
     <div class="adminMd">
         <div class="adminMenu">
             <ul>
@@ -23,7 +24,7 @@
             </ul>
         </div>
         <div> </div>
-        <div>
+        <div class="adminData">
             <!-- 관리자 영역 -->
             <div class="adminInfo"> 관리자 정보 </div>
             <div class="userMg"  style="display:none;"> 유저 관리 페이지 </div>

@@ -1,15 +1,19 @@
-.mypage {
-    font-family: Pretendard;
-}
 
 .subTitle {
     margin: 20px 0;
     font-weight: bold;
 }
 
-.mypageTop {
+.mypage div hr {
+    margin: 0;
+    background-color: #F63543;
+    border : 3px solid #F63543;
+}
+
+.mypage {
+    font-family: Pretendard;
     display: grid;
-    grid-template-rows: 100px 1fr;
+    grid-template-rows: 80px 30px 1fr;
 }
 
 .mypageTop span {
