@@ -95,7 +95,11 @@ public class UserController {
 
     /* ************************************* 일반유저 ************************************* */
     @GetMapping("/user/mypage")
-    String mypageMapping(){
+    String mypageMapping(@AuthenticationPrincipal UserDetails userDetails, Model model){
+
+        /* 유저 기본 정보 가져옴 */
+        String id = userDetails.getUsername();
+        model.addAttribute("userInfo", userService.infoUser(userDetails));
         return "user/mypage";
     }
 

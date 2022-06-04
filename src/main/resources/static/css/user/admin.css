@@ -3,26 +3,29 @@
     font-weight: bold;
 }
 
-.admin {
-    font-family: Pretendard;
-}
-
 .subTitle {
     margin: 20px 0;
     font-weight: bold;
 }
 
-.adminTop {
+.admin {
+    font-family: Pretendard;
     display: grid;
-    grid-template-rows: 100px 1fr;
+    grid-template-rows: 80px 30px 1fr;
+}
+
+.admin div hr {
+    margin: 0;
+    background-color: #F63543;
+    border : 3px solid #F63543;
 }
 
 .adminTop span {
     position: relative;
-    width: 100px;
+    width: 250px;
     height: 50px;
-    top: 25%;
-    left: 35%;
+    top: 10%;
+    left: 11%;
     font-size: 28px;
 }
 

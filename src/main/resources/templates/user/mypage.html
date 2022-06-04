@@ -6,13 +6,6 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/user/mypage.css}" />
     <script th:src="@{/js/user/mypage.js}" type="text/javascript"></script>
     <title>여긴어때</title>
-    <script>
-        $(document).ready(function ($) {
-
-
-
-        })
-    </script>
 </head>
 <body>
 <!-- 페이지 헤더 -->
@@ -20,6 +13,7 @@
 
 <div class="mypage container">
     <div class="mypageTop"> <span> 내 정보 </span> </div>
+    <div>  <hr> </div>
     <div class="mypageMd">
         <div class="mypageMenu">
             <ul>
@@ -35,7 +29,7 @@
                 <form action="#">
                     <div class="userInfoSub">
                         <div>
-                            <label>아이디</label> <span id="userId"> </span>
+                            <label>아이디</label> <span id="userId" th:text="${userInfo.id}"> </span>
                         </div>
                         <div>
                             <label>비밀번호</label> <input type="text" value="" />
@@ -44,10 +38,10 @@
                             <label>비밀번호 재입력</label> <input type="text" value="" />
                         </div>
                         <div>
-                            <label>전화번호</label> <input type="text" value="" />
+                            <label>전화번호</label> <span id="userTel" th:text="${userInfo.tel}"> </span>
                         </div>
                         <div>
-                            <label>이메일</label> <input type="text" value="" />
+                            <label>이메일</label> <span id="userEmail"  th:text="${userInfo.email}"> </span>
                         </div>
                     </div>
 

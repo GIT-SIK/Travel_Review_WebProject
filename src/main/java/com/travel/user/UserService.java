@@ -2,6 +2,7 @@ package com.travel.user;
 
 
 import com.travel.domain.User;
+import com.travel.security.auth.UserDetails;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -34,9 +35,17 @@ public class UserService {
 
 
     /* ************************* 유저 영역 ******************************** */
+
+    /* 내정보 유저 탈퇴함 */
     public void deleteUser(User user) {
         if (userRepository.findById(user.getId()) != null)
             userRepository.delete(userRepository.findById(user.getId()));
+    }
+
+
+    /* 내정보 유저 정보 가져옴 */
+    public User infoUser(UserDetails userDetails) {
+        return userRepository.findById(userDetails.getUser().getId());
     }
 
 }
