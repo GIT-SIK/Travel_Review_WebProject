@@ -23,13 +23,15 @@ public class FestivalController {
         LocalDate today = LocalDate.now(ZoneId.of("Asia/Seoul"));
         List<Festival> festivalList = festivalService.festivalData(today);
         model.addAttribute("festivalList", festivalList);
-        System.out.println("festivalList = " + festivalList);
         return "festival/festival";
     }
 
-//    @PostMapping("/monthSelect")
-//    @ResponseBody
-//    public List<Festival> changeMonth(@RequestParam("month") int month) {
-//
-//    }
+    @PostMapping("/changeMonth")
+    @ResponseBody
+    public List<Festival> changeMonth(@RequestParam("month") int month, Model model) {
+        LocalDate selectMonth = LocalDate.of(2022, month, 1);
+        List<Festival> festivalList = festivalService.festivalData(selectMonth);
+        model.addAttribute("festivalList", festivalList);
+        return festivalList;
+    }
 }

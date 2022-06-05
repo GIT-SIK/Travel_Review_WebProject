@@ -5,43 +5,8 @@
     <title>축제정보</title>
     <div th:replace="fragments/head.html :: fragment-head"></div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/festival/festival.css}" />
 </head>
-<style type="text/css">
-    @font-face {
-        font-family: 'yg-jalnan';
-        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
-        font-weight: normal;
-        font-style: normal;
-    }
-    #title {
-        text-align: right;
-        font-family: yg-jalnan;
-    }
-    #month {
-        text-align: center;
-    }
-    .localList {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        text-align: center;
-        font-family: yg-jalnan;
-    }
-    .localBtn {
-        border: none;
-        background: transparent;
-        height: 100%;
-        font-family: yg-jalnan;
-        font-size : 17px;
-    }
-    .localList li.selected{
-        transition-duration: 0.5s;
-        background: #F63543;
-    }
-    .localList li.selected button {
-        color: white;
-    }
-</style>
 <body>
     <div th:replace="fragments/header.html :: fragment-header"></div>
 
@@ -72,8 +37,8 @@
 
         <div class="row">
             <div class="col-2">
-<!--            <div>지역 리스트</div>-->
                 <ul class="localList">
+<!--                    로컬리스트에 아이디를 주고 아이디 눌렀을때 그거에 해당되는 데이터만 display:none 해제 나머지는 display:none 설정 이런식?-->
                     <li class="selected" value="0"><button class="localBtn">전체</button></li>
                     <li class="" value="1"><button class="localBtn">서울</button></li>
                     <li class="" value="2"><button class="localBtn">경기</button></li>
@@ -94,51 +59,25 @@
                 </ul>
             </div>
             <div class="col-10">
-
+                <ul class="festivalList">
+                    <li class="festivalData" th:each="festival : ${festivalList}">
+                        <div class="festivalDetail">
+                            <span>축제명 : </span>
+                            <span th:text="${festival.name}"></span> <br>
+                            <span>기간 : </span>
+                            <span th:text="${#strings.substring(festival.startDate, 0, 10)}"></span>
+                            <span> ~ </span>
+                            <span th:text="${#strings.substring(festival.endDate, 0, 10)}"></span> <br>
+                            <span>주소 : </span>
+                            <span th:text="${#strings.equals(festival.roadAddress, '')} ? ${festival.lotNumAddress} : ${festival.roadAddress}"></span>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
 
     <div th:replace="fragments/footer.html :: fragment-footer"></div>
-
-    <script type="text/javascript">
-
-        // title, option 현재 달 선택
-        $(document).ready(function () {
-            let today = new Date();
-            let month = today.getMonth() + 1;
-            $('#month option:eq(' + month +')').attr("selected", "selected");
-            $('#month2').text(month);
-        });
-
-        // 초기 데이터 불러온거 표시
-
-        // 사용자가 달 변경시 표시 변경 & 데이터 변경
-        $('#month').change(function(){
-            var change_month = $(this).val();
-            $("#month option").removeAttr("selected", "selected");
-            $('#month option:eq(' + change_month +')').attr("selected", "selected");
-            $('#month2').text(change_month);
-            // 해당 월에 맞는 데이터 불러오는 로직 (ajax 해야할듯)
-            $.ajax({
-                url : "festival/changeMonth",
-                data : {month : change_month},
-                type : 'post',
-                success : function(data){
-                    console.log("success");
-                }
-            });
-        });
-
-        // 지역 선택시
-        $(".localList li").on("click", function(){
-            // 클릭하는 요소의 index 번호를 가져옴
-            const num = $(".localList li").index($(this));
-            // 기존에 적용되어 있는 selected class 삭제
-            $(".localList li").removeClass("selected");
-            // 클릭한 요소에 selected class 추가
-            $('.localList li:eq(' + num + ')').addClass("selected");
-        });
-    </script>
+    <script th:src="@{/js/festival/festival.js}"></script>
 </body>
 </html>
