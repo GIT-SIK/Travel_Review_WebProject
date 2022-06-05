@@ -98,15 +98,21 @@ public class BoardService {
   }
 
 
-  /* 내 정보 : 사용자 아이디로 보드 반환*/
-  public Page<Board> findBoardById( String id, Pageable pageable) {
+  /* 내 정보 : ROLE로 파악하여 관리자 전용 보드, 유저 전용 보드 반환*/
+  public Page<Board> findBoardById( String id, String role, Pageable pageable) {
     String column = "idx";
     Sort sort = Sort.by(column).descending();
     pageable = PageRequest.of(pageable.getPageNumber() <= 0 ? 0 : pageable.getPageNumber() - 1,
             10,
             sort);
-    return boardRepository.findByUserId(id, pageable);
+    if(role.equals("ROLE_ADMIN")) {
+      return boardRepository.findAllBoard(pageable);
+    } else {
+      return boardRepository.findByUserId(id, pageable);
+    }
   }
+
+
 
   /* 따봉 올리기 */
   @Transactional

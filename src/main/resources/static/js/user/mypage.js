@@ -1,14 +1,25 @@
 $(function() {
 
+    /* 페이지 변경 시 주소창에 page= 가 존재할 경우 그 창 고정 */
+    if($(location).attr('href').indexOf('?page=') >= 0) {
+        for(let i=0; i<2 ;i++){
+            $(".mypageData > div").eq(i).css("display", "none");
+        }
+        $(".mypageData > div").eq(1).css("display", "block");
+    };
+
+    /* 메뉴 버튼 누를 때 마다 none , block 값 설정 */
     $(".mypageMenu ul li").click(function(){
 
-        for(let i=0; i<3 ;i++){
+        if($(this).index() < 2){
+
+        for(let i=0; i<2 ;i++){
             $(".mypageData > div").eq(i).css("display", "none");
         }
         $(".mypageData > div").eq($(this).index()).css("display", "block");
 
+        }
 
-        console.log($(this).index());
     });
 
     var pw = document.getElementById("userPassword");
@@ -43,7 +54,30 @@ $(function() {
 
 })
 
+function deleteUser(){
 
+    Swal.fire({
+        icon:'warning',
+        html:'회원탈퇴를 하시겠습니까?',
+        showConfirmButton: true,
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        confirmButtonText : '탈퇴',
+        cancelButtonColor: '#F63543',
+        cancelButtonText : '취소'
+    }).then(function(result){
+        if(result.value) {
+            $.ajax({
+                type: "GET",
+                url: "/user/mypage/delete",
+                success : function(){
+                    location.href = '/';
+                }
+            });
+        }
+    })
+
+}
 
 
 function deleteBoard(idx, userId) {
