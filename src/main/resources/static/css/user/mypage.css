@@ -72,6 +72,10 @@
 }
 
 /* *********** 회원탈퇴 영역 **************** */
+
+.userDelete {
+    text-align: center;
+}
 .userDelete div {
     font-size : 18px;
     text-align: center;

@@ -115,5 +115,11 @@ public class UserController {
 
         return "redirect:/";
     }
+
+    @PostMapping("/user/mypage/update")
+    public String updateUser(@AuthenticationPrincipal UserDetails userDetails, @RequestParam("password") String password) {
+        int updateCheck = userService.updateUser(userDetails.getUser().getId() ,bCryptPasswordEncoder.encode(password));
+        return "redirect:/user/mypage";
+    }
     
 }
