@@ -41,6 +41,21 @@
     .localList li.selected button {
         color: white;
     }
+    .festivalData {
+        float: left;
+    }
+    .festivalList {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-align: center;
+        font-family: yg-jalnan;
+    }
+    .festivalDetail {
+        border: 0.5px solid black;
+        padding: 10px;
+        margin: 10px;
+    }
 </style>
 <body>
     <div th:replace="fragments/header.html :: fragment-header"></div>
@@ -72,8 +87,8 @@
 
         <div class="row">
             <div class="col-2">
-<!--            <div>지역 리스트</div>-->
                 <ul class="localList">
+<!--                    로컬리스트에 아이디를 주고 아이디 눌렀을때 그거에 해당되는 데이터만 display:none 해제 나머지는 display:none 설정 이런식?-->
                     <li class="selected" value="0"><button class="localBtn">전체</button></li>
                     <li class="" value="1"><button class="localBtn">서울</button></li>
                     <li class="" value="2"><button class="localBtn">경기</button></li>
@@ -94,12 +109,18 @@
                 </ul>
             </div>
             <div class="col-10">
-                <ul>
+                <ul class="festivalList">
                     <li class="festivalData" th:each="festival : ${festivalList}">
-                        <div th:text="${festival.name}"></div>
-                        <div th:text="${festival.startDate}"></div>
-                        <div th:text="${festival.endDate}"></div>
-                        <div th:text="${festival.roadAddress}"></div>
+                        <div class="festivalDetail">
+                            <span>축제명 : </span>
+                            <span th:text="${festival.name}"></span> <br>
+                            <span>기간 : </span>
+                            <span th:text="${#strings.substring(festival.startDate, 0, 10)}"></span>
+                            <span> ~ </span>
+                            <span th:text="${#strings.substring(festival.endDate, 0, 10)}"></span> <br>
+                            <span>주소 : </span>
+                            <span th:text="${#strings.equals(festival.roadAddress, '')} ? ${festival.lotNumAddress} : ${festival.roadAddress}"></span>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -126,13 +147,37 @@
             $("#month option").removeAttr("selected", "selected");
             $('#month option:eq(' + change_month +')').attr("selected", "selected");
             $('#month2').text(change_month);
-            // 해당 월에 맞는 데이터 불러오는 로직 (ajax 해야할듯)
+            $('.festivalData').remove();
             $.ajax({
-                url : "festival/changeMonth",
+                url : "/festival/changeMonth",
                 data : {month : change_month},
                 type : 'post',
-                success : function(data){
-                    console.log("success");
+                success : function(result){
+                    console.log(result);
+                    for (var i = 0; i < result.length; i++) {
+                        addRow =
+                            '<li class="festivalData">' +
+                                '<div class="festivalDetail">' +
+                                    '<span>' + '축제명 : ' + '</span>' +
+                                    '<span>' + result[i].name + '</span>' + '<br>' +
+                                    '<span>' + '기간 : ' + '</span>' +
+                                    '<span>' + result[i].startDate.substring(0, 10) + '</span>' +
+                                    '<span>' + ' ~ ' + '</span>' +
+                                    '<span>' + result[i].endDate.substring(0, 10) + '</span>' + '<br>' +
+                                    '<span>' + '주소 : ' + '</span>'
+                        if (result[i].roadAddress === "") {
+                            addRow +=
+                                '<span>' + result[i].lotNumAddress + '</span>' +
+                                '</div>' +
+                                '</li>';
+                        } else {
+                            addRow +=
+                                '<span>' + result[i].roadAddress + '</span>' +
+                                '</div>' +
+                                '</li>';
+                        }
+                        $(".festivalList").append(addRow);
+                    }
                 }
             });
         });
@@ -145,6 +190,7 @@
             $(".localList li").removeClass("selected");
             // 클릭한 요소에 selected class 추가
             $('.localList li:eq(' + num + ')').addClass("selected");
+            // 일단 생각이 안나서 ajax로 changemonth로 값 가져와서 출력만 변경하면 될듯?
         });
     </script>
 </body>

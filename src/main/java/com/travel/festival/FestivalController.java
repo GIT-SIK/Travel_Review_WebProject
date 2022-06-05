@@ -27,9 +27,13 @@ public class FestivalController {
         return "festival/festival";
     }
 
-//    @PostMapping("/monthSelect")
-//    @ResponseBody
-//    public List<Festival> changeMonth(@RequestParam("month") int month) {
-//
-//    }
+    @PostMapping("/changeMonth")
+    @ResponseBody
+    public List<Festival> changeMonth(@RequestParam("month") int month, Model model) {
+        LocalDate selectMonth = LocalDate.of(2022, month, 1);
+        List<Festival> festivalList = festivalService.festivalData(selectMonth);
+        model.addAttribute("festivalList", festivalList);
+        System.out.println("festivalList = " + festivalList);
+        return festivalList;
+    }
 }
