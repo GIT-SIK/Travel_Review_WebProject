@@ -24,8 +24,13 @@ public interface BoardRepository extends JpaRepository<Board, Integer> {
   Page<Board> findByCategory(@Param("category") String category, Pageable pageable);
 
 
-  /* 내 정보 / 관리자에서 사용할 쿼리문 */
+  /* 유저의 내정보 작성된 게시판 쿼리문 */
   @Query("SELECT a FROM Board a where a.userId = :userId ORDER BY a.idx")
   Page<Board> findByUserId(@Param("userId") String id, Pageable pageable);
+
+
+  /* 관리자의 내정보 작성된 전체게시판 쿼리문 */
+  @Query("SELECT a FROM Board a ORDER BY a.idx")
+  Page<Board> findAllBoard(Pageable pageable);
 
 }

@@ -20,7 +20,7 @@
             <ul>
                 <li id="btMyInfo">내 정보 변경 </li>
                 <li id="btMyBoard"> 내 게시물 </li>
-                <li id="btUserDelete"> 회원 탈퇴 </li>
+                <li id="btUserDelete" onclick="javascript:deleteUser()"> 회원 탈퇴 </li>
             </ul>
         </div>
         <div> </div>
@@ -70,7 +70,7 @@
                         <tr class="text-center">
                             <td th:text="${board.idx}"></td>
                             <td th:text="${board.category}" style="margin-left: 100px"></td>
-                            <td class="text-start ps-5">
+                            <td class="text-start">
                                 <div class="d-flex align-content-center flex-wrap"
                                      style="height: 30px; font-size: 20px; padding-left: 100px" th:with="idx=${board.idx}">
                                     <a class="board-title" th:text="${board.title}"
@@ -93,14 +93,14 @@
                 <div class="pagination">
                     <ul>
                         <li th:if="${nowPage != 1}">
-                            <a class="btn" th:href="@{/board/list/}+${checkParam}+'?page='+${nowPage-1}"><</a>
+                            <a class="btn" th:href="@{/user/mypage/}+'?page='+${nowPage-1}"><</a>
                         </li>
                         <li th:each="page:${#numbers.sequence(startPage, endPage)}">
-                            <a class="btn" th:if="${page != nowPage}" th:href="@{/board/list/}+${checkParam}+'?page='+${page}" th:text="${page}"></a>
+                            <a class="btn" th:if="${page != nowPage}" th:href="@{/user/mypage/}+'?page='+${page}" th:text="${page}"></a>
                             <strong class="btn" th:if="${page == nowPage}" th:text="${page}"></strong>
                         </li>
                         <li th:if="${nowPage < totalPage}">
-                            <a class="btn" th:href="@{/board/list/}+${checkParam}+'?page='+${nowPage+1}">></a>
+                            <a class="btn" th:href="@{/user/mypage/}+'?page='+${nowPage+1}">></a>
                         </li>
                     </ul>
                 </div>
@@ -109,14 +109,6 @@
 
             <!-- 유저 게시물 영역  끝-->
 
-            <!-- 유저 탈퇴 영역 -->
-            </div>
-            <div class="userDelete"  style="display:none;">
-
-                <div> 회원탈퇴를 하시겠습니까? </div>
-                <div> <a th:href="@{/user/mypage/delete}"> 회원 탈퇴 </a> </div>
-
-            </div>
 
         </div>
     </div>

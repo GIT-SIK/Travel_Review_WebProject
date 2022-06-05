@@ -92,27 +92,15 @@ public class UserController {
 
     /* ************************************* 로그인 끝************************************* */
 
-    /* &&&&******************************** 내 정보 영역  ********************************&&&& */
+    /* &&&&******************************** 내 정보 / 관리자 영역  ********************************&&&& */
 
 
-    /* ************************************* 관리자 ************************************* */
+    /* *************************************  데이터 처리 ************************************* */
+    @GetMapping(value = {"/user/admin", "/user/mypage"})
+    public String adminDataMapping(@AuthenticationPrincipal UserDetails userDetails, Model model, Pageable pageable) {
 
-    @GetMapping("/user/admin")
-    String adminMapping(){
-        return "user/admin";
-    }
-
-
-    /* ************************************* 일반유저 ************************************* */
-    @GetMapping("/user/mypage")
-    String mypageMapping(@AuthenticationPrincipal UserDetails userDetails, Model model, Pageable pageable){
-
-        /* 유저 기본 정보 리턴 */
-        String id = userDetails.getUsername();
-        model.addAttribute("userInfo", userService.infoUser(userDetails));
-
-        /* 유저 게시판 정보 리턴 */
-        Page<Board> p = boardService.findBoardById(userDetails.getUser().getId() ,pageable);
+        /* ** 공통 영역 ** */
+        Page<Board> p = boardDataSubMapping(userDetails.getUser().getId(), userDetails.getUser().getRole(), pageable);
         int totalPage = p.getTotalPages();
         int nowPage = p.getPageable().getPageNumber()+1;
         int startPage = Math.max(nowPage-4, 1);
@@ -125,9 +113,29 @@ public class UserController {
         model.addAttribute("endPage", endPage);
 
 
-        return "user/mypage";
+        /* ** 관리자 영역 ** */
+        if(userDetails.getUser().getRole().equals("ROLE_ADMIN")){
+
+            return "user/admin";
+        } else {
+
+        /* ** 유저 영역 ** */
+
+            /* 유저 정보 리턴 */
+            String id = userDetails.getUsername();
+            model.addAttribute("userInfo", userService.infoUser(userDetails));
+            return "user/mypage";
+        }
+
     }
 
+
+    public Page<Board> boardDataSubMapping(String id, String role, Pageable pageable){
+        Page<Board> p = boardService.findBoardById(id ,role ,pageable);
+        return p;
+    }
+
+    /* 유저 탈퇴 */
     @GetMapping("/user/mypage/delete")
     public String deleteUser(@AuthenticationPrincipal UserDetails userDetails, HttpServletRequest request) {
         userService.deleteUser(userDetails.getUser());
@@ -141,6 +149,7 @@ public class UserController {
         return "redirect:/";
     }
 
+    /* 유저 업데이트 / 비밀번호만 연결 */
     @PostMapping("/user/mypage/update")
     public String updateUser(@AuthenticationPrincipal UserDetails userDetails, @RequestParam("password") String password) {
         int updateCheck = userService.updateUser(userDetails.getUser().getId() ,bCryptPasswordEncoder.encode(password));

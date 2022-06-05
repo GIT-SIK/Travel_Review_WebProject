@@ -125,19 +125,22 @@ public class BoardController {
     return true;
   }
 
+  /* 유저 마이페이지 / 관리자 페이지 에서 게시물 삭제 */
   @PostMapping("/userDelete")
   @ResponseBody
   public boolean userCommunityDeleteMapping(@AuthenticationPrincipal UserDetails userDetails, @RequestParam("idx") String idx, @RequestParam("userId") String id) {
 
+    System.out.println(id);
     boolean check = false;
     try {
-      if (userDetails.getUser().getId().equals(id)) {
+      if (userDetails.getUser().getId().equals(id) || userDetails.getUser().getRole().equals("ROLE_ADMIN")) {
         int idxTemp = Integer.parseInt(idx);
         boardService.deleteBoard(idxTemp);
         check = true;
       }
     } catch (Exception e){
       System.out.println("삭제도중 오류발생");
+
     }
 
     return check;
