@@ -47,7 +47,7 @@ window.writeSubmit = function () {
         icon: 'success',
         text: '해당 글이 등록되었습니다'
       }).then(() => {
-        location.href = '/board/list';//전체게시판으로 돌아가기
+        location.href = '/board/list/main';//전체게시판으로 돌아가기
       });
     },
     error: function (request, status, error) {},
