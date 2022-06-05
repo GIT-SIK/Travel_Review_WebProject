@@ -23,7 +23,6 @@ public class FestivalController {
         LocalDate today = LocalDate.now(ZoneId.of("Asia/Seoul"));
         List<Festival> festivalList = festivalService.festivalData(today);
         model.addAttribute("festivalList", festivalList);
-        System.out.println("festivalList = " + festivalList);
         return "festival/festival";
     }
 
@@ -33,7 +32,6 @@ public class FestivalController {
         LocalDate selectMonth = LocalDate.of(2022, month, 1);
         List<Festival> festivalList = festivalService.festivalData(selectMonth);
         model.addAttribute("festivalList", festivalList);
-        System.out.println("festivalList = " + festivalList);
         return festivalList;
     }
 }
