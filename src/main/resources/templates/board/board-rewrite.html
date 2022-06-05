@@ -21,6 +21,31 @@
 <section class="container write-form-wrapper mt-5" >
 	<form method="post" th:action="@{/board/rewrite}" th:object="${board}" onsubmit="return rewriteSubmit()">
 		<div class="input-group mb-3">
+			<select class="custom-select" id="inputGroupSelect02" th:field="*{category}">
+				<option selected th:value="''" th:text="'지역을 골라주세요'"></option>
+				<option th:value="'서울'" th:text="'서울'"></option>
+				<option th:value="'인천'" th:text="'인천'">인천</option>
+				<option th:value="'경기'" th:text="'인천'">경기</option>
+				<option th:value="'대전'" th:text="'인천'">대전</option>
+				<option th:value="'세종'" th:text="'인천'">세종</option>
+				<option th:value="'대구'" th:text="'인천'">대구</option>
+				<option th:value="'부산'" th:text="'인천'">부산</option>
+				<option th:value="'울산'" th:text="'인천'">울산</option>
+				<option th:value="'경북'" th:text="'인천'">경북</option>
+				<option th:value="'강원'" th:text="'인천'">강원</option>
+				<option th:value="'경남'" th:text="'인천'">경남</option>
+				<option th:value="'광주'" th:text="'인천'">광주</option>
+				<option th:value="'전북'" th:text="'인천'">전북</option>
+				<option th:value="'충북'" th:text="'인천'">충북</option>
+				<option th:value="'전남'" th:text="'인천'">전남</option>
+				<option th:value="'충남'" th:text="'인천'">충남</option>
+				<option th:value="'제주'" th:text="'인천'">제주</option>
+			</select>
+			<div class="input-group-append">
+				<label class="input-group-text" for="inputGroupSelect02">목록</label>
+			</div>
+		</div>
+		<div class="input-group mb-3">
 			<input
 					type="text"
 					class="form-control"

@@ -113,7 +113,7 @@ public class BoardController {
   @PostMapping("/rewrite")
   public String communityPostReWriteMapping(@ModelAttribute("board") Board board) {
     boardService.updateBoard(board);
-    String redirect = "redirect:/board/list";
+    String redirect = "redirect:/board/list/main";
     return redirect;
   }
 

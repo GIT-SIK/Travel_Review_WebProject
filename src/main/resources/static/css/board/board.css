@@ -2,24 +2,41 @@
   text-decoration: none;
   font-size: 16pt;
   font-family: 'Jalnan';
+  border-radius: 5px;
 }
 
 .list-group-item {
   position: relative;
   display: block;
-  padding: 1.5rem 1rem;
+  padding: 1rem 1rem;
   border: 1px solid lavenderblush;
 }
 
 .btn-primary{
   background: #F63543;
   border: #F63543;
+  font-size: 14pt;
+}
+
+.btn-primary:hover{
+  background: #F63543;
+  border: #F63543;
+  font-weight: bold;
+}
+
+.btn-primary:active{
+  transform: translateY(4px);
 }
 
 .region > ul > a:hover {
-  font-size: 16.5pt;
-  box-shadow: 5px 5px 5px gray;
+  border: 1px solid gray;
 }
+
+.region > ul > a:active {
+  transform: translateY(4px);
+}
+
+
 
 .title {
   font-weight: bold;
