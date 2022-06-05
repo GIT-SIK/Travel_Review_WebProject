@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <div th:replace="fragments/head.html :: fragment-head"></div>
     <link rel="stylesheet" type="text/css" th:href="@{/css/user/mypage.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/board/board.css}" />
     <script th:src="@{/js/user/mypage.js}" type="text/javascript"></script>
     <title>여긴어때</title>
 </head>
@@ -48,7 +49,68 @@
                     <input type="submit" id="btUpdateUser" value="수정">
                 </form>
             </div>
-            <div class="userBoard"  style="display:none;"> 유저 게시물 페이지</div>
+
+            <!-- 유저 게시물 영역 -->
+            <div class="userBoard"  style="display:none;">
+                <div class="table-responsive" style="padding-left: 20px">
+                    <table class="table table-hover" style="text-align: center">
+                        <thead>
+                        <tr class="text-center">
+                            <th>No</th>
+                            <th>지역</th>
+                            <th>제목</th>
+                            <th>작성시간</th>
+                            <th>조회수</th>
+                            <th>추천수</th>
+                            <th>관리</th>
+                        </tr>
+                        </thead>
+
+                        <tbody class="table-content" th:each="board : ${boardList}">
+                        <tr class="text-center">
+                            <td th:text="${board.idx}"></td>
+                            <td th:text="${board.category}" style="margin-left: 100px"></td>
+                            <td class="text-start ps-5">
+                                <div class="d-flex align-content-center flex-wrap"
+                                     style="height: 30px; font-size: 20px; padding-left: 100px" th:with="idx=${board.idx}">
+                                    <a class="board-title" th:text="${board.title}"
+                                       th:href=@{/board/details/boardView(idx=${board.idx})}></a>&nbsp;
+                                </div>
+                            </td>
+                            <td style="font-size: 17px" th:text="${board.time}"></td>
+                            <td style="font-size: 17px;" th:text="${board.view}"></td>
+                            <td style="font-size: 17px;" th:text="${board.recommend}"></td>
+                            <!-- <td> <input type="button" id="userBoardDelete" th:onclick="|location.href='@{/board/userDelete(idx=${board.idx}, userId=${board.userId})}'|" value="삭제"> </td> -->
+                             <td> <input type="button" th:onclick="javascript:deleteBoard([[${board.idx}]],[[${board.userId}]])" value="삭제"/> </td>
+                        </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+                <button class="btn btn-primary w-35 my-2 write-btn" style="float:right" onclick="location.href='/board/write'"> 후기 작성 </button>
+                <br>
+
+                <div class="pagination">
+                    <ul>
+                        <li th:if="${nowPage != 1}">
+                            <a class="btn" th:href="@{/board/list/}+${checkParam}+'?page='+${nowPage-1}"><</a>
+                        </li>
+                        <li th:each="page:${#numbers.sequence(startPage, endPage)}">
+                            <a class="btn" th:if="${page != nowPage}" th:href="@{/board/list/}+${checkParam}+'?page='+${page}" th:text="${page}"></a>
+                            <strong class="btn" th:if="${page == nowPage}" th:text="${page}"></strong>
+                        </li>
+                        <li th:if="${nowPage < totalPage}">
+                            <a class="btn" th:href="@{/board/list/}+${checkParam}+'?page='+${nowPage+1}">></a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- 유저 게시물 영역  끝-->
+
+            <!-- 유저 탈퇴 영역 -->
+            </div>
             <div class="userDelete"  style="display:none;">
 
                 <div> 회원탈퇴를 하시겠습니까? </div>

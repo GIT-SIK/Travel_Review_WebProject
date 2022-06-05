@@ -125,6 +125,24 @@ public class BoardController {
     return true;
   }
 
+  @PostMapping("/userDelete")
+  @ResponseBody
+  public boolean userCommunityDeleteMapping(@AuthenticationPrincipal UserDetails userDetails, @RequestParam("idx") String idx, @RequestParam("userId") String id) {
+
+    boolean check = false;
+    try {
+      if (userDetails.getUser().getId().equals(id)) {
+        int idxTemp = Integer.parseInt(idx);
+        boardService.deleteBoard(idxTemp);
+        check = true;
+      }
+    } catch (Exception e){
+      System.out.println("삭제도중 오류발생");
+    }
+
+    return check;
+  }
+
   //게시판 기본 조회, 추천하기
   @GetMapping("/details/{param}")
   public String boardDetails(@RequestParam(value = "idx", defaultValue = "0") Integer idx, @PathVariable String param, Model model, HttpServletRequest request, HttpServletResponse response) {
