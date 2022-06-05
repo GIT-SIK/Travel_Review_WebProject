@@ -129,8 +129,6 @@ public class BoardController {
   @PostMapping("/userDelete")
   @ResponseBody
   public boolean userCommunityDeleteMapping(@AuthenticationPrincipal UserDetails userDetails, @RequestParam("idx") String idx, @RequestParam("userId") String id) {
-
-    System.out.println(id);
     boolean check = false;
     try {
       if (userDetails.getUser().getId().equals(id) || userDetails.getUser().getRole().equals("ROLE_ADMIN")) {

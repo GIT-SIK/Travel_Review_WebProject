@@ -105,7 +105,6 @@ public class BoardService {
     pageable = PageRequest.of(pageable.getPageNumber() <= 0 ? 0 : pageable.getPageNumber() - 1,
             10,
             sort);
-    System.out.println(role);
     if(role.equals("ROLE_ADMIN")) {
       return boardRepository.findAllBoard(pageable);
     } else {

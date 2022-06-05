@@ -122,7 +122,6 @@ public class UserController {
         /* ** 유저 영역 ** */
 
             /* 유저 정보 리턴 */
-            String id = userDetails.getUsername();
             model.addAttribute("userInfo", userService.infoUser(userDetails));
             return "user/mypage";
         }
@@ -152,7 +151,7 @@ public class UserController {
     /* 유저 업데이트 / 비밀번호만 연결 */
     @PostMapping("/user/mypage/update")
     public String updateUser(@AuthenticationPrincipal UserDetails userDetails, @RequestParam("password") String password) {
-        int updateCheck = userService.updateUser(userDetails.getUser().getId() ,bCryptPasswordEncoder.encode(password));
+        userService.updateUser(userDetails.getUser().getId() ,bCryptPasswordEncoder.encode(password));
         return "redirect:/user/mypage";
     }
     

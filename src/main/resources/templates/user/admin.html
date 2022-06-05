@@ -59,7 +59,6 @@
                                 <td style="font-size: 17px" th:text="${board.time}"></td>
                                 <td style="font-size: 17px;" th:text="${board.view}"></td>
                                 <td style="font-size: 17px;" th:text="${board.recommend}"></td>
-                                <!-- <td> <input type="button" id="userBoardDelete" th:onclick="|location.href='@{/board/userDelete(idx=${board.idx}, userId=${board.userId})}'|" value="삭제"> </td> -->
                                 <td> <input type="button" th:onclick="javascript:deleteBoard([[${board.idx}]],[[${board.userId}]])" value="삭제"/> </td>
                             </tr>
                             </tbody>
