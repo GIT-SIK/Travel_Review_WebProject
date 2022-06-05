@@ -26,16 +26,16 @@
         <div class="mypageData">
             <!-- 유저 영역 -->
             <div class="userInfo">
-                <form action="#">
+                <form method="post" th:action="@{/user/mypage/update}">
                     <div class="userInfoSub">
                         <div>
                             <label>아이디</label> <span id="userId" th:text="${userInfo.id}"> </span>
                         </div>
                         <div>
-                            <label>비밀번호</label> <input type="text" value="" />
+                            <label>비밀번호</label> <input type="password" th:name="password" id="userPassword" placeholder="변경할 비밀번호를 입력해주세요." />
                         </div>
                         <div>
-                            <label>비밀번호 재입력</label> <input type="text" value="" />
+                            <label>비밀번호 재입력</label> <input type="password" id="userPasswordCheck" placeholder="변경할 비밀번호를 재입력해주세요." />
                         </div>
                         <div>
                             <label>전화번호</label> <span id="userTel" th:text="${userInfo.tel}"> </span>
@@ -45,11 +45,11 @@
                         </div>
                     </div>
 
-                    <input type="submit" value="수정">
+                    <input type="submit" id="btUpdateUser" value="수정">
                 </form>
             </div>
             <div class="userBoard"  style="display:none;"> 유저 게시물 페이지</div>
-            <div class="userDelete"  style="display:none; text-align: center;">
+            <div class="userDelete"  style="display:none;">
 
                 <div> 회원탈퇴를 하시겠습니까? </div>
                 <div> <a th:href="@{/user/mypage/delete}"> 회원 탈퇴 </a> </div>

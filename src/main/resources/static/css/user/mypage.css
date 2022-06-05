@@ -66,12 +66,20 @@
     font-size: 20px;
 }
 
+.userInfoSub input {
+    font-size: 18px;
+}
+
 .userInfoSub label {
     width: 150px;
     height: 40px
 }
 
 /* *********** 회원탈퇴 영역 **************** */
+
+.userDelete {
+    text-align: center;
+}
 .userDelete div {
     font-size : 18px;
     text-align: center;

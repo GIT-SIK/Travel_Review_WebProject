@@ -48,4 +48,11 @@ public class UserService {
         return userRepository.findById(userDetails.getUser().getId());
     }
 
+
+    /* 내정보 비밀번호 변경 */
+    public int updateUser(String id, String password) {
+        int updateCheck = userRepository.updateUser(id, password);
+        System.out.println(updateCheck);
+        return updateCheck;
+    }
 }
