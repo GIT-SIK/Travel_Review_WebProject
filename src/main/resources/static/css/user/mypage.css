@@ -66,6 +66,10 @@
     font-size: 20px;
 }
 
+.userInfoSub input {
+    font-size: 18px;
+}
+
 .userInfoSub label {
     width: 150px;
     height: 40px
