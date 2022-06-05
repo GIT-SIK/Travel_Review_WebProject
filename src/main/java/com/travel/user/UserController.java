@@ -1,10 +1,14 @@
 package com.travel.user;
 
 
+import com.travel.board.BoardService;
+import com.travel.domain.Board;
 import com.travel.domain.User;
 import com.travel.security.auth.UserDetails;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -21,6 +25,8 @@ public class UserController {
 
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final UserService userService;
+
+    private final BoardService boardService;
 
 
     
@@ -85,6 +91,10 @@ public class UserController {
         }
 
     /* ************************************* 로그인 끝************************************* */
+
+    /* &&&&******************************** 내 정보 영역  ********************************&&&& */
+
+
     /* ************************************* 관리자 ************************************* */
 
     @GetMapping("/user/admin")
@@ -95,11 +105,26 @@ public class UserController {
 
     /* ************************************* 일반유저 ************************************* */
     @GetMapping("/user/mypage")
-    String mypageMapping(@AuthenticationPrincipal UserDetails userDetails, Model model){
+    String mypageMapping(@AuthenticationPrincipal UserDetails userDetails, Model model, Pageable pageable){
 
-        /* 유저 기본 정보 가져옴 */
+        /* 유저 기본 정보 리턴 */
         String id = userDetails.getUsername();
         model.addAttribute("userInfo", userService.infoUser(userDetails));
+
+        /* 유저 게시판 정보 리턴 */
+        Page<Board> p = boardService.findBoardById(userDetails.getUser().getId() ,pageable);
+        int totalPage = p.getTotalPages();
+        int nowPage = p.getPageable().getPageNumber()+1;
+        int startPage = Math.max(nowPage-4, 1);
+        int endPage = Math.min(nowPage+4, p.getTotalPages());
+
+        model.addAttribute("boardList", p);
+        model.addAttribute("totalPage", totalPage);
+        model.addAttribute("nowPage", nowPage);
+        model.addAttribute("startPage", startPage);
+        model.addAttribute("endPage", endPage);
+
+
         return "user/mypage";
     }
 

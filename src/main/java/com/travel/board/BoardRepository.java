@@ -23,4 +23,9 @@ public interface BoardRepository extends JpaRepository<Board, Integer> {
   @Query("SELECT a FROM Board a where a.category = :category ORDER BY a.idx")
   Page<Board> findByCategory(@Param("category") String category, Pageable pageable);
 
+
+  /* 내 정보 / 관리자에서 사용할 쿼리문 */
+  @Query("SELECT a FROM Board a where a.userId = :userId ORDER BY a.idx")
+  Page<Board> findByUserId(@Param("userId") String id, Pageable pageable);
+
 }

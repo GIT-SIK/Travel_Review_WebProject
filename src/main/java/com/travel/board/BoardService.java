@@ -97,6 +97,17 @@ public class BoardService {
     return boardRepository.updateView(id);
   }
 
+
+  /* 내 정보 : 사용자 아이디로 보드 반환*/
+  public Page<Board> findBoardById( String id, Pageable pageable) {
+    String column = "idx";
+    Sort sort = Sort.by(column).descending();
+    pageable = PageRequest.of(pageable.getPageNumber() <= 0 ? 0 : pageable.getPageNumber() - 1,
+            10,
+            sort);
+    return boardRepository.findByUserId(id, pageable);
+  }
+
   /* 따봉 올리기 */
   @Transactional
   public int updateRecommend(int id) {
