@@ -20,15 +20,18 @@ function makeList(result, i) {
         '<span>' + '주소 : ' + '</span>'
     if (result[i].roadAddress === "") {
         addRow +=
-            '<span>' + result[i].lotNumAddress + '</span>' +
-            '</div>' +
-            '</li>';
+            '<span>' + result[i].lotNumAddress + '</span>' + '<br>'
     } else {
         addRow +=
-            '<span>' + result[i].roadAddress + '</span>' +
-            '</div>' +
-            '</li>';
+            '<span>' + result[i].roadAddress + '</span>' + '<br>'
     }
+    if (result[i].homepage != "") {
+        addRow +=
+            '<span>' + '홈페이지 : ' + '</span>' +
+            '<a href="' + result[i].homepage + '">' +
+            '<span>' + result[i].homepage + '</span>' + '</a>'
+    }
+    addRow += '</div>' + '</li>';
     $(".festivalList").append(addRow);
 }
 

@@ -68,7 +68,11 @@
                             <span> ~ </span>
                             <span th:text="${#strings.substring(festival.endDate, 0, 10)}"></span> <br>
                             <span>주소 : </span>
-                            <span th:text="${#strings.equals(festival.roadAddress, '')} ? ${festival.lotNumAddress} : ${festival.roadAddress}"></span>
+                            <span th:text="${#strings.equals(festival.roadAddress, '')} ? ${festival.lotNumAddress} : ${festival.roadAddress}"></span> <br>
+                            <span th:if="${festival.homepage != ''}">
+                                <span>홈페이지 : </span>
+                                <a th:href="${festival.homepage}"> <span th:text="${festival.homepage}"></span> </a>
+                            </span>
                         </div>
                     </li>
                 </ul>
