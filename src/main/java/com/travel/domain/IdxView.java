@@ -11,7 +11,7 @@ import java.util.Date;
 @Entity
 @NoArgsConstructor
 @Table (name="idx_view")
-public class idxView {
+public class IdxView {
     @Id
     @Column(name = "index_key")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,7 +36,7 @@ public class idxView {
 
 
     @Builder
-    public idxView(int indexKey, boolean bestThreeView, boolean slideLinkView, boolean festivalView, java.util.Date festivalDate) {
+    public IdxView(int indexKey, boolean bestThreeView, boolean slideLinkView, boolean festivalView, java.util.Date festivalDate) {
         this.indexKey = indexKey;
         this.bestThreeView = bestThreeView;
         this.slideLinkView = slideLinkView;

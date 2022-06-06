@@ -59,7 +59,7 @@
                                 <td style="font-size: 17px" th:text="${board.time}"></td>
                                 <td style="font-size: 17px;" th:text="${board.view}"></td>
                                 <td style="font-size: 17px;" th:text="${board.recommend}"></td>
-                                <td> <input type="button" th:onclick="javascript:deleteBoard([[${board.idx}]],[[${board.userId}]])" value="삭제"/> </td>
+                                <td> <input type="button" class="tableButton" th:onclick="javascript:deleteBoard([[${board.idx}]],[[${board.userId}]])" value="삭제"/> </td>
                             </tr>
                             </tbody>
 
@@ -86,30 +86,76 @@
 
             </div>
             <div class="indexMg"  style="display:none;">
-                <form action="#">
-                    <div class="indexSlideMg">
-                        <div class="subTitle"> 슬라이드 관리 </div>
-                        <div style="margin-bottom: 20px;">
-                            <label>타이틀명</label> <input type="text" value="" />
+                <div>
+                    <table id="slideTable">
+                        <thead id="slideHead">
+                            <tr class="text-center">
+<!--                                <th>이미지 링크</th>-->
+                                <th>이미지 타이틀</th>
+                                <th>이미지 내용</th>
+                                <th>타이틀 위치</th>
+                                <th>관리</th>
+                            </tr>
+                        </thead>
+                        <tbody id="slideBody">
+                            <tr class="text-center" th:each="slideList : ${idxSlideList}">
+<!--                                <th th:text="${slideList.slideLink}"></th>-->
+                                <td th:text="${slideList.slideTitle}"></td>
+                                <td th:text="${slideList.slideContent}"></td>
+                                <td th:text="${slideList.slidePosition}"></td>
+                                <td><input type="button" class="tableButton" th:onclick="javascript:deleteSlide([[${slideList.slideIdx}]])" value="삭제"/></td>
+                            </tr>
+                            <tr id="slideShowForm">
+                                <td></td>
+                                <td><input type="button" value="+" onclick="javascript:slideAddForm(true)"> </td>
+                                <td style="display : none"><input type="button" value="-"  onclick="javascript:slideAddForm(false)"> </td>
+                                <td></td>
+                            </tr>
+<!--                            <tr id="slideHideForm" style="display : none" >-->
+<!--                                <td></td>-->
+<!--                                <td><input type="button" value="닫기"  onclick="javascript:slideAddForm(false)"> </td>-->
+<!--                                <td></td>-->
+<!--                            </tr>-->
+                        </tbody>
+
+
+                    </table>
+                </div>
+                <div id="slideAdd" style="display : none">
+                    <form method="post" th:action="@{/index/slideAdd}" >
+                        <div class="indexSlideMg">
+                            <div class="subTitle"> 슬라이드 관리 </div>
+                            <div>
+                                <label>이미지 링크</label> <input type="text" th:name="slideAddLk" value="" />
+                            </div>
+                            <div>
+                                <label>슬라이드 타이틀 </label> <input type="text" th:name="slideAddTt" value="" />
+                            </div>
+                            <div>
+                                <label>슬라이드 내용</label> <input type="text" th:name="slideAddCt" value="" />
+                            </div>
+                            <div>
+                                <label>텍스트 포지션</label> <input type="text" th:name="slideAddPs" value="" />
+                            </div>
+                            <div style="text-align: center;">
+                                <input type="submit" id="btnSildeAdd" value="추가">
+                            </div>
                         </div>
-                        <div>
-                            <label>이미지 링크</label> <input type="text" value="" />
+                    </form>
+                </div>
+                <div style="display : none">
+                        <div class="indexFestivalMg">
+                            <div class="subTitle"> 축제 관리 </div>
+                            <div>
+                                <label> 축제 날짜 </label> <input type="text" value="" />
+                            </div>
+                            <div>
+                                <input type="submit" id="btnMonthModf" value="추가">
+                            </div>
+
                         </div>
-                        <div>
-                            <label>이미지 제목</label> <input type="text" value="" />
-                        </div>
-                        <div>
-                            <label>이미지 내용</label> <input type="text" value="" />
-                        </div>
-                    </div>
-                    <div class="indexFestivalMg">
-                        <div class="subTitle"> 축제 관리 </div>
-                        <div>
-                            <label> 축제 날짜 </label> <input type="text" value="" />
-                        </div>
-                    </div>
-                    <input type="submit" value="수정">
-                </form>
+
+                </div>
             </div>
         </div>
     </div>

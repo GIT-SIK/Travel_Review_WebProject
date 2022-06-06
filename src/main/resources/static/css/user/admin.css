@@ -65,22 +65,60 @@
 
 .indexSlideMg,
 .indexFestivalMg {
-    font-size: 20px;
 }
 
 .indexSlideMg div,
 .indexFestivalMg div {
     max-width: 1200px;
+    margin : 20px 0 20px 0;
 }
 
 
 .indexSlideMg label,
 .indexFestivalMg label {
     width: 150px;
-    height: 40px
 }
 
 .indexSlideMg input,
 .indexFestivalMg input {
-    width: 600px;
+    width: 400px;
+}
+
+#slideTable {
+    min-width: 430px;
+    width : 100%;
+}
+
+#slideTable td,
+#slideTable th {
+    padding : 8px;
+}
+
+#slideHead tr{
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+#slideBody tr{
+    border-bottom: 1px solid lightgray;
+}
+
+#slideShowForm {
+    text-align: center;
+}
+
+#slideShowForm input,
+#btnSildeAdd,
+#btnMonthModf {
+    width: 100px;
+    background-color:  #F63543;
+    color: white;
+    border: none;
+    margin : 10px 0 10px 0;
+}
+
+.tableButton {
+    width: 50px;
+    background-color:  #F63543;
+    color: white;
+    border: none;
 }

@@ -44,9 +44,10 @@
                         <div>
                             <label>이메일</label> <span id="userEmail"  th:text="${userInfo.email}"> </span>
                         </div>
+                        <div>
+                            <input type="submit" id="btUpdateUser" value="수정">
+                        </div>
                     </div>
-
-                    <input type="submit" id="btUpdateUser" value="수정">
                 </form>
             </div>
 
@@ -80,7 +81,7 @@
                             <td style="font-size: 17px" th:text="${board.time}"></td>
                             <td style="font-size: 17px;" th:text="${board.view}"></td>
                             <td style="font-size: 17px;" th:text="${board.recommend}"></td>
-                             <td> <input type="button" th:onclick="javascript:deleteBoard([[${board.idx}]],[[${board.userId}]])" value="삭제"/> </td>
+                             <td> <input type="button"  class="tableButton" th:onclick="javascript:deleteBoard([[${board.idx}]],[[${board.userId}]])" value="삭제"/> </td>
                         </tr>
                         </tbody>
 

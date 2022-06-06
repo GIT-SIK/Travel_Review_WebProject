@@ -80,11 +80,12 @@ function deleteUser(){
 }
 
 
+
 function deleteBoard(idx, userId) {
     event.currentTarget.parentNode.parentNode.style.display="none";
     $.ajax({
         type : "POST",
-        url : "/board/userDelete",
+        url : "/board/userBoardDelete",
         data : {idx: idx,
             userId: userId},
         success : function(data){

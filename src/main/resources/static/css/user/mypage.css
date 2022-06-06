@@ -63,16 +63,26 @@
 /* ************** 사용자 ************** */
 
 .userInfoSub {
-    font-size: 20px;
+    font-size: 16px;
 }
 
-.userInfoSub input {
-    font-size: 18px;
+.userInfoSub div {
+    text-align: center;
+    height : 40px;
 }
 
 .userInfoSub label {
+    text-align: left;
     width: 150px;
-    height: 40px
+}
+
+.userInfoSub span {
+    display: inline-block;
+    width : 200px;
+}
+.userInfoSub input[type="password"] {
+    font-size : 16px;
+    width : 200px;
 }
 
 /* *********** 회원탈퇴 영역 **************** */
@@ -93,4 +103,19 @@
 
 .userDelete div a:hover {
     color: #F63543;
+}
+
+/* 관리버튼 디자인 */
+.tableButton {
+    width: 50px;
+    background-color:  #F63543;
+    color: white;
+    border: none;
+}
+
+#btUpdateUser {
+    width: 100px;
+    background-color:  #F63543;
+    color: white;
+    border: none;
 }
