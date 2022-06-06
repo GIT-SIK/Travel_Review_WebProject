@@ -63,12 +63,14 @@
 /* ************** 사용자 ************** */
 
 .userInfoSub {
+    min-width: 770px;
     font-size: 16px;
 }
 
 .userInfoSub div {
     text-align: center;
     height : 40px;
+    margin-bottom: 20px;
 }
 
 .userInfoSub label {

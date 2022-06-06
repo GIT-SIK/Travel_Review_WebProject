@@ -134,8 +134,8 @@ function festivalData(data) {
     var html = ``;
 
     for(let i=0;i<data.length; i++){
-        html += `<div class="festivalData">`
-    html += `<div>` + data[i].name + `</div>`
+        html += `<div class="festivalData" style="cursor : pointer;" onclick="location.href='` + data[i].homepage + `'">`;
+    html += `<div style="font-weight: bold;">` + data[i].name + `</div>`
     html += `<div>` + data[i].roadAddress + `</div>`
     html += `<div>` + data[i].startDate.slice(0,10) + ` ~ ` + data[i].endDate.slice(0,10)+ `</div>`
         html += `</div>`
