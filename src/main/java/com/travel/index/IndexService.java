@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -79,7 +80,8 @@ public class IndexService {
     }
 
 
-    /* 관리자페이지에서 메인페이지에 있는 슬라이드 추가 & 삭제할 수 있는 로직*/
+    /* 관리자페이지 -> 메인페이지 슬라이드 추가 & 삭제 / 슬라이드 타이틀 / 축제 출력 기본 날짜 변경 */
+    /* 2차 인증을 통하여 관리자인지 확인하여 실행하도록 코드 작성하였음. */
     public boolean deleteSlide(String role ,String idx) {
 
         if(role.equals("ROLE_ADMIN"))
@@ -117,4 +119,28 @@ public class IndexService {
         }
     }
 
+
+    public boolean updateIndexFestivalDate(String role, String festivalMonth){
+        if(role.equals("ROLE_ADMIN"))
+        {
+            int month = Integer.parseInt(festivalMonth);
+            if(month==0){
+                /* 자동으로 날짜에 맞춰서 설정한다. */
+                indexViewRepository.updateIndexFestivalMonthAuto();
+            } else {
+                /* 선택된 월로 날짜에 맞춰서 설정한다. */
+                /* 날짜 형태로 포멧하여 String으로 UPDATE 함수호출 */
+                Calendar cal = Calendar.getInstance();
+                cal.set(cal.get(Calendar.YEAR), month-1, 1);
+
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
+                String dateTemp = sdf.format(cal.getTime());
+
+                indexViewRepository.updateIndexFestivalMonth(dateTemp);
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

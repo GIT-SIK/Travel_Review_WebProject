@@ -18,19 +18,129 @@
     <div class="adminMd">
         <div class="adminMenu">
             <ul>
-                <li>관리자 정보</li>
-                <li>유저 관리</li>
-                <li>게시물 관리</li>
+<!--                <li>관리자 정보</li>-->
                 <li>메인페이지 관리</li>
+                <li>게시물 관리</li>
+                <li>유저 관리</li>
             </ul>
         </div>
         <div> </div>
         <div class="adminData">
             <!-- 관리자 영역 -->
-            <div class="adminInfo"> 관리자 정보 </div>
-            <div class="userMg"  style="display:none;"> 유저 관리 페이지 </div>
+<!--            <div class="adminInfo"> 관리자 정보 </div>-->
+
+            <!-- 관리자전용 메인페이지 관리 -->
+            <div class="indexMg">
+                <div>
+                    <div class="subTitle"> 슬라이드 타이틀 관리 </div>
+                    <div style="text-align: left">
+                        <form method="post" th:action="@{/user/admin/slideTitleUpdate}" style="margin : 20px;">
+                            <label style="display: inline-block; margin-right: 10px;">타이틀 명</label> <input type="text" th:name="slideTitleData" th:value="${idxViewList.slideTitle}"> <input type="submit" class="tableButton" value="수정">
+                        </form>
+                    </div>
+                    <div class="subTitle"> 슬라이드 이미지 관리 </div>
+                    <table id="slideTable">
+                        <thead id="slideHead">
+                        <tr class="text-center">
+                            <!--                                <th>이미지 링크</th>-->
+                            <th>이미지 타이틀</th>
+                            <th>이미지 내용</th>
+                            <th>타이틀 위치</th>
+                            <th>관리</th>
+                        </tr>
+                        </thead>
+                        <tbody id="slideBody">
+                        <tr class="text-center" th:each="slideList : ${idxSlideList}">
+                            <!--                                <th th:text="${slideList.slideLink}"></th>-->
+                            <td th:text="${slideList.slideTitle}"></td>
+                            <td th:text="${slideList.slideContent}"></td>
+                            <td th:text="${slideList.slidePosition}"></td>
+                            <td><input type="button" class="tableButton" th:onclick="javascript:deleteSlide([[${slideList.slideIdx}]])" value="삭제"/></td>
+                        </tr>
+                        <tr id="slideShowForm">
+                            <td></td>
+                            <td><input type="button" value="+" onclick="javascript:slideAddForm(true)"> </td>
+                            <td style="display : none"><input type="button" value="-"  onclick="javascript:slideAddForm(false)"> </td>
+                            <td></td>
+                        </tr>
+                        <!--                            <tr id="slideHideForm" style="display : none" >-->
+                        <!--                                <td></td>-->
+                        <!--                                <td><input type="button" value="닫기"  onclick="javascript:slideAddForm(false)"> </td>-->
+                        <!--                                <td></td>-->
+                        <!--                            </tr>-->
+                        </tbody>
+
+
+                    </table>
+                </div>
+                <div id="slideAdd" style="display : none">
+                    <form method="post" th:action="@{/user/admin/slideAdd}" >
+                        <div class="indexSlideMg">
+                            <div class="subTitle"> 슬라이드 이미지 추가 </div>
+                            <div>
+                                <label>이미지 링크</label> <input type="text" th:name="slideAddLk" value="" />
+                            </div>
+                            <div>
+                                <label>이미지 타이틀 </label> <input type="text" th:name="slideAddTt" value="" />
+                            </div>
+                            <div>
+                                <label>이미지 내용</label> <input type="text" th:name="slideAddCt" value="" />
+                            </div>
+                            <div>
+                                <label>텍스트 포지션</label> <input type="text" th:name="slideAddPs" value="" />
+                            </div>
+                            <div style="text-align: center;">
+                                <input type="submit" id="btnSildeAdd" value="추가">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="subTitle"> 축제 날짜 관리 </div>
+                <div style="text-align: left">
+                    <div style="margin : 20px;">
+                        <span style="display: inline-block; margin-right: 10px;"> 적용된 날짜</span> <span style="display: inline-block; margin-right: 10px;" th:text="${#dates.format(idxViewList.festivalDate, 'yyyy-MM')}"> </span>
+                    </div>
+                    <form method="post" th:action="@{/user/admin/indexFestivalDate}" style="margin : 20px;">
+                        <label style="display: inline-block; margin-right: 10px;">변경할 날짜</label>
+                        <select id="indexMonth" th:name="indexFestivalMonth" style="height : 30px;">
+                            <option value="0">AUTO</option>
+                            <option value="1">1월</option>
+                            <option value="2">2월</option>
+                            <option value="3">3월</option>
+                            <option value="4">4월</option>
+                            <option value="5">5월</option>
+                            <option value="6">6월</option>
+                            <option value="7">7월</option>
+                            <option value="8">8월</option>
+                            <option value="9">9월</option>
+                            <option value="10">10월</option>
+                            <option value="11">11월</option>
+                            <option value="12">12월</option>
+                        </select>
+                        <!--                        <input type="text" th:name="slideTitleData" th:value="${idxViewList.slideTitle}">-->
+                        <input type="submit" class="tableButton" value="수정">
+                    </form>
+                </div>
+
+
+                <div style="display : none">
+                    <div class="indexFestivalMg">
+                        <div class="subTitle"> 축제 관리 </div>
+                        <div>
+                            <label> 축제 날짜 </label> <input type="text" value="" />
+                        </div>
+                        <div>
+                            <input type="submit" id="btnMonthModf" value="추가">
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <!-- 관리자전용 메인페이지 관리 끝 -->
+
             <div class="boardMg"  style="display:none;">
-                <!-- 관리자전용 유저 게시물 영역 -->
+                <!-- 관리자전용 게시판 영역 -->
                 <div class="subTitle"> 게시판 관리 </div>
                     <div class="table-responsive" >
                         <table class="table table-hover" style="text-align: center">
@@ -83,88 +193,16 @@
                     </div>
 
 
-                <!-- 관리자전용 유저 영역  끝-->
+                <!-- 관리자전용 게시판 영역 끝-->
+            </div>
+            <!-- 관리자전용 유저관리 -->
+            <div class="userMg"  style="display:none;"> 유저 관리 페이지
+
 
             </div>
-            <div class="indexMg"  style="display:none;">
-                <div>
-                    <div class="subTitle"> 슬라이드 타이틀 관리 </div>
-                    <div style="text-align: center">
-                    <form method="post" th:action="@{/user/admin/slideTitleUpdate}" style="margin : 20px;">
-                        <label>슬라이드 타이틀</label> <input type="text" th:name="slideTitleData" th:value="${idxViewList.slideTitle}"> <input type="submit" class="tableButton" value="수정">
-                    </form>
-                    </div>
-                    <div class="subTitle"> 슬라이드 이미지 관리 </div>
-                    <table id="slideTable">
-                        <thead id="slideHead">
-                            <tr class="text-center">
-<!--                                <th>이미지 링크</th>-->
-                                <th>이미지 타이틀</th>
-                                <th>이미지 내용</th>
-                                <th>타이틀 위치</th>
-                                <th>관리</th>
-                            </tr>
-                        </thead>
-                        <tbody id="slideBody">
-                            <tr class="text-center" th:each="slideList : ${idxSlideList}">
-<!--                                <th th:text="${slideList.slideLink}"></th>-->
-                                <td th:text="${slideList.slideTitle}"></td>
-                                <td th:text="${slideList.slideContent}"></td>
-                                <td th:text="${slideList.slidePosition}"></td>
-                                <td><input type="button" class="tableButton" th:onclick="javascript:deleteSlide([[${slideList.slideIdx}]])" value="삭제"/></td>
-                            </tr>
-                            <tr id="slideShowForm">
-                                <td></td>
-                                <td><input type="button" value="+" onclick="javascript:slideAddForm(true)"> </td>
-                                <td style="display : none"><input type="button" value="-"  onclick="javascript:slideAddForm(false)"> </td>
-                                <td></td>
-                            </tr>
-<!--                            <tr id="slideHideForm" style="display : none" >-->
-<!--                                <td></td>-->
-<!--                                <td><input type="button" value="닫기"  onclick="javascript:slideAddForm(false)"> </td>-->
-<!--                                <td></td>-->
-<!--                            </tr>-->
-                        </tbody>
 
 
-                    </table>
-                </div>
-                <div id="slideAdd" style="display : none">
-                    <form method="post" th:action="@{/user/admin/slideAdd}" >
-                        <div class="indexSlideMg">
-                            <div class="subTitle"> 슬라이드 추가 </div>
-                            <div>
-                                <label>이미지 링크</label> <input type="text" th:name="slideAddLk" value="" />
-                            </div>
-                            <div>
-                                <label>이미지 타이틀 </label> <input type="text" th:name="slideAddTt" value="" />
-                            </div>
-                            <div>
-                                <label>이미지 내용</label> <input type="text" th:name="slideAddCt" value="" />
-                            </div>
-                            <div>
-                                <label>텍스트 포지션</label> <input type="text" th:name="slideAddPs" value="" />
-                            </div>
-                            <div style="text-align: center;">
-                                <input type="submit" id="btnSildeAdd" value="추가">
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div style="display : none">
-                        <div class="indexFestivalMg">
-                            <div class="subTitle"> 축제 관리 </div>
-                            <div>
-                                <label> 축제 날짜 </label> <input type="text" value="" />
-                            </div>
-                            <div>
-                                <input type="submit" id="btnMonthModf" value="추가">
-                            </div>
-
-                        </div>
-
-                </div>
-            </div>
+            <!-- 관리자전용 유저관리 끝 -->
         </div>
     </div>
 </div>
