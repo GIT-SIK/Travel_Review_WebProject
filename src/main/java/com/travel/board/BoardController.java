@@ -1,6 +1,7 @@
 package com.travel.board;
 
 import com.travel.domain.Board;
+import com.travel.etc.Today;
 import com.travel.security.auth.UserDetails;
 import java.util.List;
 import java.util.Map;
@@ -34,7 +35,7 @@ public class BoardController {
   }
 
   @GetMapping("/list/{param}")
-  String communityMapping(Model model,Pageable pageable, @PathVariable String param) {
+  String communityMapping(Model model,Pageable pageable, @PathVariable String param, Today today) {
 
     Page<Board> p = null;
     if (param.equals("main")) {
@@ -85,6 +86,7 @@ public class BoardController {
     model.addAttribute("startPage", startPage);
     model.addAttribute("endPage", endPage);
     model.addAttribute("checkParam", param);
+    model.addAttribute("Today", today);
 
     return "board/board";
   }
