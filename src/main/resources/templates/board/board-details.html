@@ -21,13 +21,17 @@
           <div class="row"
                style="padding: 10px 0px; border-top: 2px solid black; display: inline-block; ">
             <div class="col d-flex">
-              <span th:text="${board.title}" style="font-size: x-large; font-weight: bold;"></span>&nbsp;
+              <span th:text="'제목 : ['+ ${board.title}+']'" style="font-size: x-large; font-weight: bold;"></span>&nbsp;
             </div>
+
           </div>
           <div class="row">
+
             <div class="col" th:with="userId = ${board.userId}">
-              <span th:text="${board.userId}"></span>
-              <span th:text="${board.time}"></span>
+              <span style="font-weight: bold" th:text="'작성자 : ['+ ${board.userId}+']'"></span>
+              <br>
+              <span style="float: right" th:text="${board.time.substring(0,16)}"></span>
+              <br>
               <div class="col" style="text-align: right">
                 <span th:text="|조회 ${board.view}|"></span>
               </div>
