@@ -25,6 +25,9 @@
     font-family: yg-jalnan;
     font-size : 17px;
 }
+.localList li{
+    margin-bottom: 10px;
+}
 .localList li.selected{
     transition-duration: 0.5s;
     background: #F63543;
