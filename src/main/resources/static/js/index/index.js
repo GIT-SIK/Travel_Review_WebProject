@@ -122,7 +122,13 @@ function festivalDateAjax() {
 
 /* 지도 핫플영역 월 적용 함수 */
 function festivalDate(data) {
-    var Festivaltitle = `<div>`+ data.slice(6,7) +`월 핫플 축제! </div>`
+
+    var dataTemp = 6;
+    if(data.slice(5,7) >= 10){
+        dataTemp = 5;
+    }
+
+    let Festivaltitle = `<div>`+ data.slice(dataTemp,7) +`월 핫플 축제! </div>`
     $(".festivalMonthTitle").html(Festivaltitle);
 }
 

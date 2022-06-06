@@ -143,13 +143,15 @@ public class UserController {
         return p;
     }
     /* *************************************  관리자 영역 ************************************* */
-    /* 관리자 페이지에서 슬라이드 추가 & 삭제를 함. */
+    /* 관리자 페이지에서 슬라이드 삭제함. */
     @PostMapping("/user/admin/slideDelete")
     @ResponseBody
     public boolean indexSildeData(@AuthenticationPrincipal UserDetails userDetails, @RequestParam("idx") String idx) {
         return indexService.deleteSlide(userDetails.getUser().getRole(), idx);
     }
 
+
+    /* 관리자 페이지에서 슬라이드 추가함. */
     @PostMapping("/user/admin/slideAdd")
     public String indexSildeAdd(@AuthenticationPrincipal UserDetails userDetails, @RequestParam("slideAddLk") String slideLink, @RequestParam("slideAddTt") String slideTitle, @RequestParam("slideAddCt") String slideCentent, @RequestParam("slideAddPs") String slidePosition){
 
@@ -159,10 +161,21 @@ public class UserController {
 
     }
 
+    /* 관리자 페이지에서 슬라이드 타이틀을 변경함. */
     @PostMapping("/user/admin/slideTitleUpdate")
     public String indexSlideTitleUpdate(@AuthenticationPrincipal UserDetails userDetails, @RequestParam("slideTitleData") String slideTitleData){
 
         indexService.updateSlideTitle(userDetails.getUser().getRole(), slideTitleData);
+        return "redirect:/user/admin";
+
+
+    }
+
+    /* 관리자 페이지에서 축제출력 날짜 월을 변경함. (연도는 현재 기준으로 한다.) */
+    @PostMapping("/user/admin/indexFestivalDate")
+    public String indexFestivalDateUpdate(@AuthenticationPrincipal UserDetails userDetails, @RequestParam("indexFestivalMonth") String festivalMonth){
+
+        indexService.updateIndexFestivalDate(userDetails.getUser().getRole(), festivalMonth);
         return "redirect:/user/admin";
 
 
@@ -190,7 +203,7 @@ public class UserController {
         return "redirect:/user/mypage";
     }
 
-    /* 유저 마이페이지 / 관리자 페이지 에서 게시물 삭제 */
+    /* 유저 마이페이지 / 관리자 페이지 에서 게시물 삭제 */ /* 관리자도 포함되어 있는 Controller 입니다. */
     @PostMapping("/user/mypage/userBoardDelete")
     @ResponseBody
     public boolean userCommunityDeleteMapping(@AuthenticationPrincipal UserDetails userDetails, @RequestParam("idx") String idx, @RequestParam("userId") String id) {

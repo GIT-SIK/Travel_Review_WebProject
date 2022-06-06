@@ -2,14 +2,14 @@ $(function() {
 
     /* 페이지 변경 시 주소창에 page= 가 존재할 경우 그 창 고정 */
     if($(location).attr('href').indexOf('?page=') >= 0) {
-        for(let i=0; i<4 ;i++){
+        for(let i=0; i<3 ;i++){
             $(".adminData > div").eq(i).css("display", "none");
         }
-        $(".adminData > div").eq(2).css("display", "block");
+        $(".adminData > div").eq(1).css("display", "block");
     };
 
     $(".adminMenu ul li").click(function(){
-        for(let i=0; i<4 ;i++){
+        for(let i=0; i<3 ;i++){
             $(".adminData > div").eq(i).css("display", "none");
         }
         $(".adminData > div").eq($(this).index()).css("display", "block");
