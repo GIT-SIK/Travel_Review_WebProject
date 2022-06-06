@@ -3,6 +3,7 @@ package com.travel.user;
 
 import com.travel.board.BoardService;
 import com.travel.domain.Board;
+import com.travel.domain.IdxView;
 import com.travel.domain.User;
 import com.travel.index.IndexService;
 import com.travel.security.auth.UserDetails;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -118,8 +120,10 @@ public class UserController {
         /* ** 관리자 영역 ** */
         if(userDetails.getUser().getRole().equals("ROLE_ADMIN")){
 
+            List<IdxView> viewList = indexService.findAllView();
+            IdxView idxView = viewList.get(0);
             model.addAttribute("idxSlideList", indexService.findAllSlide());
-
+            model.addAttribute("idxViewList", idxView);
 
             return "user/admin";
         } else {
@@ -151,6 +155,15 @@ public class UserController {
 
             indexService.addSlide(userDetails.getUser().getRole(), slideLink, slideTitle, slideCentent, slidePosition);
             return "redirect:/user/admin";
+
+
+    }
+
+    @PostMapping("/user/admin/slideTitleUpdate")
+    public String indexSlideTitleUpdate(@AuthenticationPrincipal UserDetails userDetails, @RequestParam("slideTitleData") String slideTitleData){
+
+        indexService.updateSlideTitle(userDetails.getUser().getRole(), slideTitleData);
+        return "redirect:/user/admin";
 
 
     }

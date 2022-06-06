@@ -13,9 +13,9 @@ import java.util.Date;
 @Table (name="idx_view")
 public class IdxView {
     @Id
-    @Column(name = "index_key")
+    @Column(name = "view_idx")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int indexKey;
+    private int viewIdx;
 
     @Column(name = "best_three_view")
     private boolean bestThreeView;
@@ -36,8 +36,8 @@ public class IdxView {
 
 
     @Builder
-    public IdxView(int indexKey, boolean bestThreeView, boolean slideLinkView, boolean festivalView, java.util.Date festivalDate) {
-        this.indexKey = indexKey;
+    public IdxView(int viewIdx, boolean bestThreeView, boolean slideLinkView, boolean festivalView, java.util.Date festivalDate) {
+        this.viewIdx = viewIdx;
         this.bestThreeView = bestThreeView;
         this.slideLinkView = slideLinkView;
         this.festivalView = festivalView;
