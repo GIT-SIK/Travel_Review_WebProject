@@ -138,7 +138,24 @@ public class UserController {
         Page<Board> p = boardService.findBoardById(id ,role ,pageable);
         return p;
     }
+    /* *************************************  관리자 영역 ************************************* */
+    /* 관리자 페이지에서 슬라이드 추가 & 삭제를 함. */
+    @PostMapping("/user/admin/slideDelete")
+    @ResponseBody
+    public boolean indexSildeData(@AuthenticationPrincipal UserDetails userDetails, @RequestParam("idx") String idx) {
+        return indexService.deleteSlide(userDetails.getUser().getRole(), idx);
+    }
 
+    @PostMapping("/user/admin/slideAdd")
+    public String indexSildeAdd(@AuthenticationPrincipal UserDetails userDetails, @RequestParam("slideAddLk") String slideLink, @RequestParam("slideAddTt") String slideTitle, @RequestParam("slideAddCt") String slideCentent, @RequestParam("slideAddPs") String slidePosition){
+
+            indexService.addSlide(userDetails.getUser().getRole(), slideLink, slideTitle, slideCentent, slidePosition);
+            return "redirect:/user/admin";
+
+
+    }
+
+    /* *************************************  유저 영역 ************************************* */
     /* 유저 탈퇴 */
     @GetMapping("/user/mypage/delete")
     public String deleteUser(@AuthenticationPrincipal UserDetails userDetails, HttpServletRequest request) {
@@ -159,5 +176,23 @@ public class UserController {
         userService.updateUser(userDetails.getUser().getId() ,bCryptPasswordEncoder.encode(password));
         return "redirect:/user/mypage";
     }
-    
+
+    /* 유저 마이페이지 / 관리자 페이지 에서 게시물 삭제 */
+    @PostMapping("/user/mypage/userBoardDelete")
+    @ResponseBody
+    public boolean userCommunityDeleteMapping(@AuthenticationPrincipal UserDetails userDetails, @RequestParam("idx") String idx, @RequestParam("userId") String id) {
+        boolean check = false;
+        try {
+            if (userDetails.getUser().getId().equals(id) || userDetails.getUser().getRole().equals("ROLE_ADMIN")) {
+                int idxTemp = Integer.parseInt(idx);
+                boardService.deleteBoard(idxTemp);
+                check = true;
+            }
+        } catch (Exception e){
+            System.out.println("삭제도중 오류발생");
+
+        }
+
+        return check;
+    }
 }

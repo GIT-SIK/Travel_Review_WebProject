@@ -172,11 +172,31 @@
 
 .festivalMonth {
     margin-top:20px;
-    max-width: 1024px;
+    max-width: 1030px;
     display: grid;
-    grid-template-columns: 420px 1fr;
-
+    grid-template-columns: 430px 600px;
 }
+
+.festival {
+    height: 548px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.festival::-webkit-scrollbar {
+    width: 5px;  /* 스크롤바의 너비 */
+}
+
+.festival::-webkit-scrollbar-thumb {
+    height: 30%; /* 스크롤바의 길이 */
+    background: rgba(10, 10, 10); /* 스크롤바의 색상 */
+    border-radius: 10px;
+}
+
+.festival::-webkit-scrollbar-track {
+    background: rgba(122, 122, 122, .1);  /*스크롤바 뒷 배경 색상*/
+}
+
 
 #busan,
 #chungbuk,
@@ -285,7 +305,7 @@
     font-family: Pretendard;
     border : 1px solid lightgray;
     border-radius: 5%;
-    margin : 10px;
+    margin : 10px 40px 10px 10px;
     padding : 10px;
 
 }

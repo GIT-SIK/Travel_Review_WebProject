@@ -21,7 +21,7 @@ function deleteSlide(idx) {
     event.currentTarget.parentNode.parentNode.style.display="none";
     $.ajax({
         type : "POST",
-        url : "/index/slideDelete",
+        url : "/user/admin/slideDelete",
         data : {idx: idx},
         success : function(data){
             if(data){
@@ -73,7 +73,7 @@ function deleteBoard(idx, userId) {
     event.currentTarget.parentNode.parentNode.style.display="none";
     $.ajax({
         type : "POST",
-        url : "/board/userBoardDelete",
+        url : "/user/mypage/userBoardDelete",
         data : {idx: idx, userId: userId},
         success : function(data){
             if(data){

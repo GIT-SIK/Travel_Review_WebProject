@@ -46,22 +46,4 @@ public class IndexController {
         return indexService.findDate();
     }
 
-    /* 관리자 페이지에서 슬라이드 추가 & 삭제를 함. */
-    @PostMapping("/index/slideDelete")
-    @ResponseBody
-    public boolean indexSildeData(@AuthenticationPrincipal UserDetails userDetails, @RequestParam("idx") String idx) {
-        return indexService.deleteSlide(userDetails.getUser().getRole(), idx);
-    }
-
-    @PostMapping("/index/slideAdd")
-    public String indexSildeAdd(@AuthenticationPrincipal UserDetails userDetails, @RequestParam("slideAddLk") String slideLink, @RequestParam("slideAddTt") String slideTitle, @RequestParam("slideAddCt") String slideCentent, @RequestParam("slideAddPs") String slidePosition){
-
-        if(userDetails.getUser().getRole().equals("ROLE_ADMIN")) {
-            indexService.addSlide(userDetails.getUser().getRole(), slideLink, slideTitle, slideCentent, slidePosition);
-            return "redirect:/user/admin";
-        } else {
-            return "redirect:/login";
-        }
-
-    }
 }
