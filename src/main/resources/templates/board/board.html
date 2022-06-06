@@ -117,7 +117,7 @@
         <span th:text="${board.userId}"></span>
       </td>
       <td style="font-size: 17px"
-          th:text="${board.time}"
+          th:text="${board.time.substring(0,16)}"
       ></td>
       <td style="font-size: 17px;" th:text="${board.view}"></td>
       <td style="font-size: 17px;" th:text="${board.recommend}"></td>
