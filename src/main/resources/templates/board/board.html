@@ -117,7 +117,12 @@
         <span th:text="${board.userId}"></span>
       </td>
       <td style="font-size: 17px"
-          th:text="${board.time.substring(0,16)}"
+          th:if="${board.time.substring(0,10)} == ${Today.today}"
+          th:text="${board.time.substring(10)}"
+      ></td>
+      <td style="font-size: 17px"
+          th:if="${board.time.substring(0,10)} != ${Today.today}"
+          th:text="${board.time.substring(0,10)}"
       ></td>
       <td style="font-size: 17px;" th:text="${board.view}"></td>
       <td style="font-size: 17px;" th:text="${board.recommend}"></td>
