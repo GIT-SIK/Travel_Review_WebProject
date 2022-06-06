@@ -107,4 +107,14 @@ public class IndexService {
         }
     }
 
+    public boolean updateSlideTitle(String role, String slideTitleData){
+        if(role.equals("ROLE_ADMIN"))
+        {
+            indexViewRepository.updateSlideTitle(slideTitleData);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
