@@ -128,7 +128,7 @@ public class BoardController {
   }
 
   /* 유저 마이페이지 / 관리자 페이지 에서 게시물 삭제 */
-  @PostMapping("/userDelete")
+  @PostMapping("/userBoardDelete")
   @ResponseBody
   public boolean userCommunityDeleteMapping(@AuthenticationPrincipal UserDetails userDetails, @RequestParam("idx") String idx, @RequestParam("userId") String id) {
     boolean check = false;

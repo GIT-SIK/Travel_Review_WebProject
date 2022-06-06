@@ -10,10 +10,13 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @Table (name="idx_slide")
-public class idxSlide {
+public class IdxSlide {
     @Id
-    @Column(name = "slide_link")
+    @Column(name = "slide_idx")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int slideIdx;
+
+    @Column(name = "slide_link")
     private String slideLink;
 
     @Column(name = "slide_title")
@@ -28,7 +31,7 @@ public class idxSlide {
 
 
     @Builder
-    public idxSlide(String slideLink, String slideTitle, String slideContent, String slidePosition) {
+    public IdxSlide(String slideLink, String slideTitle, String slideContent, String slidePosition) {
         this.slideLink = slideLink;
         this.slideTitle = slideTitle;
         this.slideContent = slideContent;

@@ -1,8 +1,8 @@
 package com.travel.index;
 
 import com.travel.domain.Festival;
-import com.travel.domain.idxSlide;
-import com.travel.domain.idxView;
+import com.travel.domain.IdxSlide;
+import com.travel.domain.IdxView;
 import com.travel.festival.FestivalRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,11 +27,11 @@ public class IndexService {
     FestivalRepository festivalRepository;
 
 
-    public List<idxSlide> findAllSlide() {
+    public List<IdxSlide> findAllSlide() {
         return indexSlideRepository.findAllSlide();
     }
 
-    public List<idxView> findAllView(){
+    public List<IdxView> findAllView(){
         return indexViewRepository.findAllView();
     }
     /* index 페이지 / 지도와 축제 부분 코드*/
@@ -48,7 +48,7 @@ public class IndexService {
     public List<Festival> findAllbyDataLocal(String local) {
 
         /* 날짜 변환 */
-        List<idxView> index = indexViewRepository.findAllView();
+        List<IdxView> index = indexViewRepository.findAllView();
         Date dateTemp = index.get(0).getFestivalDate();
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM");
         String date = dateFormat.format(dateTemp);
@@ -76,6 +76,35 @@ public class IndexService {
         List<Festival> indexFestivalList = festivalRepository.findALLByDateLocal(date, localTemp);
 
         return indexFestivalList;
+    }
+
+
+    /* 관리자페이지에서 메인페이지에 있는 슬라이드 추가 & 삭제할 수 있는 로직*/
+    public boolean deleteSlide(String role ,String idx) {
+
+        if(role.equals("ROLE_ADMIN"))
+        {
+            indexSlideRepository.deleteById(Integer.parseInt(idx));
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean addSlide(String role, String slideLink, String slideTitle, String slideCentent, String slidePosition){
+
+        if(role.equals("ROLE_ADMIN"))
+        {
+            IdxSlide idxSlide = new IdxSlide();
+            idxSlide.setSlideLink(slideLink);
+            idxSlide.setSlideTitle(slideTitle);
+            idxSlide.setSlideContent(slideCentent);
+            idxSlide.setSlidePosition(slidePosition);
+            indexSlideRepository.save(idxSlide);
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

@@ -4,6 +4,7 @@ package com.travel.user;
 import com.travel.board.BoardService;
 import com.travel.domain.Board;
 import com.travel.domain.User;
+import com.travel.index.IndexService;
 import com.travel.security.auth.UserDetails;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -26,6 +27,7 @@ public class UserController {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final UserService userService;
 
+    private final IndexService indexService;
     private final BoardService boardService;
 
 
@@ -115,6 +117,9 @@ public class UserController {
 
         /* ** 관리자 영역 ** */
         if(userDetails.getUser().getRole().equals("ROLE_ADMIN")){
+
+            model.addAttribute("idxSlideList", indexService.findAllSlide());
+
 
             return "user/admin";
         } else {
