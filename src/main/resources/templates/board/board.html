@@ -10,147 +10,149 @@
 <body>
 <div th:replace="fragments/header.html :: fragment-header"></div>
 
-<h2 class="title" style="text-align: center">TOP 3 후기</h2>
+<div class="container">
+  <h2 class="title" style="text-align: center">TOP 3 후기</h2>
 
-<div class="row row-cols-1 row-cols-md-3 g-4">
-  <div class="col">
-    <div class="card h-100">
-      <img src="https://www.popco.net/zboard/data/dica_forum_samsung/2015/07/27/147743295955b5c369685cd.jpg" style="width: 100%; height: 400px">
-      <div class="card-body">
-        <h5 class="card-title">제주 바다</h5>
-        <p class="card-text">떠나요~둘이서</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card h-100">
-      <img src="https://wishbeen-seoul.s3.ap-northeast-2.amazonaws.com/post/1453359808444_shutterstock_129286766.jpg" style="width: 100%; height: 400px">
-      <div class="card-body">
-        <h5 class="card-title">야경하면? 남산이지</h5>
-        <p class="card-text">블링블링</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card h-100">
-      <img src="https://content.skyscnr.com/m/47a4a8938c94110e/original/3820145201700054k_Beautiful-Snowscape-of-Korea.jpg?resize=1800px:1800px&quality=100" style="width: 100%; height: 400px">
-      <div class="card-body">
-        <h5 class="card-title">설경보러 무주 오세요!</h5>
-        <p class="card-text">겨울왕국 너낌으로다가</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
-      </div>
-    </div>
-  </div>
-</div>
-<br>
-<div class="region" style="float: left; padding-left: 20px; padding-right:20px ">
-<ul class="list-group list-group-horizontal">
-  <a href="/board/list/main"><li class="list-group-item">전체</li></a>
-  <a href="/board/list/대구"><li class="list-group-item">대구</li></a>
-</ul>
-<ul class="list-group list-group-horizontal">
-  <a href="/board/list/서울"><li class="list-group-item">서울</li></a>
-  <a href="/board/list/부산"><li class="list-group-item">부산</li></a>
-</ul>
-<ul class="list-group list-group-horizontal">
-  <a href="/board/list/경기"><li class="list-group-item">경기</li></a>
-  <a href="/board/list/울산"><li class="list-group-item">울산</li></a>
-</ul>
-<ul class="list-group list-group-horizontal">
-  <a href="/board/list/인천"><li class="list-group-item">인천</li></a>
-  <a href="/board/list/경북"><li class="list-group-item">경북</li></a>
-</ul>
-<ul class="list-group list-group-horizontal">
-  <a href="/board/list/강원"><li class="list-group-item">강원</li></a>
-  <a href="/board/list/경남"><li class="list-group-item">경남</li></a>
-</ul>
-<ul class="list-group list-group-horizontal">
-  <a href="/board/list/세종"><li class="list-group-item">세종</li></a>
-  <a href="/board/list/광주"><li class="list-group-item">광주</li></a>
-</ul>
-<ul class="list-group list-group-horizontal">
-  <a href="/board/list/대전"><li class="list-group-item">대전</li></a>
-  <a href="/board/list/전북"><li class="list-group-item">전북</li></a>
-</ul>
-<ul class="list-group list-group-horizontal">
-  <a href="/board/list/충북"><li class="list-group-item">충북</li></a>
-  <a href="/board/list/전남"><li class="list-group-item">전남</li></a>
-</ul>
-<ul class="list-group list-group-horizontal">
-  <a href="/board/list/충남"><li class="list-group-item">충남</li></a>
-  <a href="/board/list/제주"><li class="list-group-item">제주</li></a>
-</ul>
-</div>
-<div class="table-responsive" style="padding-left: 20px">
-  <table class="table table-hover" style="text-align: center">
-    <thead>
-    <tr class="text-center">
-      <th>No</th>
-      <th>지역</th>
-      <th>제목</th>
-      <th>글쓴이</th>
-      <th>작성시간</th>
-      <th>조회수</th>
-      <th>추천수</th>
-    </tr>
-    </thead>
-    <tbody class="table-content" th:each="board : ${boardList}">
-    <tr class="text-center">
-      <td th:text="${board.idx}"></td>
-      <td th:text="${board.category}" style="margin-left: 100px"></td>
-      <td class="text-start ps-5">
-        <div class="d-flex align-content-center flex-wrap"
-             style="height: 30px; font-size: 20px; padding-left: 100px" th:with="idx=${board.idx}">
-          <a class="board-title" th:text="${board.title}"
-             th:href=@{/board/details/boardView(idx=${board.idx})}></a>&nbsp;
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col">
+      <div class="card h-100">
+        <img src="https://www.popco.net/zboard/data/dica_forum_samsung/2015/07/27/147743295955b5c369685cd.jpg" style="width: 100%; height: 400px">
+        <div class="card-body">
+          <h5 class="card-title">제주 바다</h5>
+          <p class="card-text">떠나요~둘이서</p>
         </div>
-      </td>
-      <td style="font-size: 17px" th:with="userId = ${board.userId}">
-        <span th:text="${board.userId}"></span>
-      </td>
-      <td style="font-size: 17px"
-          th:if="${board.time.substring(0,10)} == ${Today.today}"
-          th:text="${board.time.substring(10,16)}"
-      ></td>
-      <td style="font-size: 17px"
-          th:if="${board.time.substring(0,10)} != ${Today.today}"
-          th:text="${board.time.substring(0,10)}"
-      ></td>
-      <td style="font-size: 17px;" th:text="${board.view}"></td>
-      <td style="font-size: 17px;" th:text="${board.recommend}"></td>
-    </tr>
-    </tbody>
-
-  </table>
-</div>
-<button class="btn btn-primary w-35 my-2 write-btn" style="float:right" onclick="location.href='/board/write'"> 후기 작성 </button>
-<br>
-
-<div class="pagination">
-  <ul>
-    <li th:if="${nowPage != 1}">
-      <a class="btn" th:href="@{/board/list/}+${checkParam}+'?page='+${nowPage-1}"><</a>
-    </li>
-    <li th:each="page:${#numbers.sequence(startPage, endPage)}">
-      <a class="btn" th:if="${page != nowPage}" th:href="@{/board/list/}+${checkParam}+'?page='+${page}" th:text="${page}"></a>
-      <strong class="btn" th:if="${page == nowPage}" th:text="${page}"></strong>
-    </li>
-    <li th:if="${nowPage < totalPage}">
-      <a class="btn" th:href="@{/board/list/}+${checkParam}+'?page='+${nowPage+1}">></a>
-    </li>
+        <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <img src="https://wishbeen-seoul.s3.ap-northeast-2.amazonaws.com/post/1453359808444_shutterstock_129286766.jpg" style="width: 100%; height: 400px">
+        <div class="card-body">
+          <h5 class="card-title">야경하면? 남산이지</h5>
+          <p class="card-text">블링블링</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <img src="https://content.skyscnr.com/m/47a4a8938c94110e/original/3820145201700054k_Beautiful-Snowscape-of-Korea.jpg?resize=1800px:1800px&quality=100" style="width: 100%; height: 400px">
+        <div class="card-body">
+          <h5 class="card-title">설경보러 무주 오세요!</h5>
+          <p class="card-text">겨울왕국 너낌으로다가</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="region" style="float: left; padding-left: 20px; padding-right:20px ">
+  <ul class="list-group list-group-horizontal">
+    <a href="/board/list/main"><li class="list-group-item">전체</li></a>
+    <a href="/board/list/대구"><li class="list-group-item">대구</li></a>
   </ul>
+  <ul class="list-group list-group-horizontal">
+    <a href="/board/list/서울"><li class="list-group-item">서울</li></a>
+    <a href="/board/list/부산"><li class="list-group-item">부산</li></a>
+  </ul>
+  <ul class="list-group list-group-horizontal">
+    <a href="/board/list/경기"><li class="list-group-item">경기</li></a>
+    <a href="/board/list/울산"><li class="list-group-item">울산</li></a>
+  </ul>
+  <ul class="list-group list-group-horizontal">
+    <a href="/board/list/인천"><li class="list-group-item">인천</li></a>
+    <a href="/board/list/경북"><li class="list-group-item">경북</li></a>
+  </ul>
+  <ul class="list-group list-group-horizontal">
+    <a href="/board/list/강원"><li class="list-group-item">강원</li></a>
+    <a href="/board/list/경남"><li class="list-group-item">경남</li></a>
+  </ul>
+  <ul class="list-group list-group-horizontal">
+    <a href="/board/list/세종"><li class="list-group-item">세종</li></a>
+    <a href="/board/list/광주"><li class="list-group-item">광주</li></a>
+  </ul>
+  <ul class="list-group list-group-horizontal">
+    <a href="/board/list/대전"><li class="list-group-item">대전</li></a>
+    <a href="/board/list/전북"><li class="list-group-item">전북</li></a>
+  </ul>
+  <ul class="list-group list-group-horizontal">
+    <a href="/board/list/충북"><li class="list-group-item">충북</li></a>
+    <a href="/board/list/전남"><li class="list-group-item">전남</li></a>
+  </ul>
+  <ul class="list-group list-group-horizontal">
+    <a href="/board/list/충남"><li class="list-group-item">충남</li></a>
+    <a href="/board/list/제주"><li class="list-group-item">제주</li></a>
+  </ul>
+  </div>
+  <div class="table-responsive" style="padding-left: 20px">
+    <table class="table table-hover" style="text-align: center">
+      <thead>
+      <tr class="text-center">
+        <th>No</th>
+        <th>지역</th>
+        <th>제목</th>
+        <th>글쓴이</th>
+        <th>작성시간</th>
+        <th>조회수</th>
+        <th>추천수</th>
+      </tr>
+      </thead>
+      <tbody class="table-content" th:each="board : ${boardList}">
+      <tr class="text-center">
+        <td th:text="${board.idx}"></td>
+        <td th:text="${board.category}" style="margin-left: 100px"></td>
+        <td class="text-start ps-5">
+          <div class="d-flex align-content-center flex-wrap"
+               style="height: 30px; font-size: 20px; padding-left: 100px" th:with="idx=${board.idx}">
+            <a class="board-title" th:text="${board.title}"
+               th:href=@{/board/details/boardView(idx=${board.idx})}></a>&nbsp;
+          </div>
+        </td>
+        <td style="font-size: 17px" th:with="userId = ${board.userId}">
+          <span th:text="${board.userId}"></span>
+        </td>
+        <td style="font-size: 17px"
+            th:if="${board.time.substring(0,10)} == ${Today.today}"
+            th:text="${board.time.substring(10,16)}"
+        ></td>
+        <td style="font-size: 17px"
+            th:if="${board.time.substring(0,10)} != ${Today.today}"
+            th:text="${board.time.substring(0,10)}"
+        ></td>
+        <td style="font-size: 17px;" th:text="${board.view}"></td>
+        <td style="font-size: 17px;" th:text="${board.recommend}"></td>
+      </tr>
+      </tbody>
+
+    </table>
+  </div>
+  <button class="btn btn-primary w-35 my-2 write-btn" style="float:right" onclick="location.href='/board/write'"> 후기 작성 </button>
+  <br>
+
+  <div class="pagination">
+    <ul>
+      <li th:if="${nowPage != 1}">
+        <a class="btn" th:href="@{/board/list/}+${checkParam}+'?page='+${nowPage-1}"><</a>
+      </li>
+      <li th:each="page:${#numbers.sequence(startPage, endPage)}">
+        <a class="btn" th:if="${page != nowPage}" th:href="@{/board/list/}+${checkParam}+'?page='+${page}" th:text="${page}"></a>
+        <strong class="btn" th:if="${page == nowPage}" th:text="${page}"></strong>
+      </li>
+      <li th:if="${nowPage < totalPage}">
+        <a class="btn" th:href="@{/board/list/}+${checkParam}+'?page='+${nowPage+1}">></a>
+      </li>
+    </ul>
+  </div>
+  </div>
 </div>
 
-</div>
-
+<div style="clear: both"></div>
 <div th:replace="fragments/footer.html :: fragment-footer"></div>
 
 </body>
