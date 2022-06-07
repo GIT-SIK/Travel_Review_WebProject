@@ -10,49 +10,20 @@
 <body>
 <div th:replace="fragments/header.html :: fragment-header"></div>
 <br>
-<h2 class="title" style="text-align: center">TOP 3 후기</h2>
+<!-- 베스트 후기 영역 -->
+<section class="container" style="height:600px;">
+  <div>
+    <span class="indextitle"> 전체 베스트 후기 </span>
+  </div>
+  <div class="bestBoardTop3">
+    <div th:each="bestList : ${bestBoardList}" th:onclick="|location.href='@{/board/details/boardView(idx=${bestList.idx})}'|">
+      <div id="bestBoardImage"><img th:src="${bestList.content}"/></div>
+      <div class="bestBoardTitle" th:text="${bestList.title}"></div>
+      <div class="bestBoardDate" th:text="${bestList.time.substring(0,10)}"></div>
+    </div>
+  </div>
+</section>
 
-<div class="table-responsive" style="padding-left: 20px">
-  <table class="table table-hover" style="text-align: center">
-    <thead>
-    <tr class="text-center">
-      <th>No</th>
-      <th>지역</th>
-      <th>제목</th>
-      <th>글쓴이</th>
-      <th>작성시간</th>
-      <th>조회수</th>
-      <th>추천수</th>
-    </tr>
-    </thead>
-    <tbody class="table-content" th:each="board : ${boardListBest}">
-    <tr class="text-center">
-      <td th:text="${board.idx}"></td>
-      <td th:text="${board.category}" style="margin-left: 100px"></td>
-      <td class="text-start ps-5">
-        <div class="d-flex align-content-center flex-wrap"
-             style="height: 30px; font-size: 20px; padding-left: 100px" th:with="idx=${board.idx}">
-          <a class="boardB-title" th:text="${board.title}"
-             th:href=@{/board/details/boardView(idx=${board.idx})}></a>&nbsp;
-        </div>
-      </td>
-      <td style="font-size: 17px" th:with="userId = ${board.userId}">
-        <span th:text="${board.userId}"></span>
-      </td>
-      <td style="font-size: 17px"
-          th:if="${board.time.substring(0,10)} == ${Today.today}"
-          th:text="${board.time.substring(10,16)}"
-      ></td>
-      <td style="font-size: 17px"
-          th:if="${board.time.substring(0,10)} != ${Today.today}"
-          th:text="${board.time.substring(0,10)}"
-      ></td>
-      <td style="font-size: 17px;" th:text="${board.view}"></td>
-      <td style="font-size: 17px;" th:text="${board.recommend}"></td>
-    </tr>
-    </tbody>
-  </table>
-</div>
 <div class="region" style="float: left; padding-left: 20px; padding-right:20px ">
 <ul class="list-group list-group-horizontal">
   <a href="/board/list/main"><li class="list-group-item">전체</li></a>

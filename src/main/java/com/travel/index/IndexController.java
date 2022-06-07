@@ -34,7 +34,6 @@ public class IndexController {
     public String index(Model model) {
 
         List<Board> bestBoardList = boardService.findBoardBest();
-        List<String> bestBoardImageList = new ArrayList<>();
 
         for( int i =0 ;i< bestBoardList.size(); i++)
         {
@@ -42,7 +41,6 @@ public class IndexController {
             Matcher matcher = pattern.matcher(bestBoardList.get(i).getContent());
 
             while(matcher.find()){
-                bestBoardImageList.add(matcher.group(1));
                 bestBoardList.get(i).setContent(matcher.group(1));
             }
         }
