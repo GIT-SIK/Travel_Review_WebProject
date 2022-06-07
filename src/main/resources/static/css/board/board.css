@@ -40,7 +40,7 @@
 
 .title {
   font-weight: bold;
-  font-family: Jalnan;
+  font-family: Pretendard;
 }
 
 .board-title {
@@ -51,7 +51,7 @@
 }
 
 .board-title:hover {
-  font-family: Jalnan;
+  font-family: Pretendard;
 }
 
 .pagination > ul {
