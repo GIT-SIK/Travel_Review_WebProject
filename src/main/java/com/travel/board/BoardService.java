@@ -1,6 +1,7 @@
 package com.travel.board;
 
 import com.travel.domain.Board;
+import java.util.List;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -86,6 +87,10 @@ public class BoardService {
     return boardRepository.findAll(pageable);
   }
 
+  public List<Board> findBoardBest() {
+    return boardRepository.findRecommend();
+  }
+
   //id로 보드 반환
   public Board findBoardByIdx(Integer idx) {
     return boardRepository.findById(idx).orElse(null);
@@ -99,19 +104,18 @@ public class BoardService {
 
 
   /* 내 정보 : ROLE로 파악하여 관리자 전용 보드, 유저 전용 보드 반환*/
-  public Page<Board> findBoardById( String id, String role, Pageable pageable) {
+  public Page<Board> findBoardById(String id, String role, Pageable pageable) {
     String column = "idx";
     Sort sort = Sort.by(column).descending();
     pageable = PageRequest.of(pageable.getPageNumber() <= 0 ? 0 : pageable.getPageNumber() - 1,
-            10,
-            sort);
-    if(role.equals("ROLE_ADMIN")) {
+        10,
+        sort);
+    if (role.equals("ROLE_ADMIN")) {
       return boardRepository.findAllBoard(pageable);
     } else {
       return boardRepository.findByUserId(id, pageable);
     }
   }
-
 
 
   /* 따봉 올리기 */
@@ -154,4 +158,6 @@ public class BoardService {
       }
     }
   }
+
+
 }
