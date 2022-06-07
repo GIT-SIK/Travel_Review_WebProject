@@ -63,11 +63,6 @@
                             <td style="display : none"><input type="button" value="-"  onclick="javascript:slideAddForm(false)"> </td>
                             <td></td>
                         </tr>
-                        <!--                            <tr id="slideHideForm" style="display : none" >-->
-                        <!--                                <td></td>-->
-                        <!--                                <td><input type="button" value="닫기"  onclick="javascript:slideAddForm(false)"> </td>-->
-                        <!--                                <td></td>-->
-                        <!--                            </tr>-->
                         </tbody>
 
 
@@ -117,7 +112,6 @@
                             <option value="11">11월</option>
                             <option value="12">12월</option>
                         </select>
-                        <!--                        <input type="text" th:name="slideTitleData" th:value="${idxViewList.slideTitle}">-->
                         <input type="submit" class="tableButton" value="수정">
                     </form>
                 </div>
@@ -180,14 +174,14 @@
                     <div class="pagination">
                         <ul>
                             <li th:if="${nowPage != 1}">
-                                <a class="btn" th:href="@{/user/admin/}+'?page='+${nowPage-1}"><</a>
+                                <a class="btn" th:href="@{/user/admin}+'?board_page='+${nowPage-1}"><</a>
                             </li>
                             <li th:each="page:${#numbers.sequence(startPage, endPage)}">
-                                <a class="btn" th:if="${page != nowPage}" th:href="@{/user/admin/}+'?page='+${page}" th:text="${page}"></a>
+                                <a class="btn" th:if="${page != nowPage}" th:href="@{/user/admin}+'?board_page='+${page}" th:text="${page}"></a>
                                 <strong class="btn" th:if="${page == nowPage}" th:text="${page}"></strong>
                             </li>
                             <li th:if="${nowPage < totalPage}">
-                                <a class="btn" th:href="@{/user/admin/}+'?page='+${nowPage+1}">></a>
+                                <a class="btn" th:href="@{/user/admin}+'?board_page='+${nowPage+1}">></a>
                             </li>
                         </ul>
                     </div>
@@ -197,11 +191,43 @@
             </div>
             <!-- 관리자전용 유저관리 -->
             <div class="userMg"  style="display:none;"> 유저 관리 페이지
+                <div class="table-responsive" >
+                    <table class="table table-hover" style="text-align: center">
+                        <thead>
+                        <tr class="text-center">
+                            <th>ID</th>
+                            <th>Email</th>
+                            <th>Tel</th>
+                            <th>관리</th>
+                        </tr>
+                        </thead>
+                        <tbody id="userBody">
+                        <tr class="text-center" th:each="user : ${userList}">
+                            <td th:text="${user.id}"></td>
+                            <td th:text="${user.email}"></td>
+                            <td th:text="${user.tel}"></td>
+                            <td><input type="button" class="tableButton" th:onclick="javascript:deleteUser([[${user.id}]])" value="탈퇴"/></td>
+                        </tr>
+                        </tbody>
 
+                    </table>
+                </div>
 
+                <div class="pagination">
+                    <ul>
+                        <li th:if="${userNowPage != 1}">
+                            <a class="btn" th:href="@{/user/admin}+'?user_page='+${userNowPage-1}"><</a>
+                        </li>
+                        <li th:each="page:${#numbers.sequence(userStartPage, userEndPage)}">
+                            <a class="btn" th:if="${page != userNowPage}" th:href="@{/user/admin}+'?user_page='+${page}" th:text="${page}"></a>
+                            <strong class="btn" th:if="${page == userNowPage}" th:text="${page}"></strong>
+                        </li>
+                        <li th:if="${userNowPage < userTotalPage}">
+                            <a class="btn" th:href="@{/user/admin}+'?user_page='+${userNowPage+1}">></a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-
-
             <!-- 관리자전용 유저관리 끝 -->
         </div>
     </div>

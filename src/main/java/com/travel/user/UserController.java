@@ -8,6 +8,7 @@ import com.travel.domain.User;
 import com.travel.index.IndexService;
 import com.travel.security.auth.UserDetails;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -101,16 +102,17 @@ public class UserController {
 
     /* *************************************  데이터 처리 ************************************* */
     @GetMapping(value = {"/user/admin", "/user/mypage"})
-    public String adminDataMapping(@AuthenticationPrincipal UserDetails userDetails, Model model, Pageable pageable) {
+    public String adminDataMapping(@AuthenticationPrincipal UserDetails userDetails, Model model, @Qualifier("board") Pageable boardPageable, @Qualifier("user") Pageable userPageable) {
 
         /* ** 공통 영역 ** */
-        Page<Board> p = boardDataSubMapping(userDetails.getUser().getId(), userDetails.getUser().getRole(), pageable);
-        int totalPage = p.getTotalPages();
-        int nowPage = p.getPageable().getPageNumber()+1;
+        /* 게시물관리 페이지 관리 */
+        Page<Board> boardPage = boardDataSubMapping(userDetails.getUser().getId(), userDetails.getUser().getRole(), boardPageable);
+        int totalPage = boardPage.getTotalPages();
+        int nowPage = boardPage.getPageable().getPageNumber()+1;
         int startPage = Math.max(nowPage-4, 1);
-        int endPage = Math.min(nowPage+4, p.getTotalPages());
+        int endPage = Math.min(nowPage+4, boardPage.getTotalPages());
 
-        model.addAttribute("boardList", p);
+        model.addAttribute("boardList", boardPage);
         model.addAttribute("totalPage", totalPage);
         model.addAttribute("nowPage", nowPage);
         model.addAttribute("startPage", startPage);
@@ -121,6 +123,22 @@ public class UserController {
         if(userDetails.getUser().getRole().equals("ROLE_ADMIN")){
 
             List<IdxView> viewList = indexService.findAllView();
+
+            /* 유저관리 페이지 관리 */
+            Page<User> userPage = userService.findAllUser(userPageable);
+            int userTotalPage = userPage.getTotalPages();
+            int userNowPage = userPage.getPageable().getPageNumber()+1;
+            int userStartPage = Math.max(userNowPage-4, 1);
+            int userEndPage = Math.min(userNowPage+4, userPage.getTotalPages());
+
+            model.addAttribute("userList", userPage);
+            model.addAttribute("userTotalPage", userTotalPage);
+            model.addAttribute("userNowPage", userNowPage);
+            model.addAttribute("userStartPage", userStartPage);
+            model.addAttribute("userEndPage", userEndPage);
+
+
+
             IdxView idxView = viewList.get(0);
             model.addAttribute("idxSlideList", indexService.findAllSlide());
             model.addAttribute("idxViewList", idxView);
@@ -179,6 +197,13 @@ public class UserController {
         return "redirect:/user/admin";
 
 
+    }
+
+    /* 관리자 페이지에서 유저 삭제함. */
+    @PostMapping("/user/admin/userDelete")
+    @ResponseBody
+    public boolean deleteUserAdmin(@AuthenticationPrincipal UserDetails userDetails, @RequestParam("id") String id) {
+        return userService.deleteUserAdmin(userDetails.getUser().getRole(), id);
     }
 
     /* *************************************  유저 영역 ************************************* */

@@ -31,7 +31,8 @@ public class IdxSlide {
 
 
     @Builder
-    public IdxSlide(String slideLink, String slideTitle, String slideContent, String slidePosition) {
+    public IdxSlide(int slideIdx , String slideLink, String slideTitle, String slideContent, String slidePosition) {
+        this.slideIdx = slideIdx;
         this.slideLink = slideLink;
         this.slideTitle = slideTitle;
         this.slideContent = slideContent;
