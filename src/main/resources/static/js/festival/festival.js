@@ -11,8 +11,8 @@ function makeList(result, i) {
     addRow =
         '<li class="festivalData">' +
         '<div class="festivalDetail">' +
-        '<span>' + '축제명 : ' + '</span>' +
-        '<span>' + result[i].name + '</span>' + '<br>' +
+        // '<span>' + '축제명 : ' + '</span>' +
+        '<span id="festivalName">' + result[i].name + '</span>' + '<br>' +
         '<span>' + '기간 : ' + '</span>' +
         '<span>' + result[i].startDate.substring(0, 10) + '</span>' +
         '<span>' + ' ~ ' + '</span>' +

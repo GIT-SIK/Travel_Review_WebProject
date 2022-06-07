@@ -36,7 +36,19 @@
   transform: translateY(4px);
 }
 
+thead > tr {
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
 
+tbody, td, tfoot, th, thead, tr{
+  border-style: none;
+}
+
+tbody {
+  border-bottom: 1px solid lightgray;
+  color: gray;
+}
 
 .title {
   font-weight: bold;
@@ -47,10 +59,6 @@
   text-decoration: none;
   color: cornflowerblue;
   font-weight: bold;
-  font-family: Pretendard;
-}
-
-.board-title:hover {
   font-family: Pretendard;
 }
 

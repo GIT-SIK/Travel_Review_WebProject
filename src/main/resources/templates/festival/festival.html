@@ -34,7 +34,7 @@
                 </select>
             </div>
         </div>
-
+        <br> <br>
         <div class="row">
             <div class="col-2">
                 <ul class="localList">
@@ -61,8 +61,8 @@
                 <ul class="festivalList">
                     <li class="festivalData" th:each="festival : ${festivalList}">
                         <div class="festivalDetail">
-                            <span>축제명 : </span>
-                            <span th:text="${festival.name}"></span> <br>
+<!--                            <span>축제명 : </span>-->
+                            <span id="festivalName" th:text="${festival.name}"></span> <br>
                             <span>기간 : </span>
                             <span th:text="${#strings.substring(festival.startDate, 0, 10)}"></span>
                             <span> ~ </span>

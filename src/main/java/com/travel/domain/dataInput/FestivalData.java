@@ -1,4 +1,4 @@
-package com.travel.dataInput;
+package com.travel.domain.dataInput;
 
 import com.travel.domain.Festival;
 import org.json.simple.JSONArray;

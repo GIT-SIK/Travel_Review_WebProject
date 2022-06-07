@@ -118,3 +118,21 @@
     color: white;
     border: none;
 }
+
+#userTable {
+    min-width: 430px;
+    width : 100%;
+}
+
+#userTable td,
+#userTable th {
+    padding : 8px;
+}
+
+#userHead tr{
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+#userBody tr{
+    border-bottom: 1px solid lightgray;
+}
