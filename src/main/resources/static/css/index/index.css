@@ -11,12 +11,44 @@
 }
 .morebtn{
     font-family: Pretendard;
-    font-size: 14px;
+    margin-right : 24px;
+    font-size: 14pt;
     display: flex;
     color: black;
     text-decoration: underline;
     cursor: pointer;
     justify-content: right;
+}
+
+.bestBoardTop3 {
+    margin-top : 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.bestBoardTop3 > div {
+    cursor: pointer;
+}
+
+#bestBoardImage {
+    text-align: center;
+}
+
+.bestBoardTitle {
+    margin : 10px;
+    font-size: 16pt;
+}
+
+.bestBoardDate {
+    margin : 10px;
+    font-size: 14pt;
+}
+
+.bestBoardTop3 img {
+    display: block;
+    text-align: center;
+    width: 420px;
+    height: 320px;
 }
 
 

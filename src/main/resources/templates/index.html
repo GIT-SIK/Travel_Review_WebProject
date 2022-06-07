@@ -15,16 +15,19 @@
 <div class="main">
 
     <!-- 베스트 후기 영역 -->
-    <section style="height:400px;">
+    <section class="container" style="height:600px;">
         <div>
             <span class="indextitle"> 베스트 후기 </span>
         </div>
         <div>
             <a th:href="@{/board/list/main}" class="morebtn">더보기</a>
         </div>
-        <hr class="indexhr">
-        <div>
-
+        <div class="bestBoardTop3">
+            <div th:each="bestList : ${bestBoardList}" th:onclick="|location.href='@{/board/details/boardView(idx=${bestList.idx})}'|">
+                <div id="bestBoardImage"><img th:src="${bestList.content}"/></div>
+                <div class="bestBoardTitle" th:text="${bestList.title}"></div>
+                <div class="bestBoardDate" th:text="${bestList.time.substring(0,10)}"></div>
+            </div>
         </div>
     </section>
 

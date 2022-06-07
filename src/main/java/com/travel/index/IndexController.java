@@ -1,6 +1,8 @@
 package com.travel.index;
 
 
+import com.travel.board.BoardService;
+import com.travel.domain.Board;
 import com.travel.domain.Festival;
 import com.travel.domain.IdxSlide;
 import com.travel.domain.IdxView;
@@ -14,7 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Controller
 public class IndexController {
@@ -22,11 +27,30 @@ public class IndexController {
     @Autowired
     IndexService indexService;
 
+    @Autowired
+    BoardService boardService;
+
     @GetMapping({"", "/"})
     public String index(Model model) {
 
+        List<Board> bestBoardList = boardService.findBoardBest();
+        List<String> bestBoardImageList = new ArrayList<>();
+
+        for( int i =0 ;i< bestBoardList.size(); i++)
+        {
+            Pattern pattern = Pattern.compile("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>"); //img 태그 src 추출 정규표현식
+            Matcher matcher = pattern.matcher(bestBoardList.get(i).getContent());
+
+            while(matcher.find()){
+                bestBoardImageList.add(matcher.group(1));
+                bestBoardList.get(i).setContent(matcher.group(1));
+            }
+        }
+
         List<IdxSlide> slideLinkList = indexService.findAllSlide();
         List<IdxView> viewList = indexService.findAllView();
+
+        model.addAttribute("bestBoardList", bestBoardList);
         model.addAttribute("SlideLinkList", slideLinkList);
         model.addAttribute("viewList", viewList);
         return "index";
