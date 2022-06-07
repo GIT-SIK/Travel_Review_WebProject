@@ -144,7 +144,7 @@ public class BoardController {
     model.addAttribute("replyList", replyList);
     model.addAttribute("countAllReply", countAllReply);
 
-    return "/board/board-details";
+    return "board/board-details";
   }
 
 
