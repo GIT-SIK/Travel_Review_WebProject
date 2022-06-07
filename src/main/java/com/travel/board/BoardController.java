@@ -35,50 +35,52 @@ public class BoardController {
   }
 
   @GetMapping("/list/{param}")
-  String communityMapping(Model model,Pageable pageable, @PathVariable String param, Today today) {
+  String communityMapping(Model model, Pageable pageable, @PathVariable String param, Today today) {
 
     Page<Board> p = null;
     if (param.equals("main")) {
       p = boardService.findBoardList(pageable, "idx", param);
-    }else if(param.equals("서울")) {
+      List<Board> l1 = boardService.findBoardBest();
+      model.addAttribute("boardListBest", l1);
+    } else if (param.equals("서울")) {
       p = boardService.findBoardList(pageable, "idx", param);
-    }else if(param.equals("경기")) {
+    } else if (param.equals("경기")) {
       p = boardService.findBoardList(pageable, "idx", param);
-    }else if(param.equals("인천")) {
+    } else if (param.equals("인천")) {
       p = boardService.findBoardList(pageable, "idx", param);
-    }else if(param.equals("강원")) {
+    } else if (param.equals("강원")) {
       p = boardService.findBoardList(pageable, "idx", param);
-    }else if(param.equals("세종")) {
+    } else if (param.equals("세종")) {
       p = boardService.findBoardList(pageable, "idx", param);
-    }else if(param.equals("대전")) {
+    } else if (param.equals("대전")) {
       p = boardService.findBoardList(pageable, "idx", param);
-    }else if(param.equals("충북")) {
+    } else if (param.equals("충북")) {
       p = boardService.findBoardList(pageable, "idx", param);
-    }else if(param.equals("충남")) {
+    } else if (param.equals("충남")) {
       p = boardService.findBoardList(pageable, "idx", param);
-    }else if(param.equals("대구")) {
+    } else if (param.equals("대구")) {
       p = boardService.findBoardList(pageable, "idx", param);
-    }else if(param.equals("부산")) {
+    } else if (param.equals("부산")) {
       p = boardService.findBoardList(pageable, "idx", param);
-    }else if(param.equals("울산")) {
+    } else if (param.equals("울산")) {
       p = boardService.findBoardList(pageable, "idx", param);
-    }else if(param.equals("경북")) {
+    } else if (param.equals("경북")) {
       p = boardService.findBoardList(pageable, "idx", param);
-    }else if(param.equals("경남")) {
+    } else if (param.equals("경남")) {
       p = boardService.findBoardList(pageable, "idx", param);
-    }else if(param.equals("광주")) {
+    } else if (param.equals("광주")) {
       p = boardService.findBoardList(pageable, "idx", param);
-    }else if(param.equals("전북")) {
+    } else if (param.equals("전북")) {
       p = boardService.findBoardList(pageable, "idx", param);
-    }else if(param.equals("전남")) {
+    } else if (param.equals("전남")) {
       p = boardService.findBoardList(pageable, "idx", param);
-    }else if(param.equals("제주")) {
+    } else if (param.equals("제주")) {
       p = boardService.findBoardList(pageable, "idx", param);
     }
     int totalPage = p.getTotalPages();
-    int nowPage = p.getPageable().getPageNumber()+1;
-    int startPage = Math.max(nowPage-4, 1);
-    int endPage = Math.min(nowPage+4, p.getTotalPages());
+    int nowPage = p.getPageable().getPageNumber() + 1;
+    int startPage = Math.max(nowPage - 4, 1);
+    int endPage = Math.min(nowPage + 4, p.getTotalPages());
 
     model.addAttribute("boardList", p);
     model.addAttribute("totalPage", totalPage);

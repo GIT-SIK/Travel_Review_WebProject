@@ -9,48 +9,50 @@
 </head>
 <body>
 <div th:replace="fragments/header.html :: fragment-header"></div>
-
+<br>
 <h2 class="title" style="text-align: center">TOP 3 후기</h2>
 
-<div class="row row-cols-1 row-cols-md-3 g-4">
-  <div class="col">
-    <div class="card h-100">
-      <img src="https://www.popco.net/zboard/data/dica_forum_samsung/2015/07/27/147743295955b5c369685cd.jpg" style="width: 100%; height: 400px">
-      <div class="card-body">
-        <h5 class="card-title">제주 바다</h5>
-        <p class="card-text">떠나요~둘이서</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card h-100">
-      <img src="https://wishbeen-seoul.s3.ap-northeast-2.amazonaws.com/post/1453359808444_shutterstock_129286766.jpg" style="width: 100%; height: 400px">
-      <div class="card-body">
-        <h5 class="card-title">야경하면? 남산이지</h5>
-        <p class="card-text">블링블링</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card h-100">
-      <img src="https://content.skyscnr.com/m/47a4a8938c94110e/original/3820145201700054k_Beautiful-Snowscape-of-Korea.jpg?resize=1800px:1800px&quality=100" style="width: 100%; height: 400px">
-      <div class="card-body">
-        <h5 class="card-title">설경보러 무주 오세요!</h5>
-        <p class="card-text">겨울왕국 너낌으로다가</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
-      </div>
-    </div>
-  </div>
+<div class="table-responsive" style="padding-left: 20px">
+  <table class="table table-hover" style="text-align: center">
+    <thead>
+    <tr class="text-center">
+      <th>No</th>
+      <th>지역</th>
+      <th>제목</th>
+      <th>글쓴이</th>
+      <th>작성시간</th>
+      <th>조회수</th>
+      <th>추천수</th>
+    </tr>
+    </thead>
+    <tbody class="table-content" th:each="board : ${boardListBest}">
+    <tr class="text-center">
+      <td th:text="${board.idx}"></td>
+      <td th:text="${board.category}" style="margin-left: 100px"></td>
+      <td class="text-start ps-5">
+        <div class="d-flex align-content-center flex-wrap"
+             style="height: 30px; font-size: 20px; padding-left: 100px" th:with="idx=${board.idx}">
+          <a class="boardB-title" th:text="${board.title}"
+             th:href=@{/board/details/boardView(idx=${board.idx})}></a>&nbsp;
+        </div>
+      </td>
+      <td style="font-size: 17px" th:with="userId = ${board.userId}">
+        <span th:text="${board.userId}"></span>
+      </td>
+      <td style="font-size: 17px"
+          th:if="${board.time.substring(0,10)} == ${Today.today}"
+          th:text="${board.time.substring(10,16)}"
+      ></td>
+      <td style="font-size: 17px"
+          th:if="${board.time.substring(0,10)} != ${Today.today}"
+          th:text="${board.time.substring(0,10)}"
+      ></td>
+      <td style="font-size: 17px;" th:text="${board.view}"></td>
+      <td style="font-size: 17px;" th:text="${board.recommend}"></td>
+    </tr>
+    </tbody>
+  </table>
 </div>
-<br>
 <div class="region" style="float: left; padding-left: 20px; padding-right:20px ">
 <ul class="list-group list-group-horizontal">
   <a href="/board/list/main"><li class="list-group-item">전체</li></a>
