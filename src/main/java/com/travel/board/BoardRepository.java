@@ -37,4 +37,10 @@ public interface BoardRepository extends JpaRepository<Board, Integer> {
 
   @Query(nativeQuery = true, value="SELECT * FROM board where content LIKE '%<img%' ORDER BY recommend DESC LIMIT 3 ")
   List<Board> findRecommend();
+
+  @Query(value = "SELECT * FROM board a WHERE a.content LIKE %:keyword% ORDER BY a.recommend LIMIT 10", nativeQuery = true)
+  List<Board> findByContentContaining(@Param("keyword") String keyword);
+
+  @Query(value = "SELECT * FROM board a WHERE a.category LIKE %:keyword% ORDER BY a.recommend LIMIT 10", nativeQuery = true)
+  List<Board> findByLocalContaining(@Param("keyword") String keyword);
 }
