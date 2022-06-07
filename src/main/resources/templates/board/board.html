@@ -134,13 +134,17 @@
   </div>
   <button class="btn btn-primary w-35 my-2 write-btn" style="float:right" onclick="location.href='/board/write'"> 후기 작성 </button>
   <br>
-
+  <div th:text="${endPage}"></div>
   <div class="pagination">
     <ul>
       <li th:if="${nowPage != 1}">
         <a class="btn" th:href="@{/board/list/}+${checkParam}+'?page='+${nowPage-1}"><</a>
       </li>
-      <li th:each="page:${#numbers.sequence(startPage, endPage)}">
+      <li th:if="${endPage != 0}" th:each="page:${#numbers.sequence(startPage, endPage)}">
+        <a class="btn" th:if="${page != nowPage}" th:href="@{/board/list/}+${checkParam}+'?page='+${page}" th:text="${page}"></a>
+        <strong class="btn" th:if="${page == nowPage}" th:text="${page}"></strong>
+      </li>
+      <li th:if="${endPage == 0}" th:each="page:${#numbers.sequence(startPage, 1)}">
         <a class="btn" th:if="${page != nowPage}" th:href="@{/board/list/}+${checkParam}+'?page='+${page}" th:text="${page}"></a>
         <strong class="btn" th:if="${page == nowPage}" th:text="${page}"></strong>
       </li>
