@@ -48,9 +48,11 @@ public class IndexController {
         List<IdxSlide> slideLinkList = indexService.findAllSlide();
         List<IdxView> viewList = indexService.findAllView();
 
+        IdxView viewTemp = viewList.get(0);
+
         model.addAttribute("bestBoardList", bestBoardList);
         model.addAttribute("SlideLinkList", slideLinkList);
-        model.addAttribute("viewList", viewList);
+        model.addAttribute("viewTemp", viewTemp);
         return "index";
     }
 

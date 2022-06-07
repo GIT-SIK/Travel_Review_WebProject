@@ -33,33 +33,33 @@
 
     <!-- 슬라이드 영역 -->
     <div style="position:relative;">
-            <ul class="slider">
-                <li th:each=" slideList : ${SlideLinkList}">
-                    <div th:style="'background-image:url(' + ${slideList.slideLink} + ');'">
-                        <th:block th:if="${slideList.slidePosition == 'right'}">
-                            <dl class="right container">
-                                <dt th:text="${slideList.slideTitle}"></dt>
-                                <dd th:text="${slideList.slideContent}"></dd>
-                            </dl>
-                        </th:block>
-                        <th:block th:if="${slideList.slidePosition != 'right'}">
-                            <dl class="left container">
-                                <dt th:text="${slideList.slideTitle}"></dt>
-                                <dd th:text="${slideList.slideContent}"></dd>
-                            </dl>
-                        </th:block>
-                    </div>
-                </li>
-            </ul>
+        <ul class="slider">
+            <li th:each=" slideList : ${SlideLinkList}">
+                <div th:style="'background-image:url(' + ${slideList.slideLink} + ');'">
+                    <th:block th:if="${slideList.slidePosition == 'right'}">
+                        <dl class="right container">
+                            <dt th:text="${slideList.slideTitle}"></dt>
+                            <dd th:text="${slideList.slideContent}"></dd>
+                        </dl>
+                    </th:block>
+                    <th:block th:if="${slideList.slidePosition != 'right'}">
+                        <dl class="left container">
+                            <dt th:text="${slideList.slideTitle}"></dt>
+                            <dd th:text="${slideList.slideContent}"></dd>
+                        </dl>
+                    </th:block>
+                </div>
+            </li>
+        </ul>
 
-            <div class="sliderBack container">
-                <span th:text="${viewList[0].slideTitle}"> </span>
-            </div>
+        <div class="sliderBack container">
+            <span th:text="${viewTemp.slideTitle}"></span>
+        </div>
 
-            <div class="sliderBtn container">
-                <img id="prev" th:src="@{/images/all/arrow_l.png}">
-                <img id="next" th:src="@{/images/all/arrow_r.png}">
-            </div>
+        <div class="sliderBtn container">
+            <img id="prev" th:src="@{/images/all/arrow_l.png}">
+            <img id="next" th:src="@{/images/all/arrow_r.png}">
+        </div>
     </div>
 
     <!-- 지도 및 축제 영역 -->
