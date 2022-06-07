@@ -5,6 +5,8 @@ import com.travel.etc.Today;
 import com.travel.security.auth.UserDetails;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONObject;
@@ -40,8 +42,7 @@ public class BoardController {
     Page<Board> p = null;
     if (param.equals("main")) {
       p = boardService.findBoardList(pageable, "idx", param);
-      List<Board> l1 = boardService.findBoardBest();
-      model.addAttribute("boardListBest", l1);
+
     } else if (param.equals("서울")) {
       p = boardService.findBoardList(pageable, "idx", param);
     } else if (param.equals("경기")) {
@@ -77,6 +78,18 @@ public class BoardController {
     } else if (param.equals("제주")) {
       p = boardService.findBoardList(pageable, "idx", param);
     }
+
+    List<Board> bestBoardList = boardService.findBoardBest();
+    for( int i =0 ;i< bestBoardList.size(); i++)
+    {
+      Pattern pattern = Pattern.compile("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>"); //img 태그 src 추출 정규표현식
+      Matcher matcher = pattern.matcher(bestBoardList.get(i).getContent());
+
+      while(matcher.find()){
+        bestBoardList.get(i).setContent(matcher.group(1));
+      }
+    }
+
     int totalPage = p.getTotalPages();
     int nowPage = p.getPageable().getPageNumber() + 1;
     int startPage = Math.max(nowPage - 4, 1);
@@ -89,6 +102,7 @@ public class BoardController {
     model.addAttribute("endPage", endPage);
     model.addAttribute("checkParam", param);
     model.addAttribute("Today", today);
+    model.addAttribute("bestBoardList", bestBoardList);
 
     return "board/board";
   }
