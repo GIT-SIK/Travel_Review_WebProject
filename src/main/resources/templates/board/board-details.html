@@ -6,56 +6,42 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <div th:replace="fragments/head.html :: fragment-head"></div>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <title>게시판</title>
+  <title>여긴어때</title>
   <script> location.hash = (location.hash) ? location.hash : " "; </script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script type="module" th:src="@{/js/board/reply-transfer.js}"></script>
 </head>
 <body>
 <div th:replace="fragments/header.html :: fragment-header"></div>
-<div class="container-fluid p-0 m-0">
-  <div th:replace="fragments/nav.html :: fragment-nav"></div>
-</div>
-<br/>
 <div class="container">
   <div class="tabmenu-wrapper mt-5" th:object="${board}">
     <div class="row">
       <div class="col-12">
         <div class="d-flex flex-column fs-5">
-          <div class="row">
-            <div class="col" style="padding: 10px 0px; font-size: 28px; font-weight: bold;">
-              <i class="bi bi-book"></i>
-              <span th:text="${board.bAcademyName}"></span>
-              &nbsp;>&nbsp;
-              <span th:text="${board.bCourseName}"></span>
-            </div>
-          </div>
           <div class="row"
                style="padding: 10px 0px; border-top: 2px solid black; display: inline-block; ">
             <div class="col d-flex">
-              <span th:text="${board.title}" style="font-size: x-large; font-weight: bold;"></span>&nbsp;
-              <span style="color: #0059ab; font-size: 17px; display:grid; align-items:center;"
-                    th:text="|(${countAllReply})|"></span>
+              <span th:text="'제목 : ['+ ${board.title}+']'" style="font-size: x-large; font-weight: bold;"></span>&nbsp;
             </div>
+
           </div>
           <div class="row">
-            <div class="col" th:with="author = ${board.author}">
-              <span th:text="${board.author}"></span>
-              <span th:if="${@boardService.findAuthByUserId(author)==true}"
-                    class="bi bi-bookmark-check"></span> |
-              <span th:text="${board.date}"></span>
+
+            <div class="col" th:with="userId = ${board.userId}">
+              <span style="font-weight: bold" th:text="'작성자 : ['+ ${board.userId}+']'"></span>
+              <br>
+              <span style="float: right" th:text="${board.time.substring(0,16)}"></span>
+              <br>
               <div class="col" style="text-align: right">
-<!--                <span th:text="|추천 ${board.recommend}|"></span>-->
-<!--                <span> | </span>-->
                 <span th:text="|조회 ${board.view}|"></span>
               </div>
             </div>
           </div>
           <hr>
           <div th:if="${#authentication.getPrincipal()!='anonymousUser'}">
-            <div class="d-flex justify-content-end mt-2" th:if="${#authentication.getPrincipal().getUsername()} == ${board.author}">
+            <div class="d-flex justify-content-end mt-2" th:if="${#authentication.getPrincipal().getUsername()} == ${board.userId}">
               <a class="text-decoration-none text-muted"
-                 th:href=@{/board/rewrite/(bid=${board.bid})}>수정</a>
+                 th:href=@{/board/rewrite/(idx=${board.idx})}>수정</a>
               <span class="text-muted mx-3">|</span>
               <a class="text-decoration-none text-muted" href='javascript:void(0);' onclick="deleteAlert()">삭제</a>
             </div>
@@ -65,14 +51,12 @@
                style="padding: 10px; word-wrap:break-word;"></div>
           <div style="text-align: center; margin-top: 20px;">
             <input type="button" id="recommend" style="width: 80px;height: 80px; font-size: x-large"
-                   th:onclick="|location.href='@{/board/details/boardRecommend(idx=${board.bid})}'|" th:value="|👍&#10;${board.recommend}추|"/>
+                   th:onclick="|location.href='@{/board/details/boardRecommend(idx=${board.idx})}'|" th:value="|👍&#10;${board.recommend}추|"/>
           </div>
           <div style="padding: 10px 0px; border-bottom: 2px solid black;">
-            <span>전체 댓글</span>
-            <span style="color: #0059ab;" th:text="|(${countAllReply})|"></span>
             <button
-                    onclick="location.href = '/board/list/sortByDate'"
-                    style="float: right; background-color: #0059AB;
+                    onclick="location.href = '/board/list/main'"
+                    style="float: right; background-color: #F63543;
                     border: 1px solid lightgrey; color: white; font-size: 14pt;
                     padding: 5px; width: 100px">
               목록으로
@@ -84,9 +68,6 @@
             <div class="d-flex flex-column">
               <div class="d-flex" th:with="rAuthor=*{reply.rAuthor}">
                 <div class="fw-bold fs-5" th:text="*{reply.rAuthor}"></div>
-                <div th:if="${@boardService.findAuthByUserId(rAuthor)==true}"
-                     class="bi bi-bookmark-check"
-                     style="display:grid; align-items:center;"></div>
                 <div class="d-flex flex-column justify-content-center text-muted"
                      style="font-size: 12px;" th:text="| (*{reply.rDate})|"></div>
               </div>
@@ -118,9 +99,6 @@
                 </div>
                 <div class="d-flex" th:with="rAuthor=${reply.rAuthor}">
                   <div class="fw-bold fs-5" th:text="${reply.rAuthor}"></div>
-                  <div th:if="${@boardService.findAuthByUserId(rAuthor)==true}"
-                       class="bi bi-bookmark-check"
-                       style="display:grid; align-items:center;"></div>
                   <div class="d-flex flex-column justify-content-center text-muted"
                        style="font-size: 12px;" th:text="|(${reply.rDate})|"></div>
                 </div>
@@ -142,12 +120,16 @@
               </button>
             </div>
           </div>
-          <div th:replace="fragments/footer.html :: fragment-footer"></div>
+
+
+
+
         </div>
       </div>
     </div>
   </div>
 </div>
+<div th:replace="fragments/footer.html :: fragment-footer"></div>
 <script th:inline="javascript">
 
   $().ready(function () {
@@ -163,7 +145,7 @@
 
   function deleteAlert() {
     /*<![CDATA[*/
-    let bid = [[ ${board.bid} ]];
+    let idx = [[ ${board.idx} ]];
     /*]]*/
 
   Swal.fire({
@@ -180,7 +162,7 @@
       Swal.fire(
           '해당 글이 삭제되었습니다'
     ).then((result) => {
-      let params = {bid:bid}
+      let params = {idx:idx}
       $.ajax({
         url: "/board/delete",
         type: 'post',
@@ -188,7 +170,7 @@
         data: JSON.stringify(params),
         contentType: 'application/json',
         success: function (result) {
-          window.location.href = "/board/list/sortByDate";
+          window.location.href = "/board/list/main";
         }
       });
       });

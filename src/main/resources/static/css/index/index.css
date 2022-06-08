@@ -1,0 +1,485 @@
+
+
+/* ******************* 베스트 후기 ********************** */
+.indextitle{
+    font-family: Pretendard;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    margin-top: -35px;
+    margin-bottom: -20px;
+}
+.morebtn{
+    font-family: Pretendard;
+    margin-right : 24px;
+    font-size: 14pt;
+    display: flex;
+    color: black;
+    text-decoration: underline;
+    cursor: pointer;
+    justify-content: right;
+}
+
+.bestBoardTop3 {
+    font-family: 'Pretendard';
+    margin-top : 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.bestBoardTop3 > div {
+    cursor: pointer;
+}
+
+#bestBoardImage {
+    text-align: center;
+}
+
+.bestBoardTitle {
+    margin : 10px;
+    font-size: 16pt;
+}
+
+.bestBoardDate {
+    margin : 10px;
+    font-size: 14pt;
+}
+
+@media (min-width: 0px) {
+
+    .bestground {
+        height : 800px;
+    }
+    .bestBoardTop3 {
+        margin-top : 30px;
+        display: grid;
+        grid-template-columns: 500px;
+        grid-template-rows: 330px 330px;
+    }
+
+    .bestBoardTop3 > div {
+        text-align: center;
+    }
+
+    .bestBoardTop3 > div:nth-child(3){
+        display:none;
+    }
+
+    .bestBoardTop3 img {
+        text-align: center;
+        width: 294px;
+        height: 224px;
+    }
+}
+@media (min-width: 576px) {
+    .bestBoardTop3 {
+        grid-template-rows: unset;
+    }
+
+}
+
+
+@media (min-width: 768px) {
+    .bestground {
+        height : 600px;
+    }
+
+    .bestBoardTop3 {
+        margin-top : 30px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .bestBoardTop3 > div:nth-child(3){
+        display:none;
+    }
+
+    .bestBoardTop3 img {
+        text-align: center;
+        width: 294px;
+        height: 224px;
+    }
+}
+
+
+
+@media (min-width: 992px) {
+    .bestBoardTop3 {
+        margin-top : 30px;
+        display: grid;
+        grid-template-rows: unset;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .bestBoardTop3 > div:nth-child(3){
+        display:block;
+    }
+
+    .bestBoardTop3 img {
+        text-align: center;
+        width: 294px;
+        height: 224px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .bestBoardTop3 img {
+        text-align: center;
+        width: 357px;
+        height: 272px;
+    }
+}
+
+@media (min-width: 1400px) {
+.bestBoardTop3 img {
+    text-align: center;
+    width: 420px;
+    height: 320px;
+}
+}
+
+
+
+
+
+/* ******************* 이미지 슬라이드 ********************** */
+
+.slider {
+    padding: 0;
+    list-style:none;
+    height:630px;
+    overflow:hidden;
+    margin-bottom: 0;
+}
+.slider:after {
+    content:'';
+    display:block;
+    clear:both;
+}
+.slider li {
+    position:absolute;
+    left:0;
+    width:100%;
+    height:600px;
+    opacity:0;
+}
+.slider li div {
+    width:100%;
+    height:100%;
+    background-size:cover;
+    position:relative;
+}
+
+.slider li .right dt,
+.slider li .right dd{
+    text-align:right;
+}
+
+
+.slider li dl {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@media (max-width: 1399px) {
+    .slider li .right,
+    .slider li .left
+    {
+        left: 50px;
+    }
+    .slider li .right {
+        left:auto;
+        right:50px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .slider li .right,
+    .slider li .left
+    {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+
+}
+
+
+.slider li dt {
+    color:#fff;
+    font-size:3rem;
+    text-shadow:1px 1px 10px #444;
+}
+.slider li dd {
+    color:#fff;
+    font-size:1.25rem;
+    text-shadow:1px 1px 10px #444;
+}
+
+.sliderBack {
+    position : absolute;
+    background: white;
+    height: 53px;
+    top: -4%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9;
+    width:100%;
+    text-align:center;
+}
+.sliderBack span {
+    font-family: Pretendard;
+    font-size : 30px;
+}
+
+
+.sliderBtn {
+    position : absolute;
+    background: white;
+    top: 91%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9;
+    width:100%;
+
+}
+#prev {
+    float: left;
+}
+
+#next {
+    float: right;
+}
+
+.sliderBtn #prev,
+.sliderBtn #next
+{
+    display: block;
+    margin-top:10px;
+    cursor:pointer;
+}
+
+
+/********************** 지도 & 축제 *************************/
+
+.festivalMonthTitle {
+    font-family: Pretendard;
+    font-size: 30px;
+    text-align: center;
+}
+
+.festivalMonthTitle div {
+    display: block;
+}
+
+.location img:nth-child(1) {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.location img:nth-child(n+2) {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.location {
+    position: relative;
+}
+
+@media (min-width: 0px) {
+    .festivalMonth {
+        margin-top:20px;
+        max-width: 540px;
+        display: grid;
+        grid-template-rows: 530px 500px;
+    }
+    .location {
+        text-align: center;
+    }
+}
+
+
+@media (min-width: 768px) {
+    .festivalMonth {
+        margin-top:20px;
+        max-width: 768px;
+        display: grid;
+        grid-template-rows: unset;
+        grid-template-columns: 390px 350px;
+    }
+    .location {
+        text-align: center;
+    }
+}
+
+
+@media (min-width: 992px) {
+    .festivalMonth {
+        margin-top:20px;
+        max-width: 992px;
+        display: grid;
+        grid-template-columns: 430px 500px;
+    }
+}
+
+
+
+@media (min-width: 1200px) {
+    .festivalMonth {
+        margin-top:20px;
+        max-width: 1030px;
+        display: grid;
+        grid-template-columns: 480px 550px;
+    }
+}
+
+
+
+
+.festival {
+    height: 548px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.festival::-webkit-scrollbar {
+    width: 5px;  /* 스크롤바의 너비 */
+}
+
+.festival::-webkit-scrollbar-thumb {
+    height: 30%; /* 스크롤바의 길이 */
+    background: rgba(10, 10, 10); /* 스크롤바의 색상 */
+    border-radius: 10px;
+}
+
+.festival::-webkit-scrollbar-track {
+    background: rgba(122, 122, 122, .1);  /*스크롤바 뒷 배경 색상*/
+}
+
+
+#busan,
+#chungbuk,
+#chungnam,
+#daegu,
+#daejeon,
+#gangwon,
+#gb,
+#gg,
+#gyeongnam,
+#incheon,
+#jeju,
+#jeonbuk,
+#jeonnam,
+#seoul,
+#ulsan {}
+
+.location>span {
+    font-family: 'Pretendard';
+    position: absolute;
+    cursor: pointer;
+}
+
+.location>span[value="busan"] {
+    top: 320px;
+    left: 260px;
+}
+
+.location>span[value="chungbuk"] {
+    top: 160px;
+    left: 150px;
+}
+
+.location>span[value="chungnam"] {
+    top: 180px;
+    left: 75px;
+}
+
+.location>span[value="daegu"] {
+    top: 250px;
+    left: 215px;
+}
+
+.location>span[value="daejeon"] {
+    top: 210px;
+    left: 120px;
+}
+
+.location>span[value="gangwon"] {
+    top: 80px;
+    left: 195px;
+}
+
+.location>span[value="gb"] {
+    top: 190px;
+    left: 225px;
+}
+
+.location>span[value="gg"] {
+    top: 120px;
+    left: 100px;
+}
+
+.location>span[value="gyeongnam"] {
+    top: 300px;
+    left: 190px;
+}
+
+.location>span[value="incheon"] {
+    top: 85px;
+    left: 45px;
+}
+
+.location>span[value="jeju"] {
+    top: 440px;
+    left: 60px;
+}
+
+.location>span[value="jeonbuk"] {
+    top: 260px;
+    left: 100px;
+}
+
+.location>span[value="jeonnam"] {
+    top: 360px;
+    left: 90px;
+}
+
+.location>span[value="seoul"] {
+    top: 90px;
+    left: 90px;
+}
+
+.location>span[value="ulsan"] {
+    top: 280px;
+    left: 270px;
+}
+
+.location>span[value="gwangju"] {
+    top: 323px;
+    left: 72px;
+}
+
+
+.festivalData{
+    font-family: Pretendard;
+    border : 1px solid lightgray;
+    border-radius: 7px;
+    margin : 10px 40px 10px 10px;
+    padding : 10px;
+
+}
+
+
+.festivalData div:nth-child(1) {
+    font-size : 18px;
+}
+
+.festivalData div:nth-child(n+2) {
+    font-size : 16px;
+}
+

@@ -1,0 +1,138 @@
+.subTitle {
+    margin: 20px 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.admin {
+    font-family: Pretendard;
+    display: grid;
+    grid-template-rows: 80px 30px 1fr;
+}
+
+.admin div hr {
+    margin: 0;
+    background-color: #F63543;
+    border : 3px solid #F63543;
+}
+
+.adminTop span {
+    position: relative;
+    width: 250px;
+    height: 50px;
+    top: 10%;
+    left: 11%;
+    font-size: 28px;
+}
+
+
+/* 미들 메뉴 */
+
+
+.adminMd {
+    display: grid;
+    grid-template-columns: 200px 20px 1fr;
+}
+
+.adminMd ul {
+    font-size: 20px;
+    text-decoration: none;
+    list-style: none;
+}
+
+.adminMd ul li {
+    padding: 10px;
+    text-align: center;
+}
+
+.adminMd ul li:hover {
+    color: #F63543;
+    cursor: pointer;
+
+
+}
+
+/* ************** 관리자 ************** */
+
+
+.indexMg>form>div {
+    margin-bottom: 20px;
+}
+
+.indexSlideMg,
+.indexFestivalMg {
+}
+
+.indexSlideMg div,
+.indexFestivalMg div {
+    max-width: 1200px;
+    margin : 20px 0 20px 0;
+}
+
+
+.indexSlideMg label,
+.indexFestivalMg label {
+    width: 150px;
+}
+
+.indexSlideMg input,
+.indexFestivalMg input {
+    width: 400px;
+}
+
+#slideTable {
+    min-width: 430px;
+    width : 100%;
+}
+
+#slideTable td,
+#slideTable th {
+    padding : 8px;
+}
+
+#slideHead tr{
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+#slideBody tr{
+    border-bottom: 1px solid lightgray;
+}
+
+#slideShowForm {
+    text-align: center;
+}
+
+#slideShowForm input,
+#btnSildeAdd,
+#btnMonthModf {
+    width: 100px;
+    background-color:  #F63543;
+    color: white;
+    border: none;
+    margin : 10px 0 10px 0;
+}
+
+.tableButton {
+    width: 50px;
+    background-color:  #F63543;
+    color: white;
+    border: none;
+}
+
+#userTable {
+    min-width: 430px;
+    width : 100%;
+}
+
+#userTable td,
+#userTable th {
+    padding : 8px;
+}
+
+#userHead tr{
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+#userBody tr{
+    border-bottom: 1px solid lightgray;
+}

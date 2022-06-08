@@ -5,34 +5,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원가입</title>
+    <title>여긴어때</title>
     <div th:replace="fragments/head.html :: fragment-head"></div>
     <link rel="stylesheet" type="text/css" th:href="@{/css/user/signup.css}" />
     <script type="text/javascript" th:src="@{/js/user/signup.js}"></script>
-
 </head>
 
 <body>
-    <div class="container" style="text-align: center; padding-top:10%;">
-        <div class="signup_page">
-            <div class="signup_title"> <a th:href="@{/}"> 여긴어때? </a> </div>
+    <div class="container" style="text-align: center; padding-top:3%;">
+        <div class="signupPage">
+            <div class="signup-logo"> <a th:href="@{/}"> 여긴어때? </a> </div>
+            <div class="signup-title">
+                <span id="signup-page-title">회원가입</span>
+            </div>
+
+            <form id="signupForm"  method="post" th:action="@{/signup/data}">
+                <input type="text" id="id" th:name="id" placeholder="아이디"/>
+                <input type="button" id="idCheck" value="중복확인" onclick="javascript:checkId();" />
+
+                <input type="password" id="password" th:name="password" placeholder="비밀번호"/>
+                <input type="password" id="passwordCheck" placeholder="비밀번호 재입력"/>
+
+                <input type="email" id="email" th:name="email" placeholder="이메일"/>
+                <input type="tel" id="tel" th:name="tel" placeholder="전화번호"/>
 
 
-            <form id="signup_form" action="">
-                <!-- 모달 회원가입 입력 부분 -->
-                <input type="text" id="id_box" placeholder="아이디"> <input type="button" id="bt_id_check" value="중복검사" />
-
-                <input type="text" id="pw_box" placeholder="비밀번호">
-                <input type="text" id="pwc_box" placeholder="비밀번호 재입력">
-
-                <input type="text" id="email_box" placeholder="이메일">
-                <input type="text" id="tel_box" placeholder="전화번호">
-
-                <input type="submit" id="bt_signup" value="가입하기" />
-
+                <input type="submit" id="btSignup" value="가입하기" />
+                <input type="hidden" name="checked_id" value="" />
             </form>
         </div>
     </div>
 </body>
-
 </html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>여긴어때</title>
+    <div th:replace="fragments/head.html :: fragment-head"></div>
+</head>
+<body>
+<script>
+    Swal.fire({
+        icon: 'success',
+        text: '가입에 성공하셨습니다.',
+    }).then(function (result) {
+        if (true) {
+            window.location = "/login";
+        }
+    })
+</script>
+
+</body>
+</html>

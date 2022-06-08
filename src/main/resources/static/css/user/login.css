@@ -1,6 +1,6 @@
 #box{
     width: 450px;
-    height: 500px;
+    height: 420px;
     margin: 125px auto;
     border: 1px solid lightgray;
 }
@@ -24,6 +24,7 @@
     text-align: center;
 }
 input[type=text], input[type=password]{
+    font-family: 'Pretendard';
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -31,17 +32,27 @@ input[type=text], input[type=password]{
     height: 40px;
     margin: 8px;
     border-radius: 5px;
+    padding: 10px;
     border: 0.01em solid darkgray;
 }
 .btn{
+    font-family: 'Pretendard';
     display: inline-block;
     width: 350px;
     background-color: #F63543;
     color: #ffff;
+    margin-top:10px;
     -webkit-user-select: none;
     -moz-user-select: none;
 }
+
+.btn:hover {
+    font-weight: bold;
+    color:white;
+
+}
 .line span a{
+    font-family: 'Pretendard';
     color: #6c757d;
     text-decoration: none;
 }
@@ -55,7 +66,21 @@ input[type=text], input[type=password]{
     margin-top: 30px;
     color: #6c757d;
 }
-@media screen and (max-width: 900px) {
+
+.loginException {
+    margin: 10px 0 10px 0;
+}
+
+.loginException > span {
+    color: #842029;
+    background-color:#f8d7da;
+    padding: 0.1rem 0.3rem;
+    position: relative;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+@media screen and (max-width: 550px) {
     #box{
         width: 93vw;
         height: 100vh;

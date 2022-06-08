@@ -1,0 +1,113 @@
+@font-face {
+    font-family: 'yg-jalnan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+div, input, button{
+    font-family: 'Pretendard';
+}
+
+.box{
+    width: 450px;
+    height: 600px;
+    margin: 125px auto;
+    border: 1px solid lightgray;
+    text-align: center;
+    vertical-align: center;
+}
+.logo{
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+.logo a{
+    color: #F63543;
+    font-family: 'yg-jalnan';
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 28px;
+}
+.title {
+    margin-bottom: 20px;
+}
+#page-title {
+    font-size: 20px;
+}
+
+.input {
+    margin-bottom: 30px;
+}
+input {
+    width: 250px;
+    height: 30px;
+    border-radius: 5px;
+    border: 0.01em solid darkgray;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+    padding-left : 10px;
+}
+button {
+    border-radius: 5px;
+    border: none;
+    width: 250px;
+    height: 30px;
+    background-color: #F63543;
+    color: #ffff;
+}
+button:hover,
+input[type="button"]:hover {
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+#to_main {
+    width: 60px;
+    margin-top: 20px;
+}
+.auth_btn {
+    background-color: #F63543;
+    color: #ffff;
+}
+.auth_btn:hover {
+    color: black;
+    cursor: pointer;
+}
+
+.box > form > div:nth-child(1) {
+    margin: 10px 0 10px 0;
+}
+
+input[type="button"] {
+    margin-bottom: 20px;
+}
+
+.select-menu{
+    width : 450px;
+    padding : 0;
+    height: 70px;
+}
+
+.select-menu ul {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.select-menu li:hover {
+    background-color : gainsboro;
+}
+
+.select-menu li {
+    cursor: pointer;
+    height : 45px;
+    width: 145px;
+    display: inline-block;
+    line-height: 45px;
+
+}
+
+
+.select-menu li span{
+    display : block;
+
+}

@@ -1,0 +1,68 @@
+.title {
+    font-size: 20pt;
+    font-weight: bold;
+    font-family: Pretendard;
+    margin-bottom: 20px;
+}
+.searchResult {
+    font-size: 16pt;
+    font-weight: bold;
+    font-family: Pretendard;
+    margin-bottom: 20px;
+    margin-left: 40px;
+}
+
+thead > tr {
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+
+tbody, td, tfoot, th, thead, tr{
+    border-style: none;
+
+}
+
+tbody {
+    border-bottom: 1px solid lightgray;
+    color: gray;
+}
+
+.board-title {
+    text-decoration: none;
+    color: cornflowerblue;
+    font-weight: bold;
+    font-family: Pretendard;
+}
+
+.festivalData {
+    float: left;
+    width: 340px;
+    height: 180px;
+    text-align: left;
+    word-break: break-all;
+    border: 0.5px solid black;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.festivalName {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.festivalList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    font-family: Pretendard;
+}
+
+.festivalDetail {
+    padding: 10px;
+    margin: 10px;
+}

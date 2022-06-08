@@ -1,0 +1,124 @@
+
+.subTitle {
+    margin: 20px 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.mypage div hr {
+    margin: 0;
+    background-color: #F63543;
+    border : 3px solid #F63543;
+}
+
+.mypage {
+    font-family: Pretendard;
+    display: grid;
+    grid-template-rows: 80px 30px 1fr;
+}
+
+.mypageTop span {
+    position: relative;
+    width: 100px;
+    height: 50px;
+    top: 10%;
+    left: 11%;
+    font-size: 28px;
+}
+
+
+
+/* 미들 메뉴 */
+
+
+.mypageMd {
+    display: grid;
+    grid-template-columns: 200px 20px 1fr;
+}
+
+.mypageMd ul {
+    font-size: 20px;
+    text-decoration: none;
+    list-style: none;
+}
+
+.mypageMd ul li {
+    padding: 10px;
+    text-align: center;
+}
+
+.mypageMenu ul li a{
+    color: black;
+    text-decoration: none;
+    display:block;
+}
+
+.mypageMenu ul li:hover {
+    color: #F63543;
+    cursor: pointer;
+
+
+}
+
+/* 미들 정보 */
+/* ************** 사용자 ************** */
+
+.userInfoSub {
+    min-width: 770px;
+    font-size: 16px;
+}
+
+.userInfoSub div {
+    text-align: center;
+    height : 40px;
+    margin-bottom: 20px;
+}
+
+.userInfoSub label {
+    text-align: left;
+    width: 150px;
+}
+
+.userInfoSub span {
+    display: inline-block;
+    width : 200px;
+}
+.userInfoSub input[type="password"] {
+    font-size : 16px;
+    width : 200px;
+}
+
+/* *********** 회원탈퇴 영역 **************** */
+
+.userDelete {
+    text-align: center;
+}
+.userDelete div {
+    font-size : 18px;
+    text-align: center;
+    margin : 20px;
+}
+
+.userDelete div a {
+    text-decoration: none;
+    color:black;
+}
+
+.userDelete div a:hover {
+    color: #F63543;
+}
+
+/* 관리버튼 디자인 */
+.tableButton {
+    width: 50px;
+    background-color:  #F63543;
+    color: white;
+    border: none;
+}
+
+#btUpdateUser {
+    width: 100px;
+    background-color:  #F63543;
+    color: white;
+    border: none;
+}

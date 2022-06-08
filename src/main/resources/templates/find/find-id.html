@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>여긴어때</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/find/find-id.css}"/>
+</head>
+
+<body>
+    <div class="container box">
+        <div class="logo">
+            <a th:href="@{/}">여긴어때?</a>
+        </div>
+        <div class="title">
+            <span id="page-title">아이디 찾기</span>
+        </div>
+        <div>
+            <ul class="select-menu">
+                <li> <span> 이메일로 찾기 </span> </li>
+                <li> <span> 전화번호로 찾기 </span> </li>
+            </ul>
+        </div>
+
+        <form method="post" th:action="@{/find/findIdByEmail}" id="find-id-email" style="display:block;">
+            <div>회원정보에 등록한 이메일로 찾기</div>
+            <div class="input">
+                <input type="text" id="email_find_id" th:name="email" placeholder="ex) guest123@guest.com"> <br>
+                <button type="submit" id="email_find_id_btn">찾기</button>
+            </div>
+        </form>
+
+        <form method="post" th:action="@{/find/findIdByTel}" id="find-id-tel" style="display:none;">
+            <div>회원정보에 등록한 전화번호로 찾기</div>
+            <div class="input">
+                <input type="text" id="tel_find_id" th:name="tel" placeholder="ex) 010-1234-4567">
+                <button type="submit" id="tel_find_id_btn">찾기</button>
+            </div>
+        </form>
+
+        <button type="button" id="to_main" onclick="location.href='/login'">취소</button>
+    </div>
+    <script th:src="@{/js/find/find-id.js}"></script>
+</body>
+</html>

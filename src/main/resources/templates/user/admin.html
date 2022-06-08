@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <div th:replace="fragments/head.html :: fragment-head"></div>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/user/admin.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/board/board.css}" />
+    <script th:src="@{/js/user/admin.js}" type="text/javascript"></script>
+    <title>여긴어때</title>
+</head>
+<body>
+<!-- 페이지 헤더 -->
+<div th:replace="fragments/header.html :: fragment-header"></div>
+
+<div class="admin container">
+    <div class="adminTop"> <span> 관리자 페이지 </span> </div>
+    <div> <hr> </div>
+    <div class="adminMd">
+        <div class="adminMenu">
+            <ul>
+<!--                <li>관리자 정보</li>-->
+                <li>메인페이지 관리</li>
+                <li>게시물 관리</li>
+                <li>유저 관리</li>
+            </ul>
+        </div>
+        <div> </div>
+        <div class="adminData">
+            <!-- 관리자 영역 -->
+<!--            <div class="adminInfo"> 관리자 정보 </div>-->
+
+            <!-- 관리자전용 메인페이지 관리 -->
+            <div class="indexMg">
+                <div>
+                    <div class="subTitle"> 슬라이드 타이틀 관리 </div>
+                    <div style="text-align: left">
+                        <form method="post" th:action="@{/user/admin/slideTitleUpdate}" style="margin : 20px;">
+                            <label style="display: inline-block; margin-right: 10px;">타이틀 명</label> <input type="text" th:name="slideTitleData" th:value="${idxViewList.slideTitle}"> <input type="submit" class="tableButton" value="수정">
+                        </form>
+                    </div>
+                    <div class="subTitle"> 슬라이드 이미지 관리 </div>
+                    <table id="slideTable">
+                        <thead id="slideHead">
+                        <tr class="text-center">
+                            <!--                                <th>이미지 링크</th>-->
+                            <th>이미지 타이틀</th>
+                            <th>이미지 내용</th>
+                            <th>타이틀 위치</th>
+                            <th>관리</th>
+                        </tr>
+                        </thead>
+                        <tbody id="slideBody">
+                        <tr class="text-center" th:each="slideList : ${idxSlideList}">
+                            <!--                                <th th:text="${slideList.slideLink}"></th>-->
+                            <td th:text="${slideList.slideTitle}"></td>
+                            <td th:text="${slideList.slideContent}"></td>
+                            <td th:text="${slideList.slidePosition}"></td>
+                            <td><input type="button" class="tableButton" th:onclick="javascript:deleteSlide([[${slideList.slideIdx}]])" value="삭제"/></td>
+                        </tr>
+                        <tr id="slideShowForm">
+                            <td></td>
+                            <td><input type="button" value="+" onclick="javascript:slideAddForm(true)"> </td>
+                            <td style="display : none"><input type="button" value="-"  onclick="javascript:slideAddForm(false)"> </td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+
+
+                    </table>
+                </div>
+                <div id="slideAdd" style="display : none">
+                    <form method="post" th:action="@{/user/admin/slideAdd}" >
+                        <div class="indexSlideMg">
+                            <div class="subTitle"> 슬라이드 이미지 추가 </div>
+                            <div>
+                                <label>이미지 링크</label> <input type="text" th:name="slideAddLk" value="" />
+                            </div>
+                            <div>
+                                <label>이미지 타이틀 </label> <input type="text" th:name="slideAddTt" value="" />
+                            </div>
+                            <div>
+                                <label>이미지 내용</label> <input type="text" th:name="slideAddCt" value="" />
+                            </div>
+                            <div>
+                                <label>텍스트 포지션</label> <input type="text" th:name="slideAddPs" value="" />
+                            </div>
+                            <div style="text-align: center;">
+                                <input type="submit" id="btnSildeAdd" value="추가">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="subTitle"> 축제 날짜 관리 </div>
+                <div style="text-align: left">
+                    <div style="margin : 20px;">
+                        <span style="display: inline-block; margin-right: 10px;"> 적용된 날짜</span> <span style="display: inline-block; margin-right: 10px;" th:text="${#dates.format(idxViewList.festivalDate, 'yyyy-MM')}"> </span>
+                    </div>
+                    <form method="post" th:action="@{/user/admin/indexFestivalDate}" style="margin : 20px;">
+                        <label style="display: inline-block; margin-right: 10px;">변경할 날짜</label>
+                        <select id="indexMonth" th:name="indexFestivalMonth" style="height : 30px;">
+                            <option value="0">AUTO</option>
+                            <option value="1">1월</option>
+                            <option value="2">2월</option>
+                            <option value="3">3월</option>
+                            <option value="4">4월</option>
+                            <option value="5">5월</option>
+                            <option value="6">6월</option>
+                            <option value="7">7월</option>
+                            <option value="8">8월</option>
+                            <option value="9">9월</option>
+                            <option value="10">10월</option>
+                            <option value="11">11월</option>
+                            <option value="12">12월</option>
+                        </select>
+                        <input type="submit" class="tableButton" value="수정">
+                    </form>
+                </div>
+
+
+                <div style="display : none">
+                    <div class="indexFestivalMg">
+                        <div class="subTitle"> 축제 관리 </div>
+                        <div>
+                            <label> 축제 날짜 </label> <input type="text" value="" />
+                        </div>
+                        <div>
+                            <input type="submit" id="btnMonthModf" value="추가">
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <!-- 관리자전용 메인페이지 관리 끝 -->
+
+            <div class="boardMg"  style="display:none;">
+                <!-- 관리자전용 게시판 영역 -->
+                <div class="subTitle"> 게시판 관리 </div>
+                    <div class="table-responsive" >
+                        <table class="table table-hover" style="text-align: center">
+                            <thead>
+                            <tr class="text-center">
+                                <th>No</th>
+                                <th>지역</th>
+                                <th>제목</th>
+                                <th>작성시간</th>
+                                <th>조회수</th>
+                                <th>추천수</th>
+                                <th>관리</th>
+                            </tr>
+                            </thead>
+
+                            <tbody class="table-content" th:each="board : ${boardList}">
+                            <tr class="text-center">
+                                <td th:text="${board.idx}"></td>
+                                <td th:text="${board.category}" style="margin-left: 100px"></td>
+                                <td class="text-start">
+                                    <div class="d-flex align-content-center flex-wrap"
+                                         style="height: 30px; font-size: 20px; padding-left: 100px" th:with="idx=${board.idx}">
+                                        <a class="board-title" th:text="${board.title}"
+                                           th:href=@{/board/details/boardView(idx=${board.idx})}></a>&nbsp;
+                                    </div>
+                                </td>
+                                <td style="font-size: 17px" th:text="${board.time}"></td>
+                                <td style="font-size: 17px;" th:text="${board.view}"></td>
+                                <td style="font-size: 17px;" th:text="${board.recommend}"></td>
+                                <td> <input type="button" class="tableButton" th:onclick="javascript:deleteBoard([[${board.idx}]],[[${board.userId}]])" value="삭제"/> </td>
+                            </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                    <div class="pagination">
+                        <ul>
+                            <li th:if="${nowPage != 1}">
+                                <a class="btn" th:href="@{/user/admin}+'?board_page='+${nowPage-1}"><</a>
+                            </li>
+                            <li th:each="page:${#numbers.sequence(startPage, endPage)}">
+                                <a class="btn" th:if="${page != nowPage}" th:href="@{/user/admin}+'?board_page='+${page}" th:text="${page}"></a>
+                                <strong class="btn" th:if="${page == nowPage}" th:text="${page}"></strong>
+                            </li>
+                            <li th:if="${nowPage < totalPage}">
+                                <a class="btn" th:href="@{/user/admin}+'?board_page='+${nowPage+1}">></a>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                <!-- 관리자전용 게시판 영역 끝-->
+            </div>
+            <!-- 관리자전용 유저관리 -->
+            <div class="userMg"  style="display:none;">
+                <div class="subTitle"> 유저 관리 페이지 </div>
+                <div class="table-responsive" >
+                    <table class="table table-hover" style="text-align: center">
+                        <thead>
+                        <tr class="text-center">
+                            <th>ID</th>
+                            <th>Email</th>
+                            <th>Tel</th>
+                            <th>관리</th>
+                        </tr>
+                        </thead>
+                        <tbody id="userBody">
+                        <tr class="text-center" th:each="user : ${userList}">
+                            <td th:text="${user.id}"></td>
+                            <td th:text="${user.email}"></td>
+                            <td th:text="${user.tel}"></td>
+                            <td><input type="button" class="tableButton" th:onclick="javascript:deleteUser([[${user.id}]])" value="탈퇴"/></td>
+                        </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+
+                <div class="pagination">
+                    <ul>
+                        <li th:if="${userNowPage != 1}">
+                            <a class="btn" th:href="@{/user/admin}+'?user_page='+${userNowPage-1}"><</a>
+                        </li>
+                        <li th:each="page:${#numbers.sequence(userStartPage, userEndPage)}">
+                            <a class="btn" th:if="${page != userNowPage}" th:href="@{/user/admin}+'?user_page='+${page}" th:text="${page}"></a>
+                            <strong class="btn" th:if="${page == userNowPage}" th:text="${page}"></strong>
+                        </li>
+                        <li th:if="${userNowPage < userTotalPage}">
+                            <a class="btn" th:href="@{/user/admin}+'?user_page='+${userNowPage+1}">></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 관리자전용 유저관리 끝 -->
+        </div>
+    </div>
+</div>
+
+<!-- 페이지 푸터 -->
+<div th:replace="fragments/footer.html :: fragment-footer"></div>
+</body>
+</html>

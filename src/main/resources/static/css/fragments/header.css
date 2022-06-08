@@ -1,0 +1,221 @@
+#nav {
+  position: fixed; /* Make it stick/fixed */
+  top: 0px;
+  transition: top 0.3s; /* Transition effect when sliding down (and up) */
+  width: 100%;
+  z-index: 10;
+  background: #F63543;
+  height: 70px;
+}
+
+.dropdown-menu.show {
+  display: block !important;
+}
+
+.logo {
+  color: white;
+  font-family: 'Jalnan';
+  font-size: 20pt;
+  font-weight: bold;
+  position: relative;
+  top: 14px;
+  margin-left: 100px;
+  text-decoration: none !important;
+}
+.logo:hover{
+  color: white;
+}
+
+/* Style the navbar links */
+.dropdown-menu > div{
+  font-family: 'Pretendard';
+  padding : 4px 16px;
+  text-align: center;
+}
+
+.dropdown-menu > div > hr{
+  text-align: center;
+  width : 125px;
+  margin: 8px 0 8px 0;
+}
+
+.menu > a{
+  font-family: 'Pretendard';
+  color: white !important;
+  font-size: 14pt;
+  float: right;
+  margin: 20px 40px 0px 10px;
+  text-decoration: none !important;
+  display: block;
+}
+.menu > a:hover {
+  border-bottom: 2px solid white;
+  color: white !important;
+}
+
+.dropdown-item{
+  font-family: 'Pretendard';
+  text-align: center;
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+
+}
+
+
+/* **** 검색 영역 **** */
+
+
+
+.search-form button {
+  background: #FFFFFF;
+  border: 1px solid #FFFFFF;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  right: 40px;
+  top: -2px;
+  padding: 0;
+  border-bottom-right-radius: 7px;
+  border-top-right-radius: 7px;
+
+}
+
+.search-form {
+  display: inline-block;
+  position: relative;
+  top: 12px;
+}
+
+.search-form input{
+  border-radius: 7px;
+  padding-left: 10px;
+  padding-right: 40px;
+  outline: 0;
+  border: 0;
+  height: 35px;
+}
+@media (min-width: 0px) {
+  body{
+    padding-top: 150px;
+  }
+}
+
+@media (min-width: 0px) {
+  .menu > a {
+    margin: 20px 5px 0px 5px;
+  }
+  #nav {
+    height : 105px;
+  }
+
+  .search-form {
+    position: absolute;
+    top:58px;
+    width: 350px;
+    left:22%;
+  }
+
+  .search-form input {
+    width : 270px;
+  }
+
+}
+
+@media (min-width:510px){
+  .logo {
+    font-size: 20pt;
+  }
+  .menu > a {
+    margin: 20px 10px 0px 10px;
+  }
+
+  .search-form {
+    position: absolute;
+    top: 58px;
+    width: 350px;
+    right:4%;
+    left: unset;
+  }
+}
+
+@media (min-width:768px){
+  .logo {
+    font-size: 40pt;
+  }
+}
+
+@media  (min-width: 992px) {
+  .logo {
+    font-size: 20pt;
+  }
+  .menu > a {
+    margin: 20px 40px 0px 10px;
+  }
+  body{
+    padding-top: 130px;
+  }
+
+  #nav {
+    height : 70px;
+  }
+
+  .search-form {
+    position: relative;
+    width: 300px;
+    top: 11px;
+    left:50px;
+  }
+
+  .search-form input {
+    width : 250px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .search-form {
+    width: 400px;
+    left:130px
+  }
+  .search-form input {
+    width: 350px;
+
+  }
+}
+
+
+
+
+
+.bt-search {
+  height: 25px;
+  width : 25px;
+}
+/*.dropdown-login{*/
+/*  position : relative;*/
+/*  display : inline-block;*/
+/*}*/
+
+/*.dropdown-content{*/
+/*  display : none;*/
+/*  position : absolute;*/
+/*  transform: translateY(80px);*/
+/*  width : 120px;*/
+/*  border : 1px solid lightgray;*/
+/*  padding : 5px;*/
+/*  text-align: center;*/
+/*  border-radius: 8%;*/
+/*  background: white;*/
+/*  z-index : 1; !*다른 요소들보다 앞에 배치*!*/
+/*}*/
+
+/*.dropdown-content li{*/
+/*  padding : 5px 0 5px 0;*/
+/*  font-size: 20px;*/
+/*  display : block;*/
+/*}*/
+
+/*.dropdown-login li:hover {*/
+/*  background: lightgrey;*/
+/*}*/

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>여긴어때</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/find/find-pw-result.css}"/>
+</head>
+
+<body>
+<div class="container box">
+    <div class="logo">
+        <a th:href="@{/}">여긴어때?</a>
+    </div>
+    <div class="title">
+        <span id="page-title">비밀번호 찾기</span>
+    </div>
+    <form method="post" th:action="@{/find/changePw}">
+        <div>새로운 비밀번호 설정하기</div>
+        <input type="hidden" th:value="${userId}" th:name="id" id="id">
+        <input type="password" id="pw" th:name="password" placeholder="비밀번호를 입력해주세요"> <br>
+        <input type="password" id="pw_check" th:name="passwordCheck" placeholder="비밀번호를 다시 입력해주세요">
+        <button type="submit" id="pw_submit"> 확인 </button><br>
+    </form>
+    <div>
+        <!--    로그인 페이지로 이동    -->
+        <button type="button" id="to_main" onclick="location.href='/login'">취소</button>
+    </div>
+</div>
+<script th:src="@{/js/find/find-pw-success.js}"></script>
+</body>
+</html>

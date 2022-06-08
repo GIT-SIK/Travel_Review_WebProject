@@ -2,7 +2,7 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8" />
-	<title>GUKBIT</title>
+	<title>여긴어때</title>
 	<div th:replace="fragments/head.html :: fragment-head"></div>
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" ></script>
@@ -14,24 +14,37 @@
 	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script type="module" th:src="@{/js/board/rewrite-submit.js}"></script>
+	<script th:src="@{/js/board/summernote-map-plugin.js}" type="text/javascript"></script>
 </head>
 
 <body>
 <div th:replace="fragments/header.html :: fragment-header"></div>
-<div class="container-fluid p-0 m-0">
-	<div th:replace="fragments/nav.html :: fragment-nav"></div>
-</div>
-
 <section class="container write-form-wrapper mt-5" >
 	<form method="post" th:action="@{/board/rewrite}" th:object="${board}" onsubmit="return rewriteSubmit()">
-
 		<div class="input-group mb-3">
-			<select class="academy-input form-control" name="authUserAcademy" id="authUserAcademy">
-				<option name="authUserAcademy" selected th:text="|학원명: *{bAcademyName}|"></option>
+			<select class="custom-select" id="inputGroupSelect02" th:field="*{category}">
+				<option selected th:value="''" th:text="'지역을 골라주세요'"></option>
+				<option th:value="'서울'" th:text="'서울'"></option>
+				<option th:value="'인천'" th:text="'인천'">인천</option>
+				<option th:value="'경기'" th:text="'인천'">경기</option>
+				<option th:value="'대전'" th:text="'인천'">대전</option>
+				<option th:value="'세종'" th:text="'인천'">세종</option>
+				<option th:value="'대구'" th:text="'인천'">대구</option>
+				<option th:value="'부산'" th:text="'인천'">부산</option>
+				<option th:value="'울산'" th:text="'인천'">울산</option>
+				<option th:value="'경북'" th:text="'인천'">경북</option>
+				<option th:value="'강원'" th:text="'인천'">강원</option>
+				<option th:value="'경남'" th:text="'인천'">경남</option>
+				<option th:value="'광주'" th:text="'인천'">광주</option>
+				<option th:value="'전북'" th:text="'인천'">전북</option>
+				<option th:value="'충북'" th:text="'인천'">충북</option>
+				<option th:value="'전남'" th:text="'인천'">전남</option>
+				<option th:value="'충남'" th:text="'인천'">충남</option>
+				<option th:value="'제주'" th:text="'인천'">제주</option>
 			</select>
-			<select  class="course-input form-control" name="authUserCourse" id="authUserCourse">
-				<option  name="authUserCourse" selected th:text="|과정명: *{bCourseName}|"></option>
-			</select>
+			<div class="input-group-append">
+				<label class="input-group-text" for="inputGroupSelect02">목록</label>
+			</div>
 		</div>
 		<div class="input-group mb-3">
 			<input
@@ -53,16 +66,10 @@
 							requireda
 					></textarea>
 		</div>
-		<input type="hidden" th:field="*{bid}">
-		<input type="hidden" th:field="*{author}">
-		<input type="hidden" th:field="*{date}">
+		<input type="hidden" th:field="*{idx}">
+		<input type="hidden" th:field="*{userId}">
+		<input type="hidden" th:field="*{time}">
 		<input type="hidden" th:field="*{view}">
-
-		<input type="hidden" th:field="*{bAcademyCode}">
-		<input type="hidden" th:field="*{bAcademyName}">
-		<input type="hidden" th:field="*{bCourseCode}">
-		<input type="hidden" th:field="*{bCourseName}">
-		<input type="hidden" th:field="*{visible}">
 		<input type="hidden" th:field="*{recommend}">
 		<div class="row">
 			<div class="col-6"></div>
@@ -79,7 +86,7 @@
 	</form>
 </section>
 
-<div class="container">
+<div>
 	<div th:replace="fragments/footer.html :: fragment-footer"></div>
 </div>
 <script th:src="@{/js/main/navigo.js}"></script>
@@ -93,9 +100,6 @@
 </style>
 
 <script>
-
-
-
 	$(document).ready(function() {
 		$('#boardContent').summernote({
 			height: 500,                  // 에디터 높이
@@ -103,6 +107,14 @@
 			lang: "ko-KR",					      // 한글 설정
 			placeholder: '내용을 입력해주세요',
 			disableResizeEditor: true,	// 크기 조절 기능 삭제
+			map: {
+				apiKey: 'AIzaSyC5r3tK-N6d7_hxoHPcXMlKHwQcTRl1AO8',
+				center: {
+					lat: 37.5759607,
+					lng: 126.9769124
+				},
+				zoom: 15
+			},
 			toolbar: [
 				['fontname', ['fontname']],
 				['fontsize', ['fontsize']],
@@ -111,7 +123,7 @@
 				['table', ['table']],
 				['para', ['ul', 'ol', 'paragraph']],
 				['height', ['height']],
-				['insert',['picture','link','video']]
+				['insert',['picture','link','video','map']]
 			],
 			fontNames: ['Arial', 'Arial Black', 'Times New Roman','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
 			fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72'],
@@ -143,6 +155,7 @@
 			}
 		});
 	}
+</script>
 
 </script>
 </body>

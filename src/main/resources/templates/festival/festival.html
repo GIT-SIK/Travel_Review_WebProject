@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>여긴어때</title>
+    <div th:replace="fragments/head.html :: fragment-head"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/festival/festival.css}" />
+</head>
+<body>
+    <div th:replace="fragments/header.html :: fragment-header"></div>
+
+    <div class="container">
+        <div class="row" id="title">
+            <div class="col-7">
+                <h1><span id="month2"></span>월 축제 & 행사</h1>
+            </div>
+
+            <div class="col-4">
+                <select id='month'>
+                    <option class="" value=''>-달을 선택해 주세요-</option>
+                    <option class="" value='1'>1월</option>
+                    <option class="" value='2'>2월</option>
+                    <option class="" value='3'>3월</option>
+                    <option class="" value='4'>4월</option>
+                    <option class="" value='5'>5월</option>
+                    <option class="" value='6'>6월</option>
+                    <option class="" value='7'>7월</option>
+                    <option class="" value='8'>8월</option>
+                    <option class="" value='9'>9월</option>
+                    <option class="" value='10'>10월</option>
+                    <option class="" value='11'>11월</option>
+                    <option class="" value='12'>12월</option>
+                </select>
+            </div>
+        </div>
+        <br> <br>
+        <div class="row">
+            <div class="col-2">
+                <ul class="localList">
+                    <li class="selected" value="0"><button class="localBtn">전체</button></li>
+                    <li class="" value="1"><button class="localBtn">서울</button></li>
+                    <li class="" value="2"><button class="localBtn">경기</button></li>
+                    <li class="" value="3"><button class="localBtn">인천</button></li>
+                    <li class="" value="4"><button class="localBtn">강원</button></li>
+                    <li class="" value="5"><button class="localBtn">세종</button></li>
+                    <li class="" value="6"><button class="localBtn">충북</button></li>
+                    <li class="" value="7"><button class="localBtn">충남</button></li>
+                    <li class="" value="8"><button class="localBtn">대구</button></li>
+                    <li class="" value="9"><button class="localBtn">부산</button></li>
+                    <li class="" value="10"><button class="localBtn">울산</button></li>
+                    <li class="" value="11"><button class="localBtn">경북</button></li>
+                    <li class="" value="12"><button class="localBtn">경남</button></li>
+                    <li class="" value="13"><button class="localBtn">광주</button></li>
+                    <li class="" value="14"><button class="localBtn">전북</button></li>
+                    <li class="" value="15"><button class="localBtn">전남</button></li>
+                    <li class="" value="16"><button class="localBtn">제주</button></li>
+                </ul>
+            </div>
+            <div class="col-10">
+                <ul class="festivalList">
+                    <li class="festivalData" th:each="festival : ${festivalList}">
+                        <div class="festivalDetail">
+<!--                            <span>축제명 : </span>-->
+                            <span id="festivalName" th:text="${festival.name}"></span> <br>
+                            <span>기간 : </span>
+                            <span th:text="${#strings.substring(festival.startDate, 0, 10)}"></span>
+                            <span> ~ </span>
+                            <span th:text="${#strings.substring(festival.endDate, 0, 10)}"></span> <br>
+                            <span>주소 : </span>
+                            <span th:text="${#strings.equals(festival.roadAddress, '')} ? ${festival.lotNumAddress} : ${festival.roadAddress}"></span> <br>
+                            <span th:if="${festival.homepage != ''}">
+                                <span>홈페이지 : </span>
+                                <a th:href="${festival.homepage}"> <span th:text="${festival.homepage}"></span> </a>
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="fragments/footer.html :: fragment-footer"></div>
+    <script th:src="@{/js/festival/festival.js}"></script>
+</body>
+</html>

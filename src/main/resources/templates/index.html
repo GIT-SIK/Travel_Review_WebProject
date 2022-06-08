@@ -2,14 +2,117 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>메인페이지</title>
+    <title>여긴어때</title>
     <div th:replace="fragments/head.html :: fragment-head"></div>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index/index.css}" />
+    <script th:src="@{/js/index/index.js}" type="text/javascript"></script>
 </head>
 <body>
+<!-- 페이지 헤더 -->
 <div th:replace="fragments/header.html :: fragment-header"></div>
 
-<div class="container">
-    <div th:replace="fragments/footer.html :: fragment-footer"></div>
+<!-- 페이지 원본 -->
+<div class="main">
+
+    <!-- 베스트 후기 영역 -->
+    <section class="bestground container" >
+        <div>
+            <span class="indextitle"> 베스트 후기 </span>
+        </div>
+        <div>
+            <a th:href="@{/board/list/main}" class="morebtn">더보기</a>
+        </div>
+        <div class="bestBoardTop3">
+            <div th:each="bestList : ${bestBoardList}" th:onclick="|location.href='@{/board/details/boardView(idx=${bestList.idx})}'|">
+                <div id="bestBoardImage"><img th:src="${bestList.content}"/></div>
+                <div class="bestBoardTitle" th:text="${bestList.title}"></div>
+                <div class="bestBoardDate" th:text="${bestList.time.substring(0,10)}"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 슬라이드 영역 -->
+    <div style="position:relative;">
+        <ul class="slider">
+            <li th:each=" slideList : ${SlideLinkList}">
+                <div th:style="'background-image:url(' + ${slideList.slideLink} + ');'">
+                    <th:block th:if="${slideList.slidePosition == 'right'}">
+                        <dl class="right container">
+                            <dt th:text="${slideList.slideTitle}"></dt>
+                            <dd th:text="${slideList.slideContent}"></dd>
+                        </dl>
+                    </th:block>
+                    <th:block th:if="${slideList.slidePosition != 'right'}">
+                        <dl class="left container">
+                            <dt th:text="${slideList.slideTitle}"></dt>
+                            <dd th:text="${slideList.slideContent}"></dd>
+                        </dl>
+                    </th:block>
+                </div>
+            </li>
+        </ul>
+
+        <div class="sliderBack container">
+            <span th:text="${viewTemp.slideTitle}"></span>
+        </div>
+
+        <div class="sliderBtn container">
+            <img id="prev" th:src="@{/images/all/arrow_l.png}">
+            <img id="next" th:src="@{/images/all/arrow_r.png}">
+        </div>
+    </div>
+
+    <!-- 지도 및 축제 영역 -->
+    <div class="festivalMonthTitle container">
+    </div>
+    <div class="festivalMonth container">
+
+        <!-- 지도 영역 -->
+        <div class="location">
+            <img th:src="@{/images/index/map/jido.png}">
+
+            <img id="busan" th:src="@{/images/index/map/busan.png}" />
+            <img id="chungbuk" th:src="@{/images/index/map/chungbuk.png}" />
+            <img id="chungnam" th:src="@{/images/index/map/chungnam.png}" />
+            <img id="daegu" th:src="@{/images/index/map/daegu.png}" />
+            <img id="daejeon" th:src="@{/images/index/map/daejeon.png}" />
+            <img id="gangwon" th:src="@{/images/index/map/gangwon.png}" />
+            <img id="gb" th:src="@{/images/index/map/gb.png}" />
+            <img id="gg" th:src="@{/images/index/map/gg.png}" />
+            <img id="gyeongnam" th:src="@{/images/index/map/gyeongnam.png}" />
+            <img id="incheon" th:src="@{/images/index/map/incheon.png}" />
+            <img id="jeju" th:src="@{/images/index/map/jeju.png}" />
+            <img id="jeonbuk" th:src="@{/images/index/map/jeonbuk.png}" />
+            <img id="jeonnam" th:src="@{/images/index/map/jeonnam.png}" />
+            <img id="seoul" th:src="@{/images/index/map/seoul.png}" />
+            <img id="ulsan" th:src="@{/images/index/map/ulsan.png}" />
+            <img id="gwangju" th:src="@{/images/index/map/gwangju.png}" />
+
+            <span value="busan"> 부산 </span>
+            <span value="chungbuk"> 충북 </span>
+            <span value="chungnam"> 충남 </span>
+            <span value="daegu"> 대구 </span>
+            <span value="daejeon"> 대전 </span>
+            <span value="gangwon"> 강원 </span>
+            <span value="gb"> 경북 </span>
+            <span value="gg"> 경기 </span>
+            <span value="gyeongnam"> 경남 </span>
+            <span value="incheon"> 인천 </span>
+            <span value="jeju"> 제주 </span>
+            <span value="jeonbuk"> 전북 </span>
+            <span value="jeonnam"> 전남 </span>
+            <span value="seoul"> 서울 </span>
+            <span value="ulsan"> 울산 </span>
+            <span value="gwangju"> 광주 </span>
+
+        </div>
+        <!-- 축제 출력 영역 -->
+        <div class="festival">
+        </div>
+    </div>
 </div>
+<!-- 페이지 푸터 -->
+<div th:replace="fragments/footer.html :: fragment-footer"></div>
+
 </body>
 </html>

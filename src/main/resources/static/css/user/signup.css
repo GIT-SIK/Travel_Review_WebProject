@@ -1,64 +1,82 @@
-@font-face {
-    font-family: 'yg-jalnan';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+
+.swal-button {
+
+
+    padding: 7px 19px;
+    border-radius: 2px;
+    background-color: #F63543;
+    font-size: 12px;
+    border: 1px solid #3e549a;
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
+
+
 }
 
-.signup_title a {
+
+.signup-title {
+    margin-bottom: 30px;
+}
+#signup-page-title {
+    font-family: Pretendard;
+    font-size: 23px;
+}
+
+.signup-logo a {
     font-family: 'jalnan';
     font-size: 28px;
     text-decoration: none;
     color: #F63543;
 }
 
-.signup_title {
+.signup-logo {
     margin-bottom: 20px;
 }
 
-.signup_page {
+.signupPage {
     border: 1px solid lightgray;
-    max-width: 600px;
-    padding: 50px;
-    max-height: 500px;
+    max-width: 435px;
+    padding: 50px 0 50px 0;
+    max-height: 600px;
     display: inline-block;
 
 }
 
 
 
-#signup_form {
+#signupForm {
     margin-top: 3%;
     height: 100%;
     min-width: 410px;
     display: inline-block;
 }
 
-#id_box,
-#pw_box,
-#pwc_box,
-#email_box,
-#tel_box {
+#password,
+#passwordCheck,
+#email,
+#tel {
+    font-family: 'Pretendard';
     margin: 0 0 20px 0;
-    padding: 7px;
-    width: 400px;
+    padding: 10px;
+    width: 350px;
     height: 37px;
     border: 1px solid gray;
     border-radius: 5px;
 
 }
 
-#id_box {
+#id {
+    font-family: 'Pretendard';
     margin: 0 0 20px 0;
-    padding: 7px;
-    width: 300px;
+    padding: 10px;
+    width: 250px;
     height: 37px;
     border: 1px solid gray;
     border-radius: 5px;
 }
 
 
-#bt_id_check {
+#idCheck {
+    font-family: 'Pretendard';
     display: inline;
     width: 95px;
     height: 37px;
@@ -73,8 +91,9 @@
         inset -1px -1px 1px rgba(0, 0, 0, .2);
 }
 
-#bt_signup {
-    width: 400px;
+#btSignup {
+    font-family: 'Pretendard';
+    width: 350px;
     height: 37px;
     margin: 0;
     padding: 0;
@@ -88,13 +107,13 @@
 }
 
 
-#bt_signup:active,
-#bt_id_check:active {
+#btSignup:active,
+#idCheck:active {
     box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .4),
         inset 2px 2px 3px rgba(0, 0, 0, .2);
 }
 
-#bt_signup:hover,
-#bt_id_check:hover {
+#btSignup:hover,
+#idCheck:hover {
     background-color: #f74450;
 }

@@ -1,0 +1,226 @@
+.region > ul > a {
+  text-decoration: none;
+  font-size: 16pt;
+  font-family: 'Jalnan';
+  border-radius: 5px;
+}
+
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: 1rem 1rem;
+  border: 1px solid lavenderblush;
+}
+
+.btn-primary{
+  background: #F63543;
+  border: #F63543;
+  font-size: 14pt;
+}
+
+.btn-primary:hover{
+  background: #F63543;
+  border: #F63543;
+  font-weight: bold;
+}
+
+.btn-primary:active{
+  transform: translateY(4px);
+}
+
+.region > ul > a:hover {
+  border: 1px solid gray;
+}
+
+.region > ul > a:active {
+  transform: translateY(4px);
+}
+
+thead > tr {
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+
+tbody, td, tfoot, th, thead, tr{
+  border-style: none;
+}
+
+tbody {
+  border-bottom: 1px solid lightgray;
+  color: gray;
+}
+
+.title {
+  font-weight: bold;
+  font-family: Pretendard;
+}
+
+.board-title {
+  text-decoration: none;
+  color: cornflowerblue;
+  font-weight: bold;
+  font-family: Pretendard;
+}
+
+.pagination > ul {
+  text-align: center;
+  margin: auto;
+}
+
+.pagination > ul > li {
+  list-style-type: none;
+  display: inline-block;
+}
+
+.pagination > ul > li > .btn {
+  width: 16px;
+  padding-right: 22px;
+  -webkit-user-select: none;
+}
+
+.pagination > ul > li > a {
+  text-decoration: none;
+  color: black;
+}
+
+.pagination > ul > li > strong {
+  font-weight: bold;
+  border: solid #6c757d 2px;
+}
+
+/* ******************* 베스트 후기 ********************** */
+.indextitle{
+  font-family: Pretendard;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  margin-top: -35px;
+  margin-bottom: -20px;
+}
+.morebtn{
+  font-family: Pretendard;
+  margin-right : 24px;
+  font-size: 14pt;
+  display: flex;
+  color: black;
+  text-decoration: underline;
+  cursor: pointer;
+  justify-content: right;
+}
+
+.bestBoardTop3 {
+  margin-top : 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.bestBoardTop3 > div {
+  cursor: pointer;
+}
+
+#bestBoardImage {
+  text-align: center;
+}
+
+.bestBoardTitle {
+  margin : 10px;
+  font-size: 16pt;
+}
+
+.bestBoardDate {
+  margin : 10px;
+  font-size: 14pt;
+}
+
+@media (min-width: 0px) {
+
+  .bestground {
+    height : 1200px;
+  }
+  .bestBoardTop3 {
+    margin-top : 30px;
+    display: grid;
+    grid-template-columns: 500px;
+    grid-template-rows: 330px 330px;
+  }
+
+  .bestBoardTop3 > div:nth-child(3){
+    display:block;
+  }
+
+  .bestBoardTop3 > div {
+    text-align: center;
+  }
+
+
+  .bestBoardTop3 img {
+    text-align: center;
+    width: 294px;
+    height: 224px;
+  }
+}
+
+
+@media (min-width: 768px) {
+  .bestground {
+    height : 600px;
+  }
+
+  .bestBoardTop3 {
+    margin-top : 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .bestBoardTop3 > div:nth-child(3){
+    display:none;
+  }
+
+  .bestBoardTop3 img {
+    display: block;
+    text-align: center;
+    width: 294px;
+    height: 224px;
+  }
+}
+
+
+
+@media (min-width: 992px) {
+  .bestBoardTop3 {
+    margin-top : 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .bestBoardTop3 > div:nth-child(3){
+    display:block;
+  }
+
+  .bestBoardTop3 img {
+    display: block;
+    text-align: center;
+    width: 294px;
+    height: 224px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .bestBoardTop3 img {
+    display: block;
+    text-align: center;
+    width: 357px;
+    height: 272px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .bestBoardTop3 img {
+    display: block;
+    text-align: center;
+    width: 420px;
+    height: 320px;
+  }
+}
+
+/* ******************* 베스트 후기 끗 ********************** */
