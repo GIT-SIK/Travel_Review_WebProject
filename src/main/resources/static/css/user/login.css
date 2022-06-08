@@ -48,6 +48,7 @@ input[type=text], input[type=password]{
 
 .btn:hover {
     font-weight: bold;
+    color:white;
 
 }
 .line span a{

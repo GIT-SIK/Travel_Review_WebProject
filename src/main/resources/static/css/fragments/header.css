@@ -7,10 +7,6 @@
   background: #F63543;
   height: 70px;
 }
-body{
-  padding-top:130px;
-}
-
 
 .dropdown-menu.show {
   display: block !important;
@@ -79,9 +75,10 @@ body{
 .search-form button {
   background: #FFFFFF;
   border: 1px solid #FFFFFF;
-  position: absolute;
+  position: relative;
   width: 37px;
-  right: 0px;
+  right: 40px;
+  top: -2px;
   border-bottom-right-radius: 7px;
   border-top-right-radius: 7px;
 }
@@ -99,6 +96,71 @@ body{
   outline: 0;
   border: 0;
 }
+@media (min-width: 0px) {
+  body{
+    padding-top: 150px;
+  }
+}
+
+@media (min-width: 0px) {
+  .menu > a {
+    margin: 20px 5px 0px 5px;
+  }
+  #nav {
+    height : 105px;
+  }
+
+  .search-form {
+    position: absolute;
+    top:58px;
+    width: 350px;
+    left:22%;
+  }
+
+  .search-form input {
+    width : 300px;
+  }
+
+}
+
+@media (min-width:510px){
+  .menu > a {
+    margin: 20px 10px 0px 10px;
+  }
+
+  .search-form {
+    position: absolute;
+    top: 58px;
+    width: 350px;
+    right:6%;
+    left: unset;
+  }
+}
+
+@media  (min-width: 992px) {
+
+  .menu > a {
+    margin: 20px 40px 0px 20px;
+  }
+  body{
+    padding-top: 130px;
+  }
+
+  #nav {
+    height : 70px;
+  }
+
+  .search-form {
+    position: relative;
+    width: 300px;
+    top: 11px;
+    left:50px;
+  }
+
+  .search-form input {
+    width : 250px;
+  }
+}
 
 @media (min-width: 1200px) {
   .search-form {
@@ -106,7 +168,7 @@ body{
     left:130px
   }
   .search-form input {
-    width: 400px;
+    width: 350px;
 
   }
 }
@@ -114,21 +176,8 @@ body{
 
 
 
-@media (max-width: 1200px) {
-  .search-form {
-    width: 300px;
-    left:50px
-  }
 
-  .search-form input {
-    width : 300px;
-  }
-
-
-}
-
-
-#bt-search {
+.bt-search {
   height: 25px;
   width : 25px;
 }
