@@ -58,6 +58,7 @@ public class UserController {
             String rawPassword = pw;
             String enPassword = bCryptPasswordEncoder.encode(rawPassword);
             user.setPassword(enPassword);
+
             userService.signupUser(user);
 
             return "user/signup-success";

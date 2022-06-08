@@ -62,6 +62,9 @@ body{
   text-align: center;
 }
 
+.dropdown-toggle {
+  cursor: pointer;
+}
 /*.dropdown-login{*/
 /*  position : relative;*/
 /*  display : inline-block;*/
