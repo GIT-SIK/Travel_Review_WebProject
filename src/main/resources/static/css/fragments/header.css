@@ -66,21 +66,20 @@
 
 /* **** 검색 영역 **** */
 
-.search-form input,
-.search-form button
-{
-  height: 35px;
-}
+
 
 .search-form button {
   background: #FFFFFF;
   border: 1px solid #FFFFFF;
   position: relative;
-  width: 37px;
+  width: 30px;
+  height: 30px;
   right: 40px;
   top: -2px;
+  padding: 0;
   border-bottom-right-radius: 7px;
   border-top-right-radius: 7px;
+
 }
 
 .search-form {
@@ -95,6 +94,7 @@
   padding-right: 40px;
   outline: 0;
   border: 0;
+  height: 35px;
 }
 @media (min-width: 0px) {
   body{
@@ -118,12 +118,15 @@
   }
 
   .search-form input {
-    width : 300px;
+    width : 270px;
   }
 
 }
 
 @media (min-width:510px){
+  .logo {
+    font-size: 20pt;
+  }
   .menu > a {
     margin: 20px 10px 0px 10px;
   }
@@ -132,13 +135,21 @@
     position: absolute;
     top: 58px;
     width: 350px;
-    right:6%;
+    right:4%;
     left: unset;
   }
 }
 
-@media  (min-width: 992px) {
+@media (min-width:768px){
+  .logo {
+    font-size: 40pt;
+  }
+}
 
+@media  (min-width: 992px) {
+  .logo {
+    font-size: 20pt;
+  }
   .menu > a {
     margin: 20px 40px 0px 10px;
   }
