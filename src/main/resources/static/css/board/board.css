@@ -97,6 +97,16 @@ tbody {
   margin-top: -35px;
   margin-bottom: -20px;
 }
+.morebtn{
+  font-family: Pretendard;
+  margin-right : 24px;
+  font-size: 14pt;
+  display: flex;
+  color: black;
+  text-decoration: underline;
+  cursor: pointer;
+  justify-content: right;
+}
 
 .bestBoardTop3 {
   margin-top : 30px;
@@ -122,10 +132,95 @@ tbody {
   font-size: 14pt;
 }
 
-.bestBoardTop3 img {
-  display: block;
-  text-align: center;
-  width: 420px;
-  height: 320px;
+@media (min-width: 0px) {
+
+  .bestground {
+    height : 1200px;
+  }
+  .bestBoardTop3 {
+    margin-top : 30px;
+    display: grid;
+    grid-template-columns: 500px;
+    grid-template-rows: 330px 330px;
+  }
+
+  .bestBoardTop3 > div:nth-child(3){
+    display:block;
+  }
+
+  .bestBoardTop3 > div {
+    text-align: center;
+  }
+
+
+  .bestBoardTop3 img {
+    text-align: center;
+    width: 294px;
+    height: 224px;
+  }
 }
+
+
+@media (min-width: 768px) {
+  .bestground {
+    height : 600px;
+  }
+
+  .bestBoardTop3 {
+    margin-top : 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .bestBoardTop3 > div:nth-child(3){
+    display:none;
+  }
+
+  .bestBoardTop3 img {
+    display: block;
+    text-align: center;
+    width: 294px;
+    height: 224px;
+  }
+}
+
+
+
+@media (min-width: 992px) {
+  .bestBoardTop3 {
+    margin-top : 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .bestBoardTop3 > div:nth-child(3){
+    display:block;
+  }
+
+  .bestBoardTop3 img {
+    display: block;
+    text-align: center;
+    width: 294px;
+    height: 224px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .bestBoardTop3 img {
+    display: block;
+    text-align: center;
+    width: 357px;
+    height: 272px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .bestBoardTop3 img {
+    display: block;
+    text-align: center;
+    width: 420px;
+    height: 320px;
+  }
+}
+
 /* ******************* 베스트 후기 끗 ********************** */

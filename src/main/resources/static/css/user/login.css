@@ -45,6 +45,11 @@ input[type=text], input[type=password]{
     -webkit-user-select: none;
     -moz-user-select: none;
 }
+
+.btn:hover {
+    font-weight: bold;
+
+}
 .line span a{
     font-family: 'Pretendard';
     color: #6c757d;
