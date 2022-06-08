@@ -44,12 +44,98 @@
     font-size: 14pt;
 }
 
+@media (min-width: 0px) {
+
+    .bestground {
+        height : 800px;
+    }
+    .bestBoardTop3 {
+        margin-top : 30px;
+        display: grid;
+        grid-template-columns: 500px;
+        grid-template-rows: 330px 330px;
+    }
+
+    .bestBoardTop3 > div {
+        text-align: center;
+    }
+
+    .bestBoardTop3 > div:nth-child(3){
+        display:none;
+    }
+
+    .bestBoardTop3 img {
+        text-align: center;
+        width: 294px;
+        height: 224px;
+    }
+}
+
+
+@media (min-width: 768px) {
+    .bestground {
+        height : 600px;
+    }
+
+    .bestBoardTop3 {
+        margin-top : 30px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .bestBoardTop3 > div:nth-child(3){
+        display:none;
+    }
+
+    .bestBoardTop3 img {
+        display: block;
+        text-align: center;
+        width: 294px;
+        height: 224px;
+    }
+}
+
+
+
+@media (min-width: 992px) {
+    .bestBoardTop3 {
+        margin-top : 30px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .bestBoardTop3 > div:nth-child(3){
+        display:block;
+    }
+
+    .bestBoardTop3 img {
+        display: block;
+        text-align: center;
+        width: 294px;
+        height: 224px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .bestBoardTop3 img {
+        display: block;
+        text-align: center;
+        width: 357px;
+        height: 272px;
+    }
+}
+
+@media (min-width: 1400px) {
 .bestBoardTop3 img {
     display: block;
     text-align: center;
     width: 420px;
     height: 320px;
 }
+}
+
+
+
 
 
 /* ******************* 이미지 슬라이드 ********************** */
@@ -201,13 +287,54 @@
     position: relative;
 }
 
-
-.festivalMonth {
-    margin-top:20px;
-    max-width: 1030px;
-    display: grid;
-    grid-template-columns: 430px 600px;
+@media (min-width: 0px) {
+    .festivalMonth {
+        margin-top:20px;
+        max-width: 540px;
+        display: grid;
+        grid-template-rows: 530px 500px;
+    }
+    .location {
+        text-align: center;
+    }
 }
+
+
+@media (min-width: 768px) {
+    .festivalMonth {
+        margin-top:20px;
+        max-width: 768px;
+        display: grid;
+        grid-template-columns: 390px 350px;
+    }
+    .location {
+        text-align: center;
+    }
+}
+
+
+@media (min-width: 992px) {
+    .festivalMonth {
+        margin-top:20px;
+        max-width: 992px;
+        display: grid;
+        grid-template-columns: 430px 500px;
+    }
+}
+
+
+
+@media (min-width: 1200px) {
+    .festivalMonth {
+        margin-top:20px;
+        max-width: 1030px;
+        display: grid;
+        grid-template-columns: 480px 550px;
+    }
+}
+
+
+
 
 .festival {
     height: 548px;

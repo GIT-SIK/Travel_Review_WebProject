@@ -64,6 +64,71 @@ body{
 
 .dropdown-toggle {
   cursor: pointer;
+
+}
+
+
+/* **** 검색 영역 **** */
+
+.search-form input,
+.search-form button
+{
+  height: 35px;
+}
+
+.search-form button {
+  background: #FFFFFF;
+  border: 1px solid #FFFFFF;
+  position: absolute;
+  width: 37px;
+  right: 0px;
+  border-bottom-right-radius: 7px;
+  border-top-right-radius: 7px;
+}
+
+.search-form {
+  display: inline-block;
+  position: relative;
+  top: 12px;
+}
+
+.search-form input{
+  border-radius: 7px;
+  outline: 0;
+  border: 0;
+}
+
+@media (min-width: 1200px) {
+  .search-form {
+    width: 400px;
+    left:130px
+  }
+  .search-form input {
+    width: 400px;
+
+  }
+}
+
+
+
+
+@media (max-width: 1200px) {
+  .search-form {
+    width: 300px;
+    left:50px
+  }
+
+  .search-form input {
+    width : 300px;
+  }
+
+
+}
+
+
+#bt-search {
+  height: 25px;
+  width : 25px;
 }
 /*.dropdown-login{*/
 /*  position : relative;*/

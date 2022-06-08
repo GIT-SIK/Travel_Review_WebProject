@@ -14,7 +14,10 @@
             <header class="container" sec:authorize="isAnonymous()">
                 <nav class="custom-header">
                     <a class="logo" href="/">여긴어때?</a>
-
+                    <form class="search-form" action="/search" method="get">
+                        <input type="text" name="keyword">
+                        <button type="submit"><img id="bt-search" th:src="@{/images/all/search.png}"></button>
+                    </form>
                     <span class="menu">
                         <a th:href="@{/login}"> 로그인</a>
                         <a href="/festival/list"> 축제정보</a>
