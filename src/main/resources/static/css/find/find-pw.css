@@ -11,7 +11,7 @@ div, input, button{
 
 .box{
     width: 450px;
-    height: 720px;
+    height: 550px;
     margin: 125px auto;
     border: 1px solid lightgray;
     text-align: center;
@@ -29,11 +29,12 @@ div, input, button{
     font-size: 28px;
 }
 .title {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 #page-title {
     font-size: 20px;
 }
+
 .input {
     margin-bottom: 30px;
 }
@@ -44,6 +45,7 @@ input {
     border: 0.01em solid darkgray;
     margin-bottom: 5px;
     box-sizing: border-box;
+    padding-left : 10px;
 }
 button {
     border-radius: 5px;
@@ -54,7 +56,8 @@ button {
     color: #ffff;
 }
 button:hover {
-    color: black;
+    color: white;
+    font-weight: bold;
     cursor: pointer;
 }
 #to_main {
@@ -68,4 +71,47 @@ button:hover {
 .auth_btn:hover {
     color: black;
     cursor: pointer;
+}
+
+.box > form > div:nth-child(1) {
+    margin: 10px 0 10px 0;
+}
+
+input[type="button"] {
+    margin-bottom: 20px;
+}
+
+.box hr {
+    width: 300px;
+    border: 1px solid lightgray;
+}
+
+.select-menu{
+    width : 450px;
+    padding : 0;
+    height: 70px;
+}
+
+.select-menu ul {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.select-menu li:hover {
+    background-color : gainsboro;
+}
+
+.select-menu li {
+    cursor: pointer;
+    height : 45px;
+    width: 145px;
+    display: inline-block;
+    line-height: 45px;
+
+}
+
+
+.select-menu li span{
+    display : block;
+
 }
