@@ -1,3 +1,33 @@
+$(function() {
+
+    $('.select-menu li').eq(0).css("border","1px solid gray");
+    $('.select-menu li').eq(1).css("border","1px solid lightgray");
+
+    $('.select-menu li').click(function(){
+
+        for(let i=0; i<2 ;i++){
+            $('.select-menu li').eq(i).css("border","1px solid lightgray");
+
+        }
+
+
+        if($(this).index()==1) {
+            $("#find-tel").css("display","block");
+            $("#find-email").css("display","none");
+        } else {
+            $("#find-tel").css("display","none");
+            $("#find-email").css("display","block");
+        }
+
+        console.log($(this).index());
+
+        $('.select-menu li').eq($(this).index()).css("border","1px solid gray");
+
+    });
+
+
+});
+
 // 타이머 중복 실행 막기위한 변수
 var timer = null;
 var isRunning = false;
