@@ -29,6 +29,9 @@
 			background: #F63543;
 			border: #F63543;
 		}
+		.close {
+			display: none;
+		}
 	</style>
 
 	<div th:replace="fragments/header.html :: fragment-header"></div>
@@ -95,6 +98,10 @@
 
 		<script>
 			$(document).ready(function() {
+
+
+
+
 				$('#boardContent').summernote({
 					height: 500,                  // 에디터 높이
 					focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
