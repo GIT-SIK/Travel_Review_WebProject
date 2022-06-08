@@ -11,7 +11,7 @@ div, input, button{
 
 .box{
     width: 450px;
-    height: 500px;
+    height: 470px;
     margin: 125px auto;
     border: 1px solid lightgray;
     text-align: center;
@@ -44,6 +44,7 @@ input {
     border: 0.01em solid darkgray;
     margin-bottom: 5px;
     box-sizing: border-box;
+    padding-left : 10px;
 }
 button {
     border-radius: 5px;
@@ -54,10 +55,49 @@ button {
     color: #ffff;
 }
 button:hover {
-    color: black;
+    color: white;
     cursor: pointer;
+    font-weight: bold;
 }
 #to_main {
     width: 60px;
     margin-top: 20px;
+}
+
+.box > form > div:nth-child(1) {
+    margin: 10px 0 10px 0;
+}
+
+input[type="button"] {
+    margin-bottom: 20px;
+}
+
+.select-menu{
+    width : 450px;
+    padding : 0;
+    height: 70px;
+}
+
+.select-menu ul {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.select-menu li:hover {
+    background-color : gainsboro;
+}
+
+.select-menu li {
+    cursor: pointer;
+    height : 45px;
+    width: 145px;
+    display: inline-block;
+    line-height: 45px;
+
+}
+
+
+.select-menu li span{
+    display : block;
+
 }

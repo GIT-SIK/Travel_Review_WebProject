@@ -81,11 +81,6 @@ input[type="button"] {
     margin-bottom: 20px;
 }
 
-.box hr {
-    width: 300px;
-    border: 1px solid lightgray;
-}
-
 .select-menu{
     width : 450px;
     padding : 0;

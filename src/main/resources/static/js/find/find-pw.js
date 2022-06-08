@@ -9,8 +9,6 @@ $(function() {
             $('.select-menu li').eq(i).css("border","1px solid lightgray");
 
         }
-
-
         if($(this).index()==1) {
             $("#find-tel").css("display","block");
             $("#find-email").css("display","none");
@@ -19,10 +17,7 @@ $(function() {
             $("#find-email").css("display","block");
         }
 
-        console.log($(this).index());
-
         $('.select-menu li').eq($(this).index()).css("border","1px solid gray");
-
     });
 
 
