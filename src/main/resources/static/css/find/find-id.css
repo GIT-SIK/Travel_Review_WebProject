@@ -32,6 +32,7 @@ div, input, button{
     margin-bottom: 30px;
 }
 #page-title {
+    font-family: 'Pretendard';
     font-size: 20px;
 }
 .input {

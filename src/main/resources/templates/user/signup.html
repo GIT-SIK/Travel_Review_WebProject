@@ -14,8 +14,10 @@
 <body>
     <div class="container" style="text-align: center; padding-top:3%;">
         <div class="signupPage">
-            <div class="signupTitle"> <a th:href="@{/}"> 여긴어때? </a> </div>
-
+            <div class="signup-logo"> <a th:href="@{/}"> 여긴어때? </a> </div>
+            <div class="signup-title">
+                <span id="signup-page-title">회원가입</span>
+            </div>
 
             <form id="signupForm"  method="post" th:action="@{/signup/data}">
                 <input type="text" id="id" th:name="id" placeholder="아이디"/>

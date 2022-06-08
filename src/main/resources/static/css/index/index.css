@@ -21,6 +21,7 @@
 }
 
 .bestBoardTop3 {
+    font-family: 'Pretendard';
     margin-top : 30px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -70,6 +71,12 @@
         height: 224px;
     }
 }
+@media (min-width: 576px) {
+    .bestBoardTop3 {
+        grid-template-rows: unset;
+    }
+
+}
 
 
 @media (min-width: 768px) {
@@ -88,7 +95,6 @@
     }
 
     .bestBoardTop3 img {
-        display: block;
         text-align: center;
         width: 294px;
         height: 224px;
@@ -110,7 +116,6 @@
     }
 
     .bestBoardTop3 img {
-        display: block;
         text-align: center;
         width: 294px;
         height: 224px;
@@ -119,7 +124,6 @@
 
 @media (min-width: 1200px) {
     .bestBoardTop3 img {
-        display: block;
         text-align: center;
         width: 357px;
         height: 272px;
@@ -128,7 +132,6 @@
 
 @media (min-width: 1400px) {
 .bestBoardTop3 img {
-    display: block;
     text-align: center;
     width: 420px;
     height: 320px;
