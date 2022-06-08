@@ -140,7 +140,7 @@
 @media  (min-width: 992px) {
 
   .menu > a {
-    margin: 20px 40px 0px 20px;
+    margin: 20px 40px 0px 10px;
   }
   body{
     padding-top: 130px;
