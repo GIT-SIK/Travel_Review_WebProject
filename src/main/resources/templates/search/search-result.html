@@ -3,34 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <title>여긴어때</title>
+    <div th:replace="fragments/head.html :: fragment-head"></div>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/search/search.css}" />
+
 </head>
 <body>
+<!-- 페이지 헤더 -->
+<div th:replace="fragments/header.html :: fragment-header"></div>
+
+<!-- 검색 결과 -->
 <div class="container">
-    <div>
-        <span th:text="${keyword}"></span>
-        <span>에 대한 검색 결과<span>
+    <div class="row">
+        <span class="title">'<span th:text="${keyword}"></span>'에 대한 검색 결과</span>
     </div>
-    <div>
-        게시글 검색 결과 리스트(내용)
-        <div class="boardList">
-            <div th:each="boardContent : ${boardContentList}">
-                <div class="boardTitle" th:text="${boardContent.title}"></div>
-                <div class="boardDate" th:text="${boardContent.time.substring(0,10)}"></div>
-            </div>
+
+    <hr>
+
+    <div class="row">
+        <span class="title">게시글 검색 결과</span>
+        <th:block th:if="${#lists.size(boardContentList) == 0}">
+            <div class="searchResult">검색된 결과가 없습니다.</div>
+        </th:block>
+        <th:block th:if="${#lists.size(boardContentList) != 0}">
+            <div class="searchResult">총 <span th:text="${#lists.size(boardContentList)}"></span>건의 게시글이 검색되었습니다.</div>
+        </th:block>
+        <div class="col-1"></div>
+        <div class="boardList col-10">
+            <th:block th:if="${#lists.size(boardContentList) != 0}">
+                <div class="table-responsive" style="padding-left: 20px">
+                    <table class="table table-hover" style="text-align: center">
+                        <thead>
+                        <tr class="text-center">
+                            <th>지역</th>
+                            <th>제목</th>
+                            <th>글쓴이</th>
+                            <th>작성시간</th>
+                            <th>조회수</th>
+                            <th>추천수</th>
+                        </tr>
+                        </thead>
+                        <tbody class="table-content" th:each="board : ${boardContentList}">
+                        <tr class="text-center">
+                            <td th:text="${board.category}"></td>
+                            <td class="text-start ps-5">
+                                <div class="d-flex align-content-center flex-wrap"
+                                     style="height: 30px; font-size: 20px; padding-left: 50px" th:with="idx=${board.idx}">
+                                    <a class="board-title" th:text="${board.title}"
+                                       th:href=@{/board/details/boardView(idx=${board.idx})}></a>&nbsp;
+                                </div>
+                            </td>
+                            <td style="font-size: 17px" th:with="userId = ${board.userId}">
+                                <span th:text="${board.userId}"></span>
+                            </td>
+                            <td style="font-size: 17px"
+                                th:text="${board.time.substring(0,6)}"
+                            ></td>
+                            <td style="font-size: 17px;" th:text="${board.view}"></td>
+                            <td style="font-size: 17px;" th:text="${board.recommend}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </th:block>
         </div>
+        <div class="col-1"></div>
     </div>
-    <div>
-        게시글 검색 결과 리스트(지역)
-        <div class="boardList">
-            <div th:each="boardLocal : ${boardLocalList}">
-                <div class="boardTitle" th:text="${boardLocal.title}"></div>
-                <div class="boardDate" th:text="${boardLocal.time.substring(0,10)}"></div>
-            </div>
+
+    <hr>
+
+    <div class="row">
+        <span class="title">게시글 지역 검색 결과</span>
+        <th:block th:if="${#lists.size(boardLocalList) == 0}">
+            <div class="searchResult">검색된 결과가 없습니다.</div>
+        </th:block>
+        <th:block th:if="${#lists.size(boardLocalList) != 0}">
+            <div class="searchResult">총 <span th:text="${#lists.size(boardLocalList)}"></span>건의 게시글이 검색되었습니다.</div>
+        </th:block>
+        <div class="col-1"></div>
+        <div class="boardList col-10">
+            <th:block th:if="${#lists.size(boardLocalList) != 0}">
+                <div class="table-responsive" style="padding-left: 20px">
+                    <table class="table table-hover" style="text-align: center">
+                        <thead>
+                        <tr class="text-center">
+                            <th>지역</th>
+                            <th>제목</th>
+                            <th>글쓴이</th>
+                            <th>작성시간</th>
+                            <th>조회수</th>
+                            <th>추천수</th>
+                        </tr>
+                        </thead>
+                        <tbody class="table-content" th:each="board : ${boardLocalList}">
+                        <tr class="text-center">
+                            <td th:text="${board.category}"></td>
+                            <td class="text-start ps-5">
+                                <div class="d-flex align-content-center flex-wrap"
+                                     style="height: 30px; font-size: 20px; padding-left: 50px" th:with="idx=${board.idx}">
+                                    <a class="board-title" th:text="${board.title}"
+                                       th:href=@{/board/details/boardView(idx=${board.idx})}></a>&nbsp;
+                                </div>
+                            </td>
+                            <td style="font-size: 17px" th:with="userId = ${board.userId}">
+                                <span th:text="${board.userId}"></span>
+                            </td>
+                            <td style="font-size: 17px"
+                                th:text="${board.time.substring(0,6)}"
+                            ></td>
+                            <td style="font-size: 17px;" th:text="${board.view}"></td>
+                            <td style="font-size: 17px;" th:text="${board.recommend}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </th:block>
         </div>
+        <div class="col-1"></div>
     </div>
-    <div>
-        축제 검색 결과 리스트(지역)
-        <ul class="festivalList">
+
+    <hr>
+
+    <div class="row">
+        <span class="title">축제 지역 검색 결과</span>
+        <th:block th:if="${#lists.size(festivalLocalList) == 0}">
+            <div class="searchResult">검색된 결과가 없습니다.</div>
+        </th:block>
+        <th:block th:if="${#lists.size(festivalLocalList) != 0}">
+            <div class="searchResult">총 <span th:text="${#lists.size(festivalLocalList)}"></span>건의 축제가 검색되었습니다.</div>
+        </th:block>
+        <div class="col-1"></div>
+        <ul class="festivalList col-10">
             <li class="festivalData" th:each="festivalLocal : ${festivalLocalList}">
                 <div class="festivalDetail">
                     <span class="festivalName" th:text="${festivalLocal.name}"></span> <br>
@@ -47,10 +149,21 @@
                 </div>
             </li>
         </ul>
+        <div class="col-1"></div>
     </div>
-    <div>
-        축제 검색 결과 리스트(지역)
-        <ul class="festivalList">
+
+    <hr>
+
+    <div class="row">
+        <span class="title">축제 이름 검색 결과</span>
+        <th:block th:if="${#lists.size(festivalNameList) == 0}">
+            <div class="searchResult">검색된 결과가 없습니다.</div>
+        </th:block>
+        <th:block th:if="${#lists.size(festivalNameList) != 0}">
+            <div class="searchResult">총 <span th:text="${#lists.size(festivalNameList)}"></span>건의 축제가 검색되었습니다.</div>
+        </th:block>
+        <div class="col-1"></div>
+        <ul class="festivalList col-10">
             <li class="festivalData" th:each="festivalName : ${festivalNameList}">
                 <div class="festivalDetail">
                     <span class="festivalName" th:text="${festivalName.name}"></span> <br>
@@ -67,7 +180,11 @@
                 </div>
             </li>
         </ul>
+        <div class="col-1"></div>
     </div>
 </div>
+
+<!-- 페이지 푸터 -->
+<div th:replace="fragments/footer.html :: fragment-footer"></div>
 </body>
 </html>
