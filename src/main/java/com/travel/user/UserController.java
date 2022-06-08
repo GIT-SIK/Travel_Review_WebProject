@@ -29,7 +29,6 @@ public class UserController {
 
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final UserService userService;
-
     private final IndexService indexService;
     private final BoardService boardService;
 
@@ -125,7 +124,7 @@ public class UserController {
 
             List<IdxView> viewList = indexService.findAllView();
 
-            /* 유저관리 페이지 관리 */
+            /* 유저관리 페이지 */
             Page<User> userPage = userService.findAllUser(userPageable);
             int userTotalPage = userPage.getTotalPages();
             int userNowPage = userPage.getPageable().getPageNumber()+1;
