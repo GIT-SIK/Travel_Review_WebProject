@@ -54,7 +54,8 @@ button {
     background-color: #F63543;
     color: #ffff;
 }
-button:hover {
+button:hover,
+input[type="button"]:hover {
     color: white;
     cursor: pointer;
     font-weight: bold;
