@@ -243,10 +243,10 @@
           tooltip: "Map"
         },
         mapDialog: {
-          title: "갓글 지도",
+          title: "Google 지도",
           label: "주소를 입력해주세요",
           placeholder: "예: 광화문",
-          button: "Insert Map"
+          button: "지도 적용"
         }
       },
     },
