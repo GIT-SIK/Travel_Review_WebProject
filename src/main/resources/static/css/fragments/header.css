@@ -94,6 +94,8 @@ body{
 
 .search-form input{
   border-radius: 7px;
+  padding-left: 10px;
+  padding-right: 40px;
   outline: 0;
   border: 0;
 }
