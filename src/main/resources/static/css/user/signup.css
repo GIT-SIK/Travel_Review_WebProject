@@ -17,7 +17,8 @@
     margin-bottom: 30px;
 }
 #signup-page-title {
-    font-size: 20px;
+    font-family: Pretendard;
+    font-size: 23px;
 }
 
 .signup-logo a {
@@ -33,9 +34,9 @@
 
 .signupPage {
     border: 1px solid lightgray;
-    max-width: 450px;
+    max-width: 435px;
     padding: 50px 0 50px 0;
-    max-height: 500px;
+    max-height: 600px;
     display: inline-block;
 
 }
