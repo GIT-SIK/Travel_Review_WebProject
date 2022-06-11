@@ -172,6 +172,12 @@ public class BoardController {
     return "success";
   }
 
-
+  //게시판 삭제
+  @PostMapping("/replyDelete")
+  public @ResponseBody Boolean replyDeleteMapping(@RequestBody JSONObject jsonObject) {
+    Integer idx = (Integer)jsonObject.get("rRid");
+    replyService.deleteBoard(idx);
+    return true;
+  }
 
 }
