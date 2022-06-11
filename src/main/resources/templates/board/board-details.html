@@ -10,6 +10,7 @@
   <script> location.hash = (location.hash) ? location.hash : " "; </script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script type="module" th:src="@{/js/board/reply-transfer.js}"></script>
+  <script type="module" th:src="@{/js/board/reply-delete.js}"></script>
 </head>
 <body>
 <div th:replace="fragments/header.html :: fragment-header"></div>
@@ -79,6 +80,8 @@
                    onclick="replyWriteToggle(event)"
                    sec:authorize="isAuthenticated()">[답글]</a>
               </div>
+              <a class="text-decoration-none text-muted"
+                 href='javascript:void(0);' onclick="replyDelete(event)">[삭제]</a>
               <!-- 대댓글 -->
               <div class="reply-write-area"
                    style="padding: 10px 0px; border-bottom:#6c757d dashed 1px; ">
@@ -120,10 +123,6 @@
               </button>
             </div>
           </div>
-
-
-
-
         </div>
       </div>
     </div>

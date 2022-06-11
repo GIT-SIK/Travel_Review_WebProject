@@ -61,4 +61,8 @@ public class ReplyService {
     public int countAllReply(Integer idx) {
         return replyRepository.findAllByBid(idx).size();
     }
+
+    public void deleteBoard(Integer idx) {
+        replyRepository.deleteById(idx);
+    }
 }
