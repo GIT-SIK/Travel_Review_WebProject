@@ -78,9 +78,13 @@
               <div class="d-flex justify-content-end" style="border-bottom: #6c757d dashed 1px;">
                 <a class="text-decoration-none text-muted" href='javascript:void(0);'
                    onclick="replyWriteToggle(event)"
-                   sec:authorize="isAuthenticated()">[답글]</a>
+                   sec:authorize="isAuthenticated()" style="margin-top: 8px">[답글]</a>
+                <div th:if="${#authentication.getPrincipal()!='anonymousUser'}">
+                  <div class="d-flex justify-content-end mt-2" th:if="${#authentication.getPrincipal().getUsername()} == *{reply.rAuthor}">
                 <a class="text-decoration-none text-muted"
-                   href='javascript:void(0);' onclick="replyDelete(event)" sec:authorize="isAuthenticated()">[삭제]</a>
+                   href='javascript:void(0);' onclick="replyDelete(event)">[삭제]</a>
+                  </div>
+                </div>
               </div>
 
               <!-- 대댓글 -->
