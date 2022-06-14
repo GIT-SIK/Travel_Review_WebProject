@@ -19,4 +19,9 @@ public interface ReplyRepository extends JpaRepository<Reply, Integer> {
 
     Page<Reply> findAllByrAuthor(@Param(value="rAuthor") String userId, Pageable pageable);
 
+
+    @Transactional
+    @Modifying
+    @Query(nativeQuery = true, value = "DELETE FROM reply r Where r.r_rid=:rrid")
+    void deleteByRrid(@Param(value="rrid") int rrid);
 }
