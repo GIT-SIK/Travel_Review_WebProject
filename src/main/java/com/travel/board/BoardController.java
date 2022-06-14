@@ -175,11 +175,18 @@ public class BoardController {
   //게시판 삭제
   @PostMapping("/replyDelete")
   @ResponseBody
-  public String replyDeleteMapping(@RequestBody JSONObject jsonObject) {
-    String num = (String) jsonObject.get("rid");
+  public String replyDeleteMapping(@AuthenticationPrincipal UserDetails userDetails, @RequestBody JSONObject jsonObject) {
+    String rAuthor = (String) jsonObject.get("rAuthor");
+
+    if(userDetails.getUser().getId().equals(rAuthor)){
+    String num = String.valueOf(jsonObject.get("rid"));
     int idx = Integer.parseInt(num);
     replyService.deleteReply(idx);
-    return "true";
+      return "true";
+    } else {
+
+      return "false";
+    }
   }
 
 }
