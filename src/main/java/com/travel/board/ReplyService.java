@@ -65,5 +65,6 @@ public class ReplyService {
 
     public void deleteReply(Integer idx) {
         replyRepository.deleteById(idx);
+        replyRepository.deleteByRrid(idx);
     }
 }
