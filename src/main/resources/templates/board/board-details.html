@@ -10,7 +10,7 @@
   <script> location.hash = (location.hash) ? location.hash : " "; </script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script type="module" th:src="@{/js/board/reply-transfer.js}"></script>
-  <script type="module" th:src="@{/js/board/reply-delete.js}"></script>
+  <script type="text/javascript" th:src="@{/js/board/reply-delete.js}"></script>
 </head>
 <body>
 <div th:replace="fragments/header.html :: fragment-header"></div>
@@ -81,8 +81,8 @@
                    sec:authorize="isAuthenticated()" style="margin-top: 8px">[답글]</a>
                 <div th:if="${#authentication.getPrincipal()!='anonymousUser'}">
                   <div class="d-flex justify-content-end mt-2" th:if="${#authentication.getPrincipal().getUsername()} == *{reply.rAuthor}">
-                <a class="text-decoration-none text-muted"
-                   href='javascript:void(0);' onclick="replyDelete(event)">[삭제]</a>
+                <a class="text-decoration-none text-muted" style="cursor: pointer;"
+                   th:onclick="javascript:replyDelete([[*{reply.rAuthor}]], [[*{reply.rid}]])">[삭제]</a>
                   </div>
                 </div>
               </div>
