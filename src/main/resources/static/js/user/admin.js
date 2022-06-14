@@ -27,6 +27,7 @@ $(function() {
 })
 
 function deleteSlide(idx) {
+
     event.currentTarget.parentNode.parentNode.style.display="none";
     $.ajax({
         type : "POST",

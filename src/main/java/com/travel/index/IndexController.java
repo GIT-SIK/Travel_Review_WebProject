@@ -42,6 +42,7 @@ public class IndexController {
 
             while(matcher.find()){
                 bestBoardList.get(i).setContent(matcher.group(1));
+                break;
             }
         }
 
