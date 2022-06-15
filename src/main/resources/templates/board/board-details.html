@@ -97,7 +97,6 @@
                   <input id="rBid" th:value="*{reply.rBid}" type="hidden">
                   <a class="text-decoration-none text-muted"
                      href='javascript:void(0);' onclick="replyTransfer(event)">[확인]</a>
-
                 </div>
               </div>
             </div>
@@ -112,10 +111,18 @@
                        style="font-size: 12px;" th:text="|(${reply.rDate})|"></div>
                 </div>
               </div>
-              <div class="d-flex" style="border-bottom: #6c757d dashed 1px">
+              <div class="d-flex">
                 <em class="bi bi-arrow-return-right invisible me-2"></em>
                 <div style="word-wrap:break-word; word-break: break-all;"
                      th:utext="${reply.rContent}"></div>
+              </div>
+              <div class="d-flex justify-content-end" style="border-bottom: #6c757d dashed 1px;">
+                <div th:if="${#authentication.getPrincipal()!='anonymousUser'}">
+                  <div class="d-flex justify-content-end mt-2" th:if="${#authentication.getPrincipal().getUsername()} == ${reply.rAuthor}">
+                    <a class="text-decoration-none text-muted" style="cursor: pointer;"
+                       th:onclick="javascript:replyDelete([[${reply.rAuthor}]], [[${reply.rid}]])">[삭제]</a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
