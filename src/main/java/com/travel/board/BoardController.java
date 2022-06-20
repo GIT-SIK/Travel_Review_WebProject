@@ -184,7 +184,6 @@ public class BoardController {
     replyService.deleteReply(idx);
       return "true";
     } else {
-
       return "false";
     }
   }
