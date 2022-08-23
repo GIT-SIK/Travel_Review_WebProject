@@ -49,7 +49,7 @@ public class FileUploadController {
       Resource resource = resourceLoader.getResource("file:" + uploadFile.getFilePath());
       return ResponseEntity.ok().body(resource);
     } catch(Exception e) {
-      e.printStackTrace();
+     e.printStackTrace();
       return ResponseEntity.badRequest().build();
     }
   }

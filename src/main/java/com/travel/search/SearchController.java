@@ -30,9 +30,4 @@ public class SearchController {
         model.addAttribute("keyword", keyword);
         return "search/search-result";
     }
-
-    @GetMapping("/searchTest")
-    public String searchTest() {
-        return "search/search";
-    }
 }

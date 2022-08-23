@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ReplyService {
@@ -60,5 +61,10 @@ public class ReplyService {
 
     public int countAllReply(Integer idx) {
         return replyRepository.findAllByBid(idx).size();
+    }
+
+    public void deleteReply(Integer idx) {
+        replyRepository.deleteById(idx);
+        replyRepository.deleteByRrid(idx);
     }
 }
