@@ -1,6 +1,7 @@
 ## :airplane: 여긴어때?
  ### 여행 후기 웹 프로젝트
- 
+프로젝트 일정 : 22.05.25 ~ 22.06.09
+<br>
 사이트 주소 : [바로가기](http://ec2-13-125-113-65.ap-northeast-2.compute.amazonaws.com)
 
 ### :book: 프로젝트 개요 
@@ -77,5 +78,11 @@
 ![Amazon AWS](https://img.shields.io/badge/Amazon%20AWS-232F3E?style=flat-square&logo=Amazon%20AWS&logoColor=white)
 ![Nginx](https://img.shields.io/badge/Nginx-009639?style=flat-square&logo=Nginx&logoColor=white)
 
+<br>
 
+###  :page_facing_up: 프로젝트 상세 페이지
+
+|메인페이지|후기커뮤니티|축제조회|검색페이지|
+|---|---|---|---|
+| <img src="https://user-images.githubusercontent.com/96171462/186581877-686c8e4e-a881-47ef-8aa2-5a770b0bf290.png"  width="350" height="300"/> | <img src="https://user-images.githubusercontent.com/96171462/186581906-a0957d58-221f-49be-8559-1d20e71e3291.png"  width="350" height="300"/>| <img src="https://user-images.githubusercontent.com/96171462/186581921-bd6ff5fc-53a0-4623-9b8d-eb8f2041cb76.png"  width="350" height="300"/> |<img src="https://user-images.githubusercontent.com/96171462/186581929-6305e826-4181-4349-991f-9c290f3caf83.png"  width="350" height="300"/>|
 
